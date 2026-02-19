@@ -1,23 +1,37 @@
 PATH
   remote: ../../engine/language_client_ruby
   specs:
-    baml (0.214.0)
+    baml (0.219.0)
+      ffi (~> 1.0)
+      google-protobuf (~> 4.0)
 
 GEM
   remote: https://rubygems.org/
   specs:
     ansi (1.5.0)
+    base64 (0.3.0)
     benchmark (0.4.1)
+    bigdecimal (4.0.1)
     builder (3.3.0)
     erubi (1.13.1)
+    ffi (1.17.3-aarch64-linux-gnu)
+    ffi (1.17.3-aarch64-linux-musl)
+    ffi (1.17.3-arm-linux-gnu)
+    ffi (1.17.3-arm64-darwin)
+    ffi (1.17.3-x86_64-linux-gnu)
+    ffi (1.17.3-x86_64-linux-musl)
+    google-protobuf (4.33.5)
+      bigdecimal
+      rake (>= 13)
     logger (1.7.0)
-    minitest (5.25.5)
+    minitest (5.27.0)
     minitest-reporters (1.7.1)
       ansi
       builder
       minitest (>= 5.0)
       ruby-progressbar
     netrc (0.11.0)
+    ostruct (0.6.3)
     parallel (1.27.0)
     prism (1.4.0)
     rake (13.3.0)
@@ -68,7 +82,9 @@ PLATFORMS
 
 DEPENDENCIES
   baml!
+  base64
   minitest-reporters
+  ostruct
   rake (~> 13.0)
   sorbet-static-and-runtime
   tapioca

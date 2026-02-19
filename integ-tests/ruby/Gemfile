@@ -6,6 +6,8 @@ gem 'sorbet-static-and-runtime'
 gem 'tapioca', require: false, :group => [:development, :test]
 gem 'baml', path: '../../engine/language_client_ruby'
 gem "rake", "~> 13.0"
+gem "ostruct"  # removed from Ruby 4.0 stdlib
+gem "base64"   # removed from Ruby default gems in 3.4.0
 # gem "sorbet-runtime"
 
 group :test do

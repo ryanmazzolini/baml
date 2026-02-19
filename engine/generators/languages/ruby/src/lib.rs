@@ -119,6 +119,7 @@ impl LanguageFeatures for RbLanguageFeatures {
             .map(|f| ir_to_rb::functions::ir_function_to_rb(f, &pkg))
             .collect::<Vec<_>>();
         collector.add_file("client.rb", render_client(&functions, &pkg)?)?;
+        self.add_import("client.rb", "runtime", true);
         // collector.add_file("parser.rb", render_parser(&functions, &pkg)?)?;
 
         let rb_classes = ir
