@@ -14,16 +14,16 @@
 require "sorbet-runtime"
 require "baml"
 
+require_relative "runtime"
+
 module BamlClient
 
   extend T::Sig
 
 
-  @baml_sync_client = T.let(BamlSyncClient.new(BamlClient::Internal::DoNotUseDirectlyCallManager.new(BamlCallOptions.from_hash({}))), BamlSyncClient)
-
   sig {returns(BamlSyncClient)}
   def self.b
-     @baml_sync_client
+    @baml_sync_client ||= BamlSyncClient.new(BamlClient::Internal::DoNotUseDirectlyCallManager.new(BamlCallOptions.from_hash({})))
   end
 
   class BamlSyncClient
@@ -33,6 +33,11 @@ module BamlClient
       sig {params(options: BamlClient::Internal::DoNotUseDirectlyCallManager).void}
       def initialize(options)
           @options = options
+      end
+
+      sig {returns(BamlStreamClient)}
+      def stream
+          BamlStreamClient.new(@options)
       end
 
       sig {params(collector: T.nilable(T.any(Baml::Collector, T::Array[Baml::Collector])), tb: T.nilable(Baml::TypeBuilder), client_registry: T.nilable(Baml::ClientRegistry), env_vars: T.nilable(T::Hash[Symbol, String]), tags: T.nilable(T::Hash[String, String])).returns(BamlSyncClient)}

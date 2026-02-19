@@ -1,10 +1,4 @@
-begin
-  ruby_version = /(\d+\.\d+)/.match(RUBY_VERSION)
-  require_relative "baml/#{ruby_version}/ruby_ffi"
-rescue LoadError
-  require_relative "baml/ruby_ffi"
-end
-# require_relative "baml/ruby_ffi"
+require_relative "baml/ffi"
 require_relative "stream"
 require_relative "struct"
 require_relative "checked"
@@ -18,6 +12,30 @@ module Baml
   # Reexport Checked types.
   Checked = Baml::Checks::Checked
   Check = Baml::Checks::Check
+
+  # Convenience accessor: Baml.Client returns the singleton BamlSyncClient from
+  # the generated BamlClient module. Delegating dynamically so baml.rb does not
+  # need a direct reference to BamlClient (which lives in generated code).
+  def self.Client
+    ::BamlClient.b
+  end
+
+  # Lazy accessors for generated BamlClient constants.
+  # These delegate to BamlClient::{Foo} so that baml.rb does not hard-depend
+  # on generated code. By the time these are referenced, the caller has already
+  # required the baml_client which defines the BamlClient module.
+  #
+  # Supported:
+  #   Baml::TypeBuilder -> BamlClient::TypeBuilder
+  #   Baml::Types       -> BamlClient::Types
+  def self.const_missing(name)
+    baml_client_name = "BamlClient::#{name}"
+    if ::Object.const_defined?(baml_client_name)
+      ::Object.const_get(baml_client_name)
+    else
+      super
+    end
+  end
 
 
   # Dynamically + idempotently define Baml::TypeConverter

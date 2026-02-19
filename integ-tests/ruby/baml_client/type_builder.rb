@@ -98,7 +98,7 @@ module BamlClient
 
         sig { params(baml: String).void }
         def add_baml(baml)
-            @registry.add_baml(baml, Baml::Internal::DO_NOT_USE_DIRECTLY_UNLESS_YOU_KNOW_WHAT_YOU_RE_DOING_RUNTIME)
+            @registry.add_baml(baml, BamlClient::Internal::DO_NOT_USE_DIRECTLY_UNLESS_YOU_KNOW_WHAT_YOU_RE_DOING_RUNTIME)
         end
 
         class ClassBuilder

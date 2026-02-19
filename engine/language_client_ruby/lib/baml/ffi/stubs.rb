@@ -36,13 +36,57 @@ module Baml
 
     # Passed through the generated resolve() helper as client_registry.
     # The CFFI runtime receives it but does not use it for MVP.
-    class ClientRegistry; end
+    # method_missing raises NotImplementedError for unimplemented methods
+    # (e.g. add_llm_client) per locked decision.
+    class ClientRegistry
+      def method_missing(method_name, *args, **kwargs, &block)
+        raise NotImplementedError, "#{self.class}##{method_name} is not yet implemented"
+      end
+
+      def respond_to_missing?(method_name, include_private = false)
+        true
+      end
+    end
 
     # Aliased as Baml::Image. Referenced in generated type signatures.
-    class Image; end
+    # Factory methods return stub instances. Full CFFI-backed objects (BamlObjectHandle)
+    # will be implemented in a later phase; for now these store the source info.
+    class Image
+      attr_reader :url, :base64, :media_type
+
+      def self.from_url(url)
+        obj = new
+        obj.instance_variable_set(:@url, url)
+        obj
+      end
+
+      def self.from_base64(media_type, base64)
+        obj = new
+        obj.instance_variable_set(:@media_type, media_type)
+        obj.instance_variable_set(:@base64, base64)
+        obj
+      end
+    end
 
     # Aliased as Baml::Audio. Referenced in generated type signatures.
-    class Audio; end
+    # Factory methods return stub instances. Full CFFI-backed objects (BamlObjectHandle)
+    # will be implemented in a later phase; for now these store the source info.
+    class Audio
+      attr_reader :url, :base64, :media_type
+
+      def self.from_url(url)
+        obj = new
+        obj.instance_variable_set(:@url, url)
+        obj
+      end
+
+      def self.from_base64(media_type, base64)
+        obj = new
+        obj.instance_variable_set(:@media_type, media_type)
+        obj.instance_variable_set(:@base64, base64)
+        obj
+      end
+    end
 
     # Aliased as Baml::Collector. Wrapped in an array by the generated resolve()
     # helper before passing to call_function / stream_function.

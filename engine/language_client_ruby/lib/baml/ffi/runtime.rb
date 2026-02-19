@@ -24,10 +24,13 @@ module Baml
       end
 
       def self.from_files(root_path, files, env_vars)
+        # ENV is a special Hash-like object that doesn't serialize with JSON.generate;
+        # convert it to a plain Hash first. Also accept any Hash-like (respond_to? :to_h).
+        env_hash = env_vars.respond_to?(:to_h) ? env_vars.to_h : env_vars
         ptr = Bindings.create_baml_runtime(
           root_path,
           JSON.generate(files),
-          JSON.generate(env_vars)
+          JSON.generate(env_hash)
         )
         raise BamlError, "create_baml_runtime returned null" if ptr.null?
         new(ptr)
