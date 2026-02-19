@@ -55,21 +55,16 @@ module Baml
         when :bool_value   then holder.bool_value
         when :null_value   then nil
         when :list_value
-          holder.list_value.values.map { |v| decode_value(v) }
+          holder.list_value.items.map { |v| decode_value(v) }
         when :map_value
           holder.map_value.entries.each_with_object({}) do |entry, hash|
-            key = case entry.key
-                  when :string_key then entry.string_key
-                  when :int_key    then entry.int_key
-                  when :bool_key   then entry.bool_key
-                  end
-            hash[key] = decode_value(entry.value)
+            hash[entry.key] = decode_value(entry.value)
           end
         when :class_value
           fields = holder.class_value.fields.each_with_object({}) do |entry, hash|
-            hash[entry.string_key] = decode_value(entry.value)
+            hash[entry.key] = decode_value(entry.value)
           end
-          { "__baml_class__" => holder.class_value.name, **fields }
+          { "__baml_class__" => holder.class_value.name.name, **fields }
         when :enum_value
           holder.enum_value.value
         else
