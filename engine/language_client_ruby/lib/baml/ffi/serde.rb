@@ -27,15 +27,18 @@ module Baml
             Proto::HostMapEntry.new(string_key: k.to_s, value: encode_value(v))
           end
           Proto::HostValue.new(map_value: Proto::HostMapValue.new(entries: entries))
-        when Baml::Ffi::Image, Baml::Ffi::Audio
-          # Image/Audio require BamlObjectHandle (CFFI object pointers) which are
-          # implemented in a later phase. For now, raise a clear error rather than
-          # silently producing wrong results.
-          raise NotImplementedError,
-            "#{value.class} encoding via CFFI is not yet implemented. " \
-            "Image/Audio object handles will be supported in a future phase."
+        when Baml::Ffi::RawObject
+          Proto::HostValue.new(handle: value.encode_handle)
         else
           raise ArgumentError, "unsupported type for BAML encoding: #{value.class}"
+        end
+      end
+
+      # Encode a Ruby Hash into an array of HostMapEntry protos.
+      # Used by RawObject for constructor/method kwargs.
+      def encode_map_entries(kwargs)
+        kwargs.map do |k, v|
+          Proto::HostMapEntry.new(string_key: k.to_s, value: encode_value(v))
         end
       end
 
