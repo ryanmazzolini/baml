@@ -28,6 +28,16 @@ module Baml
           buf[:ptr].read_bytes(buf[:len])
         end
 
+        # Build a null-terminated char** from a Ruby string array and call
+        # the C invoke_runtime_cli function.
+        def run_cli(args)
+          ptrs = args.map { |a| FFI::MemoryPointer.from_string(a.to_s) }
+          argv = FFI::MemoryPointer.new(:pointer, ptrs.length + 1)
+          ptrs.each_with_index { |p, i| argv.put_pointer(i * FFI.type_size(:pointer), p) }
+          argv.put_pointer(ptrs.length * FFI.type_size(:pointer), FFI::Pointer::NULL)
+          invoke_runtime_cli(argv)
+        end
+
         private
 
         def attach_functions!
@@ -44,6 +54,7 @@ module Baml
             [:pointer, :size_t], Buffer.by_value
           attach_function :call_object_method,
             [:pointer, :pointer, :size_t], Buffer.by_value
+          attach_function :invoke_runtime_cli, [:pointer], :int
         end
 
         def verify_version!

@@ -14,9 +14,6 @@
 require "sorbet-runtime"
 require "baml"
 
-require_relative "globals"
-require_relative "types"
-require_relative "stream_types"
 require_relative "type_builder"
 
 module BamlClient
@@ -140,9 +137,5 @@ module BamlClient
         end
     end
   end
-
-  # PartialTypes is an alias for StreamTypes (for backward compatibility).
-  # client.rb uses BamlClient::PartialTypes in parsed_using_types calls.
-  PartialTypes = StreamTypes
 
 end

@@ -3,24 +3,20 @@
 Install [`mise`](https://mise.jdx.dev/getting-started.html) to manage ruby
 installations.
 
-Build the ruby FFI client:
+## Setup
+
+The gem auto-discovers the CFFI shared library (`libbaml_cffi.so`) and will
+download a matching release binary automatically. For local dev, build it
+and point Ruby at your build:
+
 ```bash
-cd ../engine/language_client_ruby
-cargo build
-mise exec -- bundle install
-mise exec -- rake compile
+cd ../../engine
+cargo build -p baml_cffi
+cd ../integ-tests/ruby
 ```
 
-To speed it up, you can try building the dev mode before doing `rake compile`:
 ```bash
-export RB_SYS_CARGO_PROFILE="dev"
-```
-
-Or you can add it in-place so you don't have to export again after closing
-the terminal:
-
-```bash
-RB_SYS_CARGO_PROFILE="dev" mise exec -- rake compile
+export BAML_LIBRARY_PATH="../../engine/target/debug/libbaml_cffi.so"
 ```
 
 ## Running Tests
@@ -36,7 +32,6 @@ Generate the BAML client code:
 ```bash
 mise exec -- rake generate
 ```
-
 
 ### Run all tests
 ```bash
@@ -92,8 +87,8 @@ BAML_LOG=trace infisical run --env=test -- mise exec -- rake test
 2. **Build Issues**
    - If you get Rust compilation errors:
      ```bash
-     # Clean and rebuild
-     (cd ../../engine/language_client_ruby && mise exec -- rake clean compile)
+     # Clean and rebuild the CFFI library
+     (cd ../../engine && cargo clean -p baml_cffi && cargo build -p baml_cffi)
      ```
    - For Bundler issues:
      ```bash
@@ -113,12 +108,11 @@ BAML_LOG=trace infisical run --env=test -- mise exec -- rake test
      ```
 
 4. **BAML Client Generation Issues**
-   - Ensure BAML CLI is up to date
    - Check that BAML source files in `../baml_src` are valid
    - Try regenerating the client:
      ```bash
      rm -rf baml_client
-     mise exec -- baml-cli generate --from ../baml_src
+     mise exec -- rake generate
      ```
 
 5. **Test Load Path Issues**

@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
 require "baml"
 
-Baml::Ffi::invoke_runtime_cli(Process.argv0, ARGV)
+exit_code = Baml::Ffi::Bindings.run_cli([Process.argv0] + ARGV)
+exit(exit_code) unless exit_code == 0

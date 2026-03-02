@@ -33,6 +33,10 @@ module BamlClient
       const :value, Value
       const :checks, T::Hash[Symbol, Check]
   end
+  # #########################################################################
+  # Generated enums (21)
+  # #########################################################################
+
   class AliasedEnum < T::Enum
       enums do
           KEY_ONE = new("KEY_ONE")
@@ -80,51 +84,6 @@ module BamlClient
           WHITE = new("WHITE")
       end
   end
-
-  class FakeImage < T::Struct
-      include Baml::Sorbet::Struct
-      const :url, String
-  end
-
-  class ClassWithImage < T::Struct
-      include Baml::Sorbet::Struct
-      const :myImage, Baml::Image
-      const :param2, String
-      const :fake_image, FakeImage
-  end
-
-
-  class Event < T::Struct
-      include Baml::Sorbet::Struct
-      const :title, String
-      const :date, String
-      const :location, String
-      const :description, String
-  end
-
-
-  # FakeImage is defined earlier (before ClassWithImage) to resolve the forward reference.
-
-  class Education < T::Struct
-      include Baml::Sorbet::Struct
-      const :institution, String
-      const :location, String
-      const :degree, String
-      const :major, T::Array[String]
-      const :graduation_date, T.nilable(String)
-  end
-
-
-  class Resume < T::Struct
-      include Baml::Sorbet::Struct
-      const :name, String
-      const :email, String
-      const :phone, String
-      const :experience, T::Array[String]
-      const :education, T::Array[Education]
-      const :skills, T::Array[String]
-  end
-
 
   class DataType < T::Enum
       enums do
@@ -247,6 +206,11 @@ module BamlClient
       end
   end
 
+  # #########################################################################
+  # Generated classes (108)
+  # #########################################################################
+
+
   class AddTodoItem < T::Struct
       include Baml::Sorbet::Struct
       const :type, String
@@ -329,18 +293,6 @@ module BamlClient
   end
 
 
-  class LinkedListAliasNode < T::Struct
-      include Baml::Sorbet::Struct
-      const :value, Integer
-      const :next, T.nilable(LinkedListAliasNode)
-  end
-
-  class ClassToRecAlias < T::Struct
-      include Baml::Sorbet::Struct
-      const :list, LinkedListAliasNode
-  end
-
-
   class ClassOptionalOutput2 < T::Struct
       include Baml::Sorbet::Struct
       const :prop1, T.nilable(String)
@@ -349,8 +301,12 @@ module BamlClient
   end
 
 
-  # Forward-declare LinkedListAliasNode before ClassToRecAlias since ClassToRecAlias
-  # references it. The full definition appears later but is aliased here first.
+  class ClassToRecAlias < T::Struct
+      include Baml::Sorbet::Struct
+      const :list, LinkedListAliasNode
+  end
+
+
   class ClassWithBlockDone < T::Struct
       include Baml::Sorbet::Struct
       const :i_16_digits, Integer
@@ -358,7 +314,14 @@ module BamlClient
   end
 
 
-  # Forward-declare FakeImage before ClassWithImage since ClassWithImage references it.
+  class ClassWithImage < T::Struct
+      include Baml::Sorbet::Struct
+      const :myImage, Baml::Image
+      const :param2, String
+      const :fake_image, FakeImage
+  end
+
+
   class ClassWithoutDone < T::Struct
       include Baml::Sorbet::Struct
       const :i_16_digits, Integer
@@ -396,18 +359,6 @@ module BamlClient
   end
 
 
-  class EmailAddress < T::Struct
-      include Baml::Sorbet::Struct
-      const :value, String
-  end
-
-
-  class PhoneNumber < T::Struct
-      include Baml::Sorbet::Struct
-      const :value, String
-  end
-
-
   class ContactInfo < T::Struct
       include Baml::Sorbet::Struct
       const :primary, T.any(PhoneNumber, EmailAddress)
@@ -423,38 +374,11 @@ module BamlClient
   end
 
 
-  class FlightConfirmation < T::Struct
-      include Baml::Sorbet::Struct
-      const :confirmationNumber, String
-      const :flightNumber, String
-      const :departureTime, String
-      const :arrivalTime, String
-      const :seatNumber, String
-  end
-
-
-  class GroceryReceipt < T::Struct
-      include Baml::Sorbet::Struct
-      const :receiptId, String
-      const :storeName, String
-      const :items, T::Array[T.any(String, Integer, Float)]
-      const :totalAmount, Float
-  end
-
-
   class CustomTaskResult < T::Struct
       include Baml::Sorbet::Struct
       const :bookOrder, T.nilable(BookOrder)
       const :flightConfirmation, T.nilable(FlightConfirmation)
       const :groceryReceipt, T.nilable(GroceryReceipt)
-  end
-
-
-  class Note1599 < T::Struct
-      include Baml::Sorbet::Struct
-      const :note_title, String
-      const :note_description, T.nilable(String)
-      const :note_amount, T.nilable(String)
   end
 
 
@@ -492,12 +416,6 @@ module BamlClient
   end
 
 
-  class SomeClassNestedDynamic < T::Struct
-      include Baml::Sorbet::Struct
-      const :hi, String
-  end
-
-
   class DynamicClassTwo < T::Struct
       include Baml::Sorbet::Struct
       const :hi, String
@@ -522,6 +440,16 @@ module BamlClient
   end
 
 
+  class Education < T::Struct
+      include Baml::Sorbet::Struct
+      const :institution, String
+      const :location, String
+      const :degree, String
+      const :major, T::Array[String]
+      const :graduation_date, T.nilable(String)
+  end
+
+
   class Email < T::Struct
       include Baml::Sorbet::Struct
       const :subject, String
@@ -530,12 +458,34 @@ module BamlClient
   end
 
 
-  class Martian < T::Struct
+  class EmailAddress < T::Struct
       include Baml::Sorbet::Struct
-      # The age of the Martian in Mars years.
-      # So many Mars years.
+      const :value, String
+  end
 
-      const :age, Checked[Integer]
+
+  class Event < T::Struct
+      include Baml::Sorbet::Struct
+      const :title, String
+      const :date, String
+      const :location, String
+      const :description, String
+  end
+
+
+  class FakeImage < T::Struct
+      include Baml::Sorbet::Struct
+      const :url, String
+  end
+
+
+  class FlightConfirmation < T::Struct
+      include Baml::Sorbet::Struct
+      const :confirmationNumber, String
+      const :flightNumber, String
+      const :departureTime, String
+      const :arrivalTime, String
+      const :seatNumber, String
   end
 
 
@@ -544,13 +494,6 @@ module BamlClient
       const :planetary_age, T.any(Martian, Earthling)
       const :certainty, Checked[Integer]
       const :species, Checked[String]
-  end
-
-
-  class Tree < T::Struct
-      include Baml::Sorbet::Struct
-      const :data, Integer
-      const :children, T.untyped  # Forest (circular dep: Forest references Tree)
   end
 
 
@@ -588,6 +531,15 @@ module BamlClient
   end
 
 
+  class GroceryReceipt < T::Struct
+      include Baml::Sorbet::Struct
+      const :receiptId, String
+      const :storeName, String
+      const :items, T::Array[T.any(String, Integer, Float)]
+      const :totalAmount, Float
+  end
+
+
   class Haiku < T::Struct
       include Baml::Sorbet::Struct
       const :line1, String
@@ -596,18 +548,18 @@ module BamlClient
   end
 
 
-  class InnerClass2 < T::Struct
-      include Baml::Sorbet::Struct
-      const :prop2, Integer
-      const :prop3, Float
-  end
-
-
   class InnerClass < T::Struct
       include Baml::Sorbet::Struct
       const :prop1, String
       const :prop2, String
       const :inner, InnerClass2
+  end
+
+
+  class InnerClass2 < T::Struct
+      include Baml::Sorbet::Struct
+      const :prop2, Integer
+      const :prop3, Float
   end
 
 
@@ -625,13 +577,6 @@ module BamlClient
   end
 
 
-  class Node < T::Struct
-      include Baml::Sorbet::Struct
-      const :data, Integer
-      const :next, T.nilable(Node)
-  end
-
-
   class LinkedList < T::Struct
       include Baml::Sorbet::Struct
       const :head, T.nilable(Node)
@@ -639,7 +584,12 @@ module BamlClient
   end
 
 
-  # LinkedListAliasNode is defined earlier (before ClassToRecAlias) to resolve the forward reference.
+  class LinkedListAliasNode < T::Struct
+      include Baml::Sorbet::Struct
+      const :value, Integer
+      const :next, T.nilable(LinkedListAliasNode)
+  end
+
 
   class LiteralClassHello < T::Struct
       include Baml::Sorbet::Struct
@@ -681,6 +631,15 @@ module BamlClient
 
   # A Martian organism with an age.
   # Such a nice type.
+  class Martian < T::Struct
+      include Baml::Sorbet::Struct
+      # The age of the Martian in Mars years.
+      # So many Mars years.
+
+      const :age, Checked[Integer]
+  end
+
+
   class MemoryObject < T::Struct
       include Baml::Sorbet::Struct
       const :id, String
@@ -703,18 +662,18 @@ module BamlClient
   end
 
 
-  class Nested2 < T::Struct
-      include Baml::Sorbet::Struct
-      const :prop11, T.nilable(String)
-      const :prop12, T.nilable(String)
-  end
-
-
   class Nested < T::Struct
       include Baml::Sorbet::Struct
       const :prop3, T.nilable(String)
       const :prop4, T.nilable(String)
       const :prop20, Nested2
+  end
+
+
+  class Nested2 < T::Struct
+      include Baml::Sorbet::Struct
+      const :prop11, T.nilable(String)
+      const :prop12, T.nilable(String)
   end
 
 
@@ -730,10 +689,25 @@ module BamlClient
   end
 
 
+  class Node < T::Struct
+      include Baml::Sorbet::Struct
+      const :data, Integer
+      const :next, T.nilable(Node)
+  end
+
+
   class NodeWithAliasIndirection < T::Struct
       include Baml::Sorbet::Struct
       const :value, Integer
       const :next, T.nilable(NodeWithAliasIndirection)
+  end
+
+
+  class Note1599 < T::Struct
+      include Baml::Sorbet::Struct
+      const :note_title, String
+      const :note_description, T.nilable(String)
+      const :note_amount, T.nilable(String)
   end
 
 
@@ -795,6 +769,12 @@ module BamlClient
   end
 
 
+  class PhoneNumber < T::Struct
+      include Baml::Sorbet::Struct
+      const :value, String
+  end
+
+
   class Quantity < T::Struct
       include Baml::Sorbet::Struct
       const :amount, T.any(Integer, Float)
@@ -809,20 +789,20 @@ module BamlClient
   end
 
 
+  class ReceiptInfo < T::Struct
+      include Baml::Sorbet::Struct
+      const :items, T::Array[ReceiptItem]
+      const :total_cost, T.nilable(Float)
+      const :venue, T.any(String, String)
+  end
+
+
   class ReceiptItem < T::Struct
       include Baml::Sorbet::Struct
       const :name, String
       const :description, T.nilable(String)
       const :quantity, Integer
       const :price, Float
-  end
-
-
-  class ReceiptInfo < T::Struct
-      include Baml::Sorbet::Struct
-      const :items, T::Array[ReceiptItem]
-      const :total_cost, T.nilable(Float)
-      const :venue, T.any(String, String)
   end
 
 
@@ -835,7 +815,7 @@ module BamlClient
 
   class RecursiveAliasDependency < T::Struct
       include Baml::Sorbet::Struct
-      const :value, T.untyped  # JsonValue (type alias defined after this class; T.untyped workaround)
+      const :value, JsonValue
   end
 
 
@@ -852,6 +832,17 @@ module BamlClient
   end
 
 
+  class Resume < T::Struct
+      include Baml::Sorbet::Struct
+      const :name, String
+      const :email, String
+      const :phone, String
+      const :experience, T::Array[String]
+      const :education, T::Array[Education]
+      const :skills, T::Array[String]
+  end
+
+
   class Schema < T::Struct
       include Baml::Sorbet::Struct
       const :prop1, T.nilable(String)
@@ -864,12 +855,6 @@ module BamlClient
   end
 
 
-  class WithReasoning < T::Struct
-      include Baml::Sorbet::Struct
-      const :value, String
-      const :reasoning, String
-  end
-
   class SearchParams < T::Struct
       include Baml::Sorbet::Struct
       const :dateRange, T.nilable(Integer)
@@ -878,13 +863,6 @@ module BamlClient
       const :company, T.nilable(WithReasoning)
       const :description, T::Array[WithReasoning]
       const :tags, T::Array[T.any(Tag, String)]
-  end
-
-
-  class SmallThing < T::Struct
-      include Baml::Sorbet::Struct
-      const :i_16_digits, Integer
-      const :i_8_digits, Integer
   end
 
 
@@ -919,6 +897,19 @@ module BamlClient
       const :name, String
       const :description, T.nilable(String)
       const :metadata, T.nilable(String)
+  end
+
+
+  class SmallThing < T::Struct
+      include Baml::Sorbet::Struct
+      const :i_16_digits, Integer
+      const :i_8_digits, Integer
+  end
+
+
+  class SomeClassNestedDynamic < T::Struct
+      include Baml::Sorbet::Struct
+      const :hi, String
   end
 
 
@@ -973,6 +964,13 @@ module BamlClient
   end
 
 
+  class Tree < T::Struct
+      include Baml::Sorbet::Struct
+      const :data, Integer
+      const :children, Forest
+  end
+
+
   class TwoStoriesOneTitle < T::Struct
       include Baml::Sorbet::Struct
       const :title, String
@@ -1010,6 +1008,12 @@ module BamlClient
       const :question, String
   end
 
+
+  class WithReasoning < T::Struct
+      include Baml::Sorbet::Struct
+      const :value, String
+      const :reasoning, String
+  end
 
   # #########################################################################
   # Generated type aliases (21)

@@ -25,6 +25,11 @@ module BamlClient
       const :value, Value
       const :state, Symbol
   end
+  # #########################################################################
+  # Generated classes (108)
+  # #########################################################################
+
+
   class AddTodoItem < T::Struct
       include Baml::Sorbet::Struct
       const :type, String
@@ -115,13 +120,6 @@ module BamlClient
   end
 
 
-  class LinkedListAliasNode < T::Struct
-      include Baml::Sorbet::Struct
-      const :value, T.nilable(Integer)
-      const :next, T.nilable(LinkedListAliasNode)
-  end
-
-
   class ClassToRecAlias < T::Struct
       include Baml::Sorbet::Struct
       const :list, T.nilable(LinkedListAliasNode)
@@ -132,12 +130,6 @@ module BamlClient
       include Baml::Sorbet::Struct
       const :i_16_digits, Integer
       const :s_20_words, String
-  end
-
-
-  class FakeImage < T::Struct
-      include Baml::Sorbet::Struct
-      const :url, T.nilable(String)
   end
 
 
@@ -186,18 +178,6 @@ module BamlClient
   end
 
 
-  class EmailAddress < T::Struct
-      include Baml::Sorbet::Struct
-      const :value, T.nilable(String)
-  end
-
-
-  class PhoneNumber < T::Struct
-      include Baml::Sorbet::Struct
-      const :value, T.nilable(String)
-  end
-
-
   class ContactInfo < T::Struct
       include Baml::Sorbet::Struct
       const :primary, T.nilable(T.any(PhoneNumber, EmailAddress))
@@ -213,38 +193,11 @@ module BamlClient
   end
 
 
-  class FlightConfirmation < T::Struct
-      include Baml::Sorbet::Struct
-      const :confirmationNumber, T.nilable(String)
-      const :flightNumber, T.nilable(String)
-      const :departureTime, T.nilable(String)
-      const :arrivalTime, T.nilable(String)
-      const :seatNumber, T.nilable(String)
-  end
-
-
-  class GroceryReceipt < T::Struct
-      include Baml::Sorbet::Struct
-      const :receiptId, T.nilable(String)
-      const :storeName, T.nilable(String)
-      const :items, T::Array[T.any(String, Integer, Float)]
-      const :totalAmount, T.nilable(Float)
-  end
-
-
   class CustomTaskResult < T::Struct
       include Baml::Sorbet::Struct
       const :bookOrder, T.nilable(BookOrder)
       const :flightConfirmation, T.nilable(FlightConfirmation)
       const :groceryReceipt, T.nilable(GroceryReceipt)
-  end
-
-
-  class Note1599 < T::Struct
-      include Baml::Sorbet::Struct
-      const :note_title, T.nilable(String)
-      const :note_description, T.nilable(String)
-      const :note_amount, T.nilable(String)
   end
 
 
@@ -279,12 +232,6 @@ module BamlClient
 
   class DynamicClassOne < T::Struct
       include Baml::Sorbet::Struct
-  end
-
-
-  class SomeClassNestedDynamic < T::Struct
-      include Baml::Sorbet::Struct
-      const :hi, T.nilable(String)
   end
 
 
@@ -330,6 +277,12 @@ module BamlClient
   end
 
 
+  class EmailAddress < T::Struct
+      include Baml::Sorbet::Struct
+      const :value, T.nilable(String)
+  end
+
+
   class Event < T::Struct
       include Baml::Sorbet::Struct
       const :title, T.nilable(String)
@@ -339,12 +292,19 @@ module BamlClient
   end
 
 
-  class Martian < T::Struct
+  class FakeImage < T::Struct
       include Baml::Sorbet::Struct
-      # The age of the Martian in Mars years.
-      # So many Mars years.
+      const :url, T.nilable(String)
+  end
 
-      const :age, T.nilable(BamlClient::Types::Checked[Integer])
+
+  class FlightConfirmation < T::Struct
+      include Baml::Sorbet::Struct
+      const :confirmationNumber, T.nilable(String)
+      const :flightNumber, T.nilable(String)
+      const :departureTime, T.nilable(String)
+      const :arrivalTime, T.nilable(String)
+      const :seatNumber, T.nilable(String)
   end
 
 
@@ -353,13 +313,6 @@ module BamlClient
       const :planetary_age, T.nilable(T.any(Martian, Earthling))
       const :certainty, T.nilable(BamlClient::Types::Checked[Integer])
       const :species, T.nilable(BamlClient::Types::Checked[String])
-  end
-
-
-  class Tree < T::Struct
-      include Baml::Sorbet::Struct
-      const :data, T.nilable(Integer)
-      const :children, T.untyped  # T.nilable(Forest) - circular dep: Forest references Tree
   end
 
 
@@ -397,6 +350,15 @@ module BamlClient
   end
 
 
+  class GroceryReceipt < T::Struct
+      include Baml::Sorbet::Struct
+      const :receiptId, T.nilable(String)
+      const :storeName, T.nilable(String)
+      const :items, T::Array[T.any(String, Integer, Float)]
+      const :totalAmount, T.nilable(Float)
+  end
+
+
   class Haiku < T::Struct
       include Baml::Sorbet::Struct
       const :line1, T.nilable(String)
@@ -405,18 +367,18 @@ module BamlClient
   end
 
 
-  class InnerClass2 < T::Struct
-      include Baml::Sorbet::Struct
-      const :prop2, T.nilable(Integer)
-      const :prop3, T.nilable(Float)
-  end
-
-
   class InnerClass < T::Struct
       include Baml::Sorbet::Struct
       const :prop1, T.nilable(String)
       const :prop2, T.nilable(String)
       const :inner, T.nilable(InnerClass2)
+  end
+
+
+  class InnerClass2 < T::Struct
+      include Baml::Sorbet::Struct
+      const :prop2, T.nilable(Integer)
+      const :prop3, T.nilable(Float)
   end
 
 
@@ -434,17 +396,17 @@ module BamlClient
   end
 
 
-  class Node < T::Struct
-      include Baml::Sorbet::Struct
-      const :data, T.nilable(Integer)
-      const :next, T.nilable(Node)
-  end
-
-
   class LinkedList < T::Struct
       include Baml::Sorbet::Struct
       const :head, T.nilable(Node)
       const :len, T.nilable(Integer)
+  end
+
+
+  class LinkedListAliasNode < T::Struct
+      include Baml::Sorbet::Struct
+      const :value, T.nilable(Integer)
+      const :next, T.nilable(LinkedListAliasNode)
   end
 
 
@@ -488,6 +450,15 @@ module BamlClient
 
   # A Martian organism with an age.
   # Such a nice type.
+  class Martian < T::Struct
+      include Baml::Sorbet::Struct
+      # The age of the Martian in Mars years.
+      # So many Mars years.
+
+      const :age, T.nilable(BamlClient::Types::Checked[Integer])
+  end
+
+
   class MemoryObject < T::Struct
       include Baml::Sorbet::Struct
       const :id, T.nilable(String)
@@ -510,18 +481,18 @@ module BamlClient
   end
 
 
-  class Nested2 < T::Struct
-      include Baml::Sorbet::Struct
-      const :prop11, T.nilable(String)
-      const :prop12, T.nilable(String)
-  end
-
-
   class Nested < T::Struct
       include Baml::Sorbet::Struct
       const :prop3, T.nilable(String)
       const :prop4, T.nilable(String)
       const :prop20, T.nilable(Nested2)
+  end
+
+
+  class Nested2 < T::Struct
+      include Baml::Sorbet::Struct
+      const :prop11, T.nilable(String)
+      const :prop12, T.nilable(String)
   end
 
 
@@ -537,10 +508,25 @@ module BamlClient
   end
 
 
+  class Node < T::Struct
+      include Baml::Sorbet::Struct
+      const :data, T.nilable(Integer)
+      const :next, T.nilable(Node)
+  end
+
+
   class NodeWithAliasIndirection < T::Struct
       include Baml::Sorbet::Struct
       const :value, T.nilable(Integer)
       const :next, T.nilable(NodeWithAliasIndirection)
+  end
+
+
+  class Note1599 < T::Struct
+      include Baml::Sorbet::Struct
+      const :note_title, T.nilable(String)
+      const :note_description, T.nilable(String)
+      const :note_amount, T.nilable(String)
   end
 
 
@@ -602,6 +588,12 @@ module BamlClient
   end
 
 
+  class PhoneNumber < T::Struct
+      include Baml::Sorbet::Struct
+      const :value, T.nilable(String)
+  end
+
+
   class Quantity < T::Struct
       include Baml::Sorbet::Struct
       const :amount, T.nilable(T.any(Integer, Float))
@@ -609,21 +601,18 @@ module BamlClient
   end
 
 
-  class Resume < T::Struct
-      include Baml::Sorbet::Struct
-      const :name, T.nilable(String)
-      const :email, T.nilable(String)
-      const :phone, T.nilable(String)
-      const :experience, T::Array[String]
-      const :education, T::Array[Education]
-      const :skills, T::Array[String]
-  end
-
-
   class RaysData < T::Struct
       include Baml::Sorbet::Struct
       const :dataType, T.nilable(BamlClient::Types::DataType)
       const :value, T.nilable(T.any(Resume, Event))
+  end
+
+
+  class ReceiptInfo < T::Struct
+      include Baml::Sorbet::Struct
+      const :items, T::Array[ReceiptItem]
+      const :total_cost, T.nilable(Float)
+      const :venue, T.nilable(T.any(String, String))
   end
 
 
@@ -636,14 +625,6 @@ module BamlClient
   end
 
 
-  class ReceiptInfo < T::Struct
-      include Baml::Sorbet::Struct
-      const :items, T::Array[ReceiptItem]
-      const :total_cost, T.nilable(Float)
-      const :venue, T.nilable(T.any(String, String))
-  end
-
-
   class Recipe < T::Struct
       include Baml::Sorbet::Struct
       const :ingredients, T::Hash[String, Quantity]
@@ -653,7 +634,7 @@ module BamlClient
 
   class RecursiveAliasDependency < T::Struct
       include Baml::Sorbet::Struct
-      const :value, T.untyped  # T.nilable(JsonValue) - type alias defined after this class
+      const :value, T.nilable(JsonValue)
   end
 
 
@@ -670,6 +651,17 @@ module BamlClient
   end
 
 
+  class Resume < T::Struct
+      include Baml::Sorbet::Struct
+      const :name, T.nilable(String)
+      const :email, T.nilable(String)
+      const :phone, T.nilable(String)
+      const :experience, T::Array[String]
+      const :education, T::Array[Education]
+      const :skills, T::Array[String]
+  end
+
+
   class Schema < T::Struct
       include Baml::Sorbet::Struct
       const :prop1, T.nilable(String)
@@ -682,12 +674,6 @@ module BamlClient
   end
 
 
-  class WithReasoning < T::Struct
-      include Baml::Sorbet::Struct
-      const :value, T.nilable(String)
-      const :reasoning, T.nilable(String)
-  end
-
   class SearchParams < T::Struct
       include Baml::Sorbet::Struct
       const :dateRange, T.nilable(Integer)
@@ -696,13 +682,6 @@ module BamlClient
       const :company, T.nilable(WithReasoning)
       const :description, T::Array[WithReasoning]
       const :tags, T::Array[T.any(BamlClient::Types::Tag, String)]
-  end
-
-
-  class SmallThing < T::Struct
-      include Baml::Sorbet::Struct
-      const :i_16_digits, Integer
-      const :i_8_digits, T.nilable(Integer)
   end
 
 
@@ -737,6 +716,19 @@ module BamlClient
       const :name, T.nilable(String)
       const :description, T.nilable(String)
       const :metadata, T.nilable(String)
+  end
+
+
+  class SmallThing < T::Struct
+      include Baml::Sorbet::Struct
+      const :i_16_digits, Integer
+      const :i_8_digits, T.nilable(Integer)
+  end
+
+
+  class SomeClassNestedDynamic < T::Struct
+      include Baml::Sorbet::Struct
+      const :hi, T.nilable(String)
   end
 
 
@@ -791,6 +783,13 @@ module BamlClient
   end
 
 
+  class Tree < T::Struct
+      include Baml::Sorbet::Struct
+      const :data, T.nilable(Integer)
+      const :children, T.nilable(Forest)
+  end
+
+
   class TwoStoriesOneTitle < T::Struct
       include Baml::Sorbet::Struct
       const :title, T.nilable(String)
@@ -828,6 +827,12 @@ module BamlClient
       const :question, T.nilable(String)
   end
 
+
+  class WithReasoning < T::Struct
+      include Baml::Sorbet::Struct
+      const :value, T.nilable(String)
+      const :reasoning, T.nilable(String)
+  end
 
   # #########################################################################
   # Generated type aliases (21)
