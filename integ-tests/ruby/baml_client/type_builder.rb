@@ -22,7 +22,7 @@ module BamlClient
 
         sig { void }
         def initialize
-            @registry = T.let(Baml::Ffi::TypeBuilder.new, Baml::Ffi::TypeBuilder)
+            @registry = T.let(BamlClient::Internal::DO_NOT_USE_DIRECTLY_UNLESS_YOU_KNOW_WHAT_YOU_RE_DOING_RUNTIME.new_type_builder, Baml::Ffi::TypeBuilder)
             @classes = T.let(Set["Example", "Example2"], T::Set[String])
             @enums = T.let(Set[], T::Set[String])
         end
@@ -115,13 +115,13 @@ module BamlClient
                 @builder.field
             end
 
-            sig { params(name: String, type: Baml::Ffi::FieldType).returns(Baml::Ffi::FieldType) }
+            sig { params(name: String, type: Baml::Ffi::FieldType).returns(Baml::Ffi::ClassPropertyBuilder) }
             def add_property(name, type)
                 if @properties.include?(name)
                     raise "Property #{name} already exists."
                 end
                 @properties.add(name)
-                @builder.property(name).type(type)
+                @builder.add_property(name, type)
             end
         end
 
@@ -130,7 +130,7 @@ module BamlClient
 
             sig { params(registry: Baml::Ffi::TypeBuilder, name: String, values: T.nilable(T::Set[String])).void }
             def initialize(registry, name, values = nil)
-                @builder = T.let(registry.enum(name), Baml::Ffi::EnumBuilder)
+                @builder = T.let(registry.enum_(name), Baml::Ffi::EnumBuilder)
                 @values = T.let(values == nil ? Set.new : values, T::Set[String])
             end
 
@@ -139,13 +139,13 @@ module BamlClient
                 @builder.field
             end
 
-            sig { params(name: String).returns(Baml::Ffi::FieldType) }
+            sig { params(name: String).returns(Baml::Ffi::EnumValueBuilder) }
             def add_value(name)
                 if @values.include?(name)
                     raise "Value #{name} already exists."
                 end
                 @values.add(name)
-                @builder.value(name)
+                @builder.add_value(name)
             end
         end
 

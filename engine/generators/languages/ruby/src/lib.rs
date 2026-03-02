@@ -109,6 +109,7 @@ impl LanguageFeatures for RbLanguageFeatures {
         // collector.add_file("b.rb", render_init(&pkg, &args.default_client_mode)?)?;
         // collector.add_file("inlinedbaml.rb", render_source_files(file_map)?)?;
         collector.add_file("runtime.rb", render_runtime(&pkg)?)?;
+        self.add_import("runtime.rb", "globals", true);
         self.add_import("runtime.rb", "type_builder", true);
         // collector.add_file("tracing.rb", render_tracing(&pkg)?)?;
         collector.add_file("globals.rb", render_globals(&pkg)?)?;

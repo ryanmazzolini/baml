@@ -14,6 +14,7 @@
 require "sorbet-runtime"
 require "baml"
 
+require_relative "globals"
 require_relative "type_builder"
 
 module BamlClient
