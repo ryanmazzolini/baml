@@ -92,56 +92,7 @@ module Baml
     # helper before passing to call_function / stream_function.
     class Collector; end
 
-    # Referenced in the generated type_builder.rb as Baml::Ffi::TypeBuilder.
-    # Full dynamic type-builder support will be wired to CFFI in a later phase.
-    # method_missing raises NotImplementedError per locked decision.
-    class TypeBuilder
-      def method_missing(method_name, *args, **kwargs, &block)
-        raise NotImplementedError, "#{self.class}##{method_name} is not yet implemented"
-      end
-
-      def respond_to_missing?(method_name, include_private = false)
-        true
-      end
-    end
-
-    # Returned by TypeBuilder methods (string, int, list, union, …) and accepted
-    # by ClassBuilder#type, EnumBuilder#type, etc.
-    # method_missing raises NotImplementedError per locked decision.
-    class FieldType
-      def method_missing(method_name, *args, **kwargs, &block)
-        raise NotImplementedError, "#{self.class}##{method_name} is not yet implemented"
-      end
-
-      def respond_to_missing?(method_name, include_private = false)
-        true
-      end
-    end
-
-    # Returned by TypeBuilder#class_(name). Generated code calls
-    # ClassBuilder#field and ClassBuilder#property(name).type(field_type).
-    # method_missing raises NotImplementedError per locked decision.
-    class ClassBuilder
-      def method_missing(method_name, *args, **kwargs, &block)
-        raise NotImplementedError, "#{self.class}##{method_name} is not yet implemented"
-      end
-
-      def respond_to_missing?(method_name, include_private = false)
-        true
-      end
-    end
-
-    # Returned by TypeBuilder#enum(name). Generated code calls
-    # EnumBuilder#field and EnumBuilder#value(name).
-    # method_missing raises NotImplementedError per locked decision.
-    class EnumBuilder
-      def method_missing(method_name, *args, **kwargs, &block)
-        raise NotImplementedError, "#{self.class}##{method_name} is not yet implemented"
-      end
-
-      def respond_to_missing?(method_name, include_private = false)
-        true
-      end
-    end
+    # TypeBuilder, FieldType, ClassBuilder, EnumBuilder are now real
+    # implementations in type_builder.rb (backed by CFFI RawObject handles).
   end
 end

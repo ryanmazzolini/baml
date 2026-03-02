@@ -44,6 +44,10 @@ module Baml
         from_files(directory, files, env_vars)
       end
 
+      def new_type_builder
+        TypeBuilder.create(@ptr)
+      end
+
       def create_context_manager
         # TODO: implement via CFFI once context manager is exposed
         RuntimeContextManager.new

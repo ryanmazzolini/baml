@@ -38,6 +38,10 @@ module Baml
         :OBJECT_CLASS_PROPERTY_BUILDER => :class_property_builder,
       }.freeze
 
+      # Subclass registry: object_type → wrapper class.
+      # Populated by requiring type_builder.rb, media.rb, etc.
+      WRAPPER_CLASS = {}
+
       @tracked = []
       @mutex = Mutex.new
       @shutting_down = false
@@ -127,18 +131,19 @@ module Baml
       end
 
       def track_and_register_finalizer
-        self.class.mutex.synchronize { self.class.tracked << self }
+        RawObject.mutex.synchronize { RawObject.tracked << self }
 
         destructor_data = [@object_type, @pointer, @runtime_ptr, @mutex]
-        destructor = self.class.make_destructor(*destructor_data)
+        destructor = RawObject.make_destructor(*destructor_data)
         ObjectSpace.define_finalizer(self, destructor)
       end
 
       # Class method so the destructor proc doesn't capture `self` (preventing GC).
+      # Always references RawObject directly so subclass finalizers check the right flag.
       def self.make_destructor(object_type, pointer, runtime_ptr, mutex)
         proc do
-          next if shutting_down?
-          destroy(object_type, pointer, runtime_ptr, mutex)
+          next if RawObject.shutting_down?
+          RawObject.destroy(object_type, pointer, runtime_ptr, mutex)
         end
       end
 
@@ -191,13 +196,14 @@ module Baml
         end
       end
 
-      # Convert a BamlObjectHandle protobuf back into a RawObject.
+      # Convert a BamlObjectHandle protobuf back into a RawObject (or subclass).
       def self.decode_handle(handle, runtime_ptr)
         field = handle.object  # oneof discriminator symbol
         ptr_msg = handle.send(field)
         object_type = HANDLE_FIELD.key(field)
         raise BamlError, "unknown handle field: #{field}" unless object_type
-        new(object_type, ptr_msg.pointer, runtime_ptr)
+        klass = WRAPPER_CLASS.fetch(object_type, self)
+        klass.new(object_type, ptr_msg.pointer, runtime_ptr)
       end
     end
 
