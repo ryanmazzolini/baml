@@ -63,7 +63,7 @@ class TypeBuilder
               raise "Enum with name #{name} already exists."
           end
           @classes.add(name)
-          ClassBuilder.new(@registry, name)
+          ClassBuilder.new(@registry.add_class(name))
       end
 
       sig { params(name: String).returns(EnumBuilder) }
@@ -75,20 +75,20 @@ class TypeBuilder
               raise "Enum with name #{name} already exists."
           end
           @enums.add(name)
-          EnumBuilder.new(@registry, name)
+          EnumBuilder.new(@registry.add_enum(name))
       end
 
       sig { params(baml: String).void }
       def add_baml(baml)
-          @registry.add_baml(baml, BamlClient::Internal::DO_NOT_USE_DIRECTLY_UNLESS_YOU_KNOW_WHAT_YOU_RE_DOING_RUNTIME)
+          @registry.add_baml(baml)
       end
 
       class ClassBuilder
           extend T::Sig
 
-          sig { params(registry: Baml::Ffi::TypeBuilder, name: String, properties: T.nilable(T::Set[String])).void }
-          def initialize(registry, name, properties = nil)
-              @builder = T.let(registry.class_(name), Baml::Ffi::ClassBuilder)
+          sig { params(builder: Baml::Ffi::ClassBuilder, properties: T.nilable(T::Set[String])).void }
+          def initialize(builder, properties = nil)
+              @builder = T.let(builder, Baml::Ffi::ClassBuilder)
               @properties = T.let(properties == nil ? Set.new : properties, T::Set[String])
           end
 
@@ -105,14 +105,19 @@ class TypeBuilder
               @properties.add(name)
               @builder.add_property(name, type)
           end
+
+          sig { returns(T::Array[String]) }
+          def list_properties
+              @builder.list_properties
+          end
       end
 
       class EnumBuilder
           extend T::Sig
 
-          sig { params(registry: Baml::Ffi::TypeBuilder, name: String, values: T.nilable(T::Set[String])).void }
-          def initialize(registry, name, values = nil)
-              @builder = T.let(registry.enum_(name), Baml::Ffi::EnumBuilder)
+          sig { params(builder: Baml::Ffi::EnumBuilder, values: T.nilable(T::Set[String])).void }
+          def initialize(builder, values = nil)
+              @builder = T.let(builder, Baml::Ffi::EnumBuilder)
               @values = T.let(values == nil ? Set.new : values, T::Set[String])
           end
 
@@ -133,13 +138,13 @@ class TypeBuilder
 
     {% for cls in classes if cls.dynamic %}
     def {{cls.name}}
-        ClassBuilder.new(@registry, "{{cls.name}}", Set[{% for field in cls.fields %} "{{field.name}}", {% endfor %}])
+        ClassBuilder.new(@registry.class_("{{cls.name}}"), Set[{% for field in cls.fields %} "{{field.name}}", {% endfor %}])
     end
     {% endfor %}
 
     {% for enum_ in enums if enum_.dynamic %}
     def {{enum_.name}}
-        EnumBuilder.new(@registry, "{{enum_.name}}", Set[{% for value in enum_.values %} "{{value.0}}", {% endfor %}])
+        EnumBuilder.new(@registry.enum_("{{enum_.name}}"), Set[{% for value in enum_.values %} "{{value.0}}", {% endfor %}])
     end
     {% endfor %}
 end

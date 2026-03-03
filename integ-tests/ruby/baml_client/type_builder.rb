@@ -81,7 +81,7 @@ module BamlClient
                 raise "Enum with name #{name} already exists."
             end
             @classes.add(name)
-            ClassBuilder.new(@registry, name)
+            ClassBuilder.new(@registry.add_class(name))
         end
 
         sig { params(name: String).returns(EnumBuilder) }
@@ -93,20 +93,20 @@ module BamlClient
                 raise "Enum with name #{name} already exists."
             end
             @enums.add(name)
-            EnumBuilder.new(@registry, name)
+            EnumBuilder.new(@registry.add_enum(name))
         end
 
         sig { params(baml: String).void }
         def add_baml(baml)
-            @registry.add_baml(baml, BamlClient::Internal::DO_NOT_USE_DIRECTLY_UNLESS_YOU_KNOW_WHAT_YOU_RE_DOING_RUNTIME)
+            @registry.add_baml(baml)
         end
 
         class ClassBuilder
             extend T::Sig
 
-            sig { params(registry: Baml::Ffi::TypeBuilder, name: String, properties: T.nilable(T::Set[String])).void }
-            def initialize(registry, name, properties = nil)
-                @builder = T.let(registry.class_(name), Baml::Ffi::ClassBuilder)
+            sig { params(builder: Baml::Ffi::ClassBuilder, properties: T.nilable(T::Set[String])).void }
+            def initialize(builder, properties = nil)
+                @builder = T.let(builder, Baml::Ffi::ClassBuilder)
                 @properties = T.let(properties == nil ? Set.new : properties, T::Set[String])
             end
 
@@ -123,14 +123,19 @@ module BamlClient
                 @properties.add(name)
                 @builder.add_property(name, type)
             end
+
+            sig { returns(T::Array[String]) }
+            def list_properties
+                @builder.list_properties
+            end
         end
 
         class EnumBuilder
             extend T::Sig
 
-            sig { params(registry: Baml::Ffi::TypeBuilder, name: String, values: T.nilable(T::Set[String])).void }
-            def initialize(registry, name, values = nil)
-                @builder = T.let(registry.enum_(name), Baml::Ffi::EnumBuilder)
+            sig { params(builder: Baml::Ffi::EnumBuilder, values: T.nilable(T::Set[String])).void }
+            def initialize(builder, values = nil)
+                @builder = T.let(builder, Baml::Ffi::EnumBuilder)
                 @values = T.let(values == nil ? Set.new : values, T::Set[String])
             end
 
@@ -151,81 +156,81 @@ module BamlClient
 
 
       def DummyOutput
-          ClassBuilder.new(@registry, "DummyOutput", Set[ "nonce",  "nonce2", ])
+          ClassBuilder.new(@registry.class_("DummyOutput"), Set[ "nonce",  "nonce2", ])
       end
 
       def DynInputOutput
-          ClassBuilder.new(@registry, "DynInputOutput", Set[ "testKey", ])
+          ClassBuilder.new(@registry.class_("DynInputOutput"), Set[ "testKey", ])
       end
 
       def DynamicClassOne
-          ClassBuilder.new(@registry, "DynamicClassOne", Set[])
+          ClassBuilder.new(@registry.class_("DynamicClassOne"), Set[])
       end
 
       def SomeClassNestedDynamic
-          ClassBuilder.new(@registry, "SomeClassNestedDynamic", Set[ "hi", ])
+          ClassBuilder.new(@registry.class_("SomeClassNestedDynamic"), Set[ "hi", ])
       end
 
       def DynamicClassTwo
-          ClassBuilder.new(@registry, "DynamicClassTwo", Set[ "hi",  "some_class",  "status", ])
+          ClassBuilder.new(@registry.class_("DynamicClassTwo"), Set[ "hi",  "some_class",  "status", ])
       end
 
       def DynamicOutput
-          ClassBuilder.new(@registry, "DynamicOutput", Set[])
+          ClassBuilder.new(@registry.class_("DynamicOutput"), Set[])
       end
 
       def DynamicSchema
-          ClassBuilder.new(@registry, "DynamicSchema", Set[])
+          ClassBuilder.new(@registry.class_("DynamicSchema"), Set[])
       end
 
       def OriginalB
-          ClassBuilder.new(@registry, "OriginalB", Set[ "value", ])
+          ClassBuilder.new(@registry.class_("OriginalB"), Set[ "value", ])
       end
 
       def Person
-          ClassBuilder.new(@registry, "Person", Set[ "name",  "hair_color", ])
+          ClassBuilder.new(@registry.class_("Person"), Set[ "name",  "hair_color", ])
       end
 
       def RenderEnumInput
-          ClassBuilder.new(@registry, "RenderEnumInput", Set[ "testKey", ])
+          ClassBuilder.new(@registry.class_("RenderEnumInput"), Set[ "testKey", ])
       end
 
       def RenderTestClass
-          ClassBuilder.new(@registry, "RenderTestClass", Set[ "name",  "status", ])
+          ClassBuilder.new(@registry.class_("RenderTestClass"), Set[ "name",  "status", ])
       end
 
       def SkipDynamicClass
-          ClassBuilder.new(@registry, "SkipDynamicClass", Set[ "value",  "internal_id", ])
+          ClassBuilder.new(@registry.class_("SkipDynamicClass"), Set[ "value",  "internal_id", ])
       end
 
 
 
       def Color
-          EnumBuilder.new(@registry, "Color", Set[ "RED",  "BLUE",  "GREEN",  "YELLOW",  "BLACK",  "WHITE", ])
+          EnumBuilder.new(@registry.enum_("Color"), Set[ "RED",  "BLUE",  "GREEN",  "YELLOW",  "BLACK",  "WHITE", ])
       end
 
       def DynEnumOne
-          EnumBuilder.new(@registry, "DynEnumOne", Set[])
+          EnumBuilder.new(@registry.enum_("DynEnumOne"), Set[])
       end
 
       def DynEnumThree
-          EnumBuilder.new(@registry, "DynEnumThree", Set[ "TRICYCLE",  "TRIANGLE", ])
+          EnumBuilder.new(@registry.enum_("DynEnumThree"), Set[ "TRICYCLE",  "TRIANGLE", ])
       end
 
       def DynEnumTwo
-          EnumBuilder.new(@registry, "DynEnumTwo", Set[])
+          EnumBuilder.new(@registry.enum_("DynEnumTwo"), Set[])
       end
 
       def Hobby
-          EnumBuilder.new(@registry, "Hobby", Set[ "SPORTS",  "MUSIC",  "READING", ])
+          EnumBuilder.new(@registry.enum_("Hobby"), Set[ "SPORTS",  "MUSIC",  "READING", ])
       end
 
       def RenderStatusEnum
-          EnumBuilder.new(@registry, "RenderStatusEnum", Set[ "ACTIVE",  "INACTIVE", ])
+          EnumBuilder.new(@registry.enum_("RenderStatusEnum"), Set[ "ACTIVE",  "INACTIVE", ])
       end
 
       def RenderTestEnum
-          EnumBuilder.new(@registry, "RenderTestEnum", Set[ "BIKE",  "SCOOTER", ])
+          EnumBuilder.new(@registry.enum_("RenderTestEnum"), Set[ "BIKE",  "SCOOTER", ])
       end
 
   end
