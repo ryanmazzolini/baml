@@ -15,6 +15,8 @@ require "sorbet-runtime"
 require "baml"
 
 require_relative "runtime"
+require_relative "types"
+require_relative "stream_types"
 
 module BamlClient
 

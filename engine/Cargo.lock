@@ -3213,6 +3213,7 @@ dependencies = [
  "baml-types",
  "dir-writer",
  "internal-baml-core",
+ "petgraph 0.7.1",
  "prettydiff",
  "test-harness",
 ]

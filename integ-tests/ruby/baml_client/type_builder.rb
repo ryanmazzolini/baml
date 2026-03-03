@@ -162,6 +162,10 @@ module BamlClient
           ClassBuilder.new(@registry, "DynamicClassOne", Set[])
       end
 
+      def SomeClassNestedDynamic
+          ClassBuilder.new(@registry, "SomeClassNestedDynamic", Set[ "hi", ])
+      end
+
       def DynamicClassTwo
           ClassBuilder.new(@registry, "DynamicClassTwo", Set[ "hi",  "some_class",  "status", ])
       end
@@ -192,10 +196,6 @@ module BamlClient
 
       def SkipDynamicClass
           ClassBuilder.new(@registry, "SkipDynamicClass", Set[ "value",  "internal_id", ])
-      end
-
-      def SomeClassNestedDynamic
-          ClassBuilder.new(@registry, "SomeClassNestedDynamic", Set[ "hi", ])
       end
 
 
