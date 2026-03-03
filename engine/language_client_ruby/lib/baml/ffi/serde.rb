@@ -22,6 +22,17 @@ module Baml
           Proto::HostValue.new(
             list_value: Proto::HostListValue.new(values: value.map { |v| encode_value(v) })
           )
+        when Baml::Sorbet::Struct
+          baml_name = value.class.name.split("::").last
+          fields = value.to_h.map do |k, v|
+            Proto::HostMapEntry.new(string_key: k.to_s, value: encode_value(v))
+          end
+          Proto::HostValue.new(class_value: Proto::HostClassValue.new(name: baml_name, fields: fields))
+        when Baml::DynamicStruct
+          fields = value.to_h.map do |k, v|
+            Proto::HostMapEntry.new(string_key: k.to_s, value: encode_value(v))
+          end
+          Proto::HostValue.new(map_value: Proto::HostMapValue.new(entries: fields))
         when Hash
           entries = value.map do |k, v|
             Proto::HostMapEntry.new(string_key: k.to_s, value: encode_value(v))
@@ -67,7 +78,7 @@ module Baml
           fields = holder.class_value.fields.each_with_object({}) do |entry, hash|
             hash[entry.key] = decode_value(entry.value)
           end
-          { "__baml_class__" => holder.class_value.name.name, **fields }
+          { "__baml_class__" => holder.class_value.name, **fields }
         when :enum_value
           holder.enum_value.value
         else
