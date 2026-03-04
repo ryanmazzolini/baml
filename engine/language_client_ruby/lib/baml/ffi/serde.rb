@@ -55,12 +55,13 @@ module Baml
         end
       end
 
-      def encode_function_args(kwargs, env_vars: {})
+      def encode_function_args(kwargs, env_vars: {}, type_builder: nil)
         entries = kwargs.map do |key, val|
           Proto::HostMapEntry.new(string_key: key.to_s, value: encode_value(val))
         end
         env = env_vars.map { |k, v| Proto::HostEnvVar.new(key: k.to_s, value: v.to_s) }
-        Proto::HostFunctionArguments.new(kwargs: entries, env: env)
+        tb_handle = type_builder&.encode_handle
+        Proto::HostFunctionArguments.new(kwargs: entries, env: env, type_builder: tb_handle)
       end
 
       def decode_value(holder)
@@ -121,23 +122,14 @@ module Baml
 
       # Recursively coerce decoded values into T::Struct instances.
       # Hashes with "__baml_class__" become struct instances looked up in types_module.
+      # Unknown classes (created dynamically via TypeBuilder) become DynamicStruct.
       # Plain hashes, arrays, and primitives pass through.
       def coerce_to_struct(value, types_module)
         case value
         when Hash
           class_name = value["__baml_class__"]
-          if class_name && types_module.const_defined?(class_name, false)
-            klass = types_module.const_get(class_name, false)
-            if klass < T::Struct
-              kwargs = {}
-              value.each do |k, v|
-                next if k == "__baml_class__"
-                kwargs[k.to_sym] = coerce_to_struct(v, types_module)
-              end
-              klass.new(**kwargs)
-            else
-              value
-            end
+          if class_name
+            coerce_class_hash(class_name, value, types_module)
           else
             value.transform_values { |v| coerce_to_struct(v, types_module) }
           end
@@ -145,6 +137,30 @@ module Baml
           value.map { |v| coerce_to_struct(v, types_module) }
         else
           value
+        end
+      end
+
+      # Coerce a hash with "__baml_class__" into a typed struct or DynamicStruct.
+      def coerce_class_hash(class_name, value, types_module)
+        kwargs = {}
+        value.each do |k, v|
+          next if k == "__baml_class__"
+          kwargs[k.to_sym] = coerce_to_struct(v, types_module)
+        end
+
+        klass = types_module&.const_defined?(class_name, false) &&
+                types_module.const_get(class_name, false)
+
+        if klass.is_a?(Class) && klass < T::Struct
+          known_props = klass.props.keys.to_set
+          known_kwargs = kwargs.select { |k, _| known_props.include?(k) }
+          instance = klass.new(**known_kwargs)
+          instance.instance_variable_set(:@props, kwargs)
+          instance
+        elsif klass
+          value
+        else
+          Baml::DynamicStruct.new(**kwargs)
         end
       end
 

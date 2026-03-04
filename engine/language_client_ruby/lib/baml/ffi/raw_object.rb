@@ -125,7 +125,7 @@ module Baml
 
       def invoke_method(encoded_bytes)
         runtime_ptr = @runtime_ptr
-        self.class.ffi_call(encoded_bytes) { |ptr, len| Bindings.call_object_method(runtime_ptr, ptr, len) }
+        self.class.send(:ffi_call, encoded_bytes) { |ptr, len| Bindings.call_object_method(runtime_ptr, ptr, len) }
       end
 
       def register_finalizer
