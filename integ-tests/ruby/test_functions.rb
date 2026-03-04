@@ -91,7 +91,7 @@ describe "ruby<->baml integration tests" do
     res = b.NestedAlias(c: {"A" => ["B", "C"], "B" => [], "C" => []})
     assert_equal res, {"A" => ["B", "C"], "B" => [], "C" => []}
 
-    res = b.AliasThatPointsToRecursiveType(list: Baml::Types::LinkedListAliasNode.new(
+    res = b.AliasThatPointsToRecursiveType(data: Baml::Types::LinkedListAliasNode.new(
         value: 1,
         next: nil,
     ))
@@ -327,7 +327,7 @@ describe "ruby<->baml integration tests" do
 
     t.DynamicOutput.add_property("name", nested_class.type.optional)
     t.DynamicOutput.add_property("address", other_nested_class.type.optional)
-    t.DynamicOutput.add_property("hair_color", t.string).alias("hairColor")
+    t.DynamicOutput.add_property("hair_color", t.string).alias_("hairColor")
     t.DynamicOutput.add_property("height", t.float.optional)
 
     output = b.MyFunc(
