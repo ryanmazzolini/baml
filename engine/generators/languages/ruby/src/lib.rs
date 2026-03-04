@@ -331,6 +331,7 @@ impl LanguageFeatures for RbLanguageFeatures {
         self.add_import("client.rb", "runtime", true);
         self.add_import("client.rb", "types", true);
         self.add_import("client.rb", "stream_types", true);
+        self.add_import("client.rb", "partial_types", true);
         // collector.add_file("parser.rb", render_parser(&functions, &pkg)?)?;
 
         let rb_classes = toposort_classes(
@@ -392,6 +393,8 @@ impl LanguageFeatures for RbLanguageFeatures {
         )?;
         collector.append_to_file("stream_types.rb", &render_rb_types(&rb_stream_classes, &pkg)?)?;
         collector.append_to_file("stream_types.rb", "\nend\n")?;
+
+        collector.add_file("partial_types.rb", "PartialTypes = StreamTypes\n")?;
 
         Ok(())
     }
