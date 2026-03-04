@@ -17,6 +17,7 @@ require "baml"
 require_relative "runtime"
 require_relative "types"
 require_relative "stream_types"
+require_relative "partial_types"
 
 module BamlClient
 

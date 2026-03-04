@@ -439,13 +439,13 @@ module BamlClient
   end
 
 
-  class EmailAddress < T::Struct
+  class PhoneNumber < T::Struct
       include Baml::Sorbet::Struct
       const :value, String
   end
 
 
-  class PhoneNumber < T::Struct
+  class EmailAddress < T::Struct
       include Baml::Sorbet::Struct
       const :value, String
   end
@@ -466,15 +466,6 @@ module BamlClient
   end
 
 
-  class GroceryReceipt < T::Struct
-      include Baml::Sorbet::Struct
-      const :receiptId, String
-      const :storeName, String
-      const :items, T::Array[T.any(String, Integer, Float)]
-      const :totalAmount, Float
-  end
-
-
   class FlightConfirmation < T::Struct
       include Baml::Sorbet::Struct
       const :confirmationNumber, String
@@ -482,6 +473,15 @@ module BamlClient
       const :departureTime, String
       const :arrivalTime, String
       const :seatNumber, String
+  end
+
+
+  class GroceryReceipt < T::Struct
+      include Baml::Sorbet::Struct
+      const :receiptId, String
+      const :storeName, String
+      const :items, T::Array[T.any(String, Integer, Float)]
+      const :totalAmount, Float
   end
 
 
