@@ -66,9 +66,15 @@ module Baml
         private
 
         def invoke_constructor(encoded_bytes)
+          ffi_call(encoded_bytes) { |ptr, len| Bindings.call_object_constructor(ptr, len) }
+        end
+
+        # Sends encoded protobuf bytes through an FFI call and decodes the response.
+        # The block receives (pointer, length) and must return an FFI buffer.
+        def ffi_call(encoded_bytes, &block)
           ptr = FFI::MemoryPointer.new(:char, encoded_bytes.bytesize)
           ptr.put_bytes(0, encoded_bytes)
-          buf = Bindings.call_object_constructor(ptr, encoded_bytes.bytesize)
+          buf = block.call(ptr, encoded_bytes.bytesize)
           raw = Bindings.read_buffer(buf)
           Bindings.free_buffer(buf)
           Proto::InvocationResponse.decode(raw)
@@ -118,12 +124,8 @@ module Baml
       private
 
       def invoke_method(encoded_bytes)
-        ptr = FFI::MemoryPointer.new(:char, encoded_bytes.bytesize)
-        ptr.put_bytes(0, encoded_bytes)
-        buf = Bindings.call_object_method(@runtime_ptr, ptr, encoded_bytes.bytesize)
-        raw = Bindings.read_buffer(buf)
-        Bindings.free_buffer(buf)
-        Proto::InvocationResponse.decode(raw)
+        runtime_ptr = @runtime_ptr
+        self.class.ffi_call(encoded_bytes) { |ptr, len| Bindings.call_object_method(runtime_ptr, ptr, len) }
       end
 
       def register_finalizer
@@ -154,10 +156,7 @@ module Baml
             kwargs: []
           )
           bytes = Proto::BamlObjectMethodInvocation.encode(invocation)
-          ptr = FFI::MemoryPointer.new(:char, bytes.bytesize)
-          ptr.put_bytes(0, bytes)
-          buf = Bindings.call_object_method(runtime_ptr, ptr, bytes.bytesize)
-          Bindings.free_buffer(buf)
+          ffi_call(bytes) { |ptr, len| Bindings.call_object_method(runtime_ptr, ptr, len) }
         end
       rescue => e
         # Swallow errors during finalization — can't raise from finalizer.
