@@ -9,23 +9,33 @@ module Baml
         @parsed = Serde.decode_value_holder(bytes) if bytes
       end
 
-      # The generated client calls: result.parsed_using_types(Types, PartialTypes, false)
-      # In the CFFI path, Rust already parsed the result — the callback delivers the final value.
-      # types/partial_types modules are unused here (they're for the magnus path's Ruby coercion).
-      def parsed_using_types(_types, _partial_types, _allow_partials)
-        FunctionResultParsed.new(@parsed)
+      # Coerces decoded hashes into T::Struct instances eagerly, like Go's serde.Decode.
+      # Returns a FunctionResultParsed that delegates to the coerced value.
+      def parsed_using_types(types_module, partial_types, allow_partials)
+        coerce_module = allow_partials ? partial_types : types_module
+        coerced = Serde.coerce_to_struct(@parsed, coerce_module)
+        FunctionResultParsed.new(coerced)
       end
     end
 
+    # Thin wrapper over the coerced value. Supports both usage patterns:
+    #   - Sync generated client: parsed.cast_to(SomeType) — returns the value
+    #   - Streaming path: partial.some_field — delegates to the value
     class FunctionResultParsed
       def initialize(value)
         @value = value
       end
 
-      # Generated code calls: parsed.cast_to(BamlClient::Types::SomeClass)
-      # With CFFI, the value is already the right Ruby type (String, Integer, Hash, etc.)
       def cast_to(_type)
         @value
+      end
+
+      def method_missing(name, *args, &block)
+        @value.send(name, *args, &block)
+      end
+
+      def respond_to_missing?(name, include_private = false)
+        @value.respond_to?(name, include_private) || super
       end
     end
   end
