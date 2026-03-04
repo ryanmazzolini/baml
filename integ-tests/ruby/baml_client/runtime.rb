@@ -59,8 +59,13 @@ module BamlClient
 
         sig { params(options: BamlCallOptions).returns(DoNotUseDirectlyCallManager) }
         def merge_options(options)
-          merged = @baml_options.serialize.merge(options.serialize)
-          DoNotUseDirectlyCallManager.new(BamlCallOptions.from_hash(merged))
+          DoNotUseDirectlyCallManager.new(BamlCallOptions.new(
+            tb: options.tb || @baml_options.tb,
+            client_registry: options.client_registry || @baml_options.client_registry,
+            collector: options.collector || @baml_options.collector,
+            env: (@baml_options.env || {}).merge(options.env || {}),
+            tags: (@baml_options.tags || {}).merge(options.tags || {}),
+          ))
         end
 
         sig { params(function_name: String, args: T::Hash[String, T.untyped]).returns(Baml::Ffi::FunctionResult) }

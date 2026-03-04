@@ -26,7 +26,7 @@ module BamlClient
 
   sig {returns(BamlSyncClient)}
   def self.b
-    @baml_sync_client ||= BamlSyncClient.new(BamlClient::Internal::DoNotUseDirectlyCallManager.new(BamlCallOptions.from_hash({})))
+    @baml_sync_client ||= BamlSyncClient.new(BamlClient::Internal::DoNotUseDirectlyCallManager.new(BamlCallOptions.new))
   end
 
   class BamlSyncClient
@@ -45,13 +45,13 @@ module BamlClient
 
       sig {params(collector: T.nilable(T.any(Baml::Collector, T::Array[Baml::Collector])), tb: T.nilable(Baml::TypeBuilder), client_registry: T.nilable(Baml::ClientRegistry), env_vars: T.nilable(T::Hash[Symbol, String]), tags: T.nilable(T::Hash[String, String])).returns(BamlSyncClient)}
       def with_options(collector: nil, tb: nil, client_registry: nil, env_vars: nil, tags: nil)
-          BamlSyncClient.new(@options.merge_options(BamlCallOptions.from_hash({
+          BamlSyncClient.new(@options.merge_options(BamlCallOptions.new(
               collector: collector,
               tb: tb,
               client_registry: client_registry,
-              env_vars: env_vars,
+              env: env_vars,
               tags: tags,
-          })))
+          )))
       end
 
       sig {params(
@@ -68,7 +68,7 @@ module BamlClient
               raise ArgumentError.new("AaaSamOutputFormat may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "AaaSamOutputFormat", args: {
               recipe: recipe,
@@ -90,7 +90,7 @@ module BamlClient
               raise ArgumentError.new("AliasThatPointsToRecursiveType may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "AliasThatPointsToRecursiveType", args: {
               data: data,
@@ -112,7 +112,7 @@ module BamlClient
               raise ArgumentError.new("AliasWithMultipleAttrs may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "AliasWithMultipleAttrs", args: {
               money: money,
@@ -134,7 +134,7 @@ module BamlClient
               raise ArgumentError.new("AliasedInputClass may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "AliasedInputClass", args: {
               input: input,
@@ -156,7 +156,7 @@ module BamlClient
               raise ArgumentError.new("AliasedInputClass2 may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "AliasedInputClass2", args: {
               input: input,
@@ -178,7 +178,7 @@ module BamlClient
               raise ArgumentError.new("AliasedInputClassNested may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "AliasedInputClassNested", args: {
               input: input,
@@ -200,7 +200,7 @@ module BamlClient
               raise ArgumentError.new("AliasedInputEnum may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "AliasedInputEnum", args: {
               input: input,
@@ -222,7 +222,7 @@ module BamlClient
               raise ArgumentError.new("AliasedInputList may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "AliasedInputList", args: {
               input: input,
@@ -244,7 +244,7 @@ module BamlClient
               raise ArgumentError.new("AllowedOptionals may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "AllowedOptionals", args: {
               optionals: optionals,
@@ -266,7 +266,7 @@ module BamlClient
               raise ArgumentError.new("AssertFn may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "AssertFn", args: {
               a: a,
@@ -288,7 +288,7 @@ module BamlClient
               raise ArgumentError.new("AudioInput may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "AudioInput", args: {
               aud: aud,
@@ -310,7 +310,7 @@ module BamlClient
               raise ArgumentError.new("AudioInputOpenai may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "AudioInputOpenai", args: {
               aud: aud,prompt: prompt,
@@ -332,7 +332,7 @@ module BamlClient
               raise ArgumentError.new("BuildLinkedList may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "BuildLinkedList", args: {
               input: input,
@@ -354,7 +354,7 @@ module BamlClient
               raise ArgumentError.new("BuildTree may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "BuildTree", args: {
               input: input,
@@ -376,7 +376,7 @@ module BamlClient
               raise ArgumentError.new("CheckWordEquality may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "CheckWordEquality", args: {
               word: word,target: target,
@@ -398,7 +398,7 @@ module BamlClient
               raise ArgumentError.new("ChooseTodoTools may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "ChooseTodoTools", args: {
               query: query,
@@ -420,7 +420,7 @@ module BamlClient
               raise ArgumentError.new("ClassThatPointsToRecursiveClassThroughAlias may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "ClassThatPointsToRecursiveClassThroughAlias", args: {
               cls: cls,
@@ -442,7 +442,7 @@ module BamlClient
               raise ArgumentError.new("ClassifyDynEnumTwo may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "ClassifyDynEnumTwo", args: {
               input: input,
@@ -464,7 +464,7 @@ module BamlClient
               raise ArgumentError.new("ClassifyDynamicStatus may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "ClassifyDynamicStatus", args: {
               input: input,
@@ -486,7 +486,7 @@ module BamlClient
               raise ArgumentError.new("ClassifyMessage may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "ClassifyMessage", args: {
               input: input,
@@ -508,7 +508,7 @@ module BamlClient
               raise ArgumentError.new("ClassifyMessage2 may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "ClassifyMessage2", args: {
               input: input,
@@ -530,7 +530,7 @@ module BamlClient
               raise ArgumentError.new("ClassifyMessage3 may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "ClassifyMessage3", args: {
               input: input,
@@ -552,7 +552,7 @@ module BamlClient
               raise ArgumentError.new("Completion may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "Completion", args: {
               prefix: prefix,suffix: suffix,language: language,
@@ -574,7 +574,7 @@ module BamlClient
               raise ArgumentError.new("CustomTask may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "CustomTask", args: {
               input: input,
@@ -596,7 +596,7 @@ module BamlClient
               raise ArgumentError.new("DescribeAudio may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "DescribeAudio", args: {
               audio: audio,
@@ -618,7 +618,7 @@ module BamlClient
               raise ArgumentError.new("DescribeAudio2 may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "DescribeAudio2", args: {
               audio: audio,
@@ -640,7 +640,7 @@ module BamlClient
               raise ArgumentError.new("DescribeImage may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "DescribeImage", args: {
               img: img,
@@ -662,7 +662,7 @@ module BamlClient
               raise ArgumentError.new("DescribeImage2 may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "DescribeImage2", args: {
               classWithImage: classWithImage,img2: img2,
@@ -684,7 +684,7 @@ module BamlClient
               raise ArgumentError.new("DescribeImage3 may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "DescribeImage3", args: {
               classWithImage: classWithImage,img2: img2,
@@ -706,7 +706,7 @@ module BamlClient
               raise ArgumentError.new("DescribeImage4 may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "DescribeImage4", args: {
               classWithImage: classWithImage,img2: img2,
@@ -728,7 +728,7 @@ module BamlClient
               raise ArgumentError.new("DescribeMedia1599 may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "DescribeMedia1599", args: {
               img: img,client_sector: client_sector,client_name: client_name,
@@ -750,7 +750,7 @@ module BamlClient
               raise ArgumentError.new("DifferentiateUnions may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "DifferentiateUnions", args: {
 
@@ -772,7 +772,7 @@ module BamlClient
               raise ArgumentError.new("DummyOutputFunction may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "DummyOutputFunction", args: {
               input: input,
@@ -794,7 +794,7 @@ module BamlClient
               raise ArgumentError.new("DynamicFunc may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "DynamicFunc", args: {
               input: input,
@@ -816,7 +816,7 @@ module BamlClient
               raise ArgumentError.new("DynamicInputOutput may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "DynamicInputOutput", args: {
               input: input,
@@ -838,7 +838,7 @@ module BamlClient
               raise ArgumentError.new("DynamicListInputOutput may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "DynamicListInputOutput", args: {
               input: input,
@@ -860,7 +860,7 @@ module BamlClient
               raise ArgumentError.new("ExpectFailure may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "ExpectFailure", args: {
 
@@ -882,7 +882,7 @@ module BamlClient
               raise ArgumentError.new("ExtractContactInfo may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "ExtractContactInfo", args: {
               document: document,
@@ -904,7 +904,7 @@ module BamlClient
               raise ArgumentError.new("ExtractDynamicCategories may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "ExtractDynamicCategories", args: {
               input: input,
@@ -926,7 +926,7 @@ module BamlClient
               raise ArgumentError.new("ExtractEntities may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "ExtractEntities", args: {
               text: text,
@@ -948,7 +948,7 @@ module BamlClient
               raise ArgumentError.new("ExtractHobby may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "ExtractHobby", args: {
               text: text,
@@ -970,7 +970,7 @@ module BamlClient
               raise ArgumentError.new("ExtractName may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "ExtractName", args: {
               text: text,
@@ -992,7 +992,7 @@ module BamlClient
               raise ArgumentError.new("ExtractNames may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "ExtractNames", args: {
               input: input,
@@ -1014,7 +1014,7 @@ module BamlClient
               raise ArgumentError.new("ExtractPeople may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "ExtractPeople", args: {
               text: text,
@@ -1036,7 +1036,7 @@ module BamlClient
               raise ArgumentError.new("ExtractPersonWithMeta may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "ExtractPersonWithMeta", args: {
               input: input,
@@ -1058,7 +1058,7 @@ module BamlClient
               raise ArgumentError.new("ExtractReceiptInfo may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "ExtractReceiptInfo", args: {
               email: email,reason: reason,
@@ -1080,7 +1080,7 @@ module BamlClient
               raise ArgumentError.new("ExtractResume may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "ExtractResume", args: {
               resume: resume,img: img,
@@ -1102,7 +1102,7 @@ module BamlClient
               raise ArgumentError.new("ExtractResume2 may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "ExtractResume2", args: {
               resume: resume,
@@ -1124,7 +1124,7 @@ module BamlClient
               raise ArgumentError.new("FnAlwaysFails may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "FnAlwaysFails", args: {
               input: input,
@@ -1146,7 +1146,7 @@ module BamlClient
               raise ArgumentError.new("FnClassOptionalOutput may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "FnClassOptionalOutput", args: {
               input: input,
@@ -1168,7 +1168,7 @@ module BamlClient
               raise ArgumentError.new("FnClassOptionalOutput2 may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "FnClassOptionalOutput2", args: {
               input: input,
@@ -1190,7 +1190,7 @@ module BamlClient
               raise ArgumentError.new("FnEnumListOutput may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "FnEnumListOutput", args: {
               input: input,
@@ -1212,7 +1212,7 @@ module BamlClient
               raise ArgumentError.new("FnEnumOutput may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "FnEnumOutput", args: {
               input: input,
@@ -1234,7 +1234,7 @@ module BamlClient
               raise ArgumentError.new("FnFailRetryConstantDelay may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "FnFailRetryConstantDelay", args: {
               retries: retries,delay_ms: delay_ms,
@@ -1256,7 +1256,7 @@ module BamlClient
               raise ArgumentError.new("FnFailRetryExponentialDelay may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "FnFailRetryExponentialDelay", args: {
               retries: retries,initial_delay_ms: initial_delay_ms,
@@ -1278,7 +1278,7 @@ module BamlClient
               raise ArgumentError.new("FnFallbackAlwaysFails may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "FnFallbackAlwaysFails", args: {
               input: input,
@@ -1300,7 +1300,7 @@ module BamlClient
               raise ArgumentError.new("FnLiteralClassInputOutput may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "FnLiteralClassInputOutput", args: {
               input: input,
@@ -1322,7 +1322,7 @@ module BamlClient
               raise ArgumentError.new("FnLiteralUnionClassInputOutput may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "FnLiteralUnionClassInputOutput", args: {
               input: input,
@@ -1344,7 +1344,7 @@ module BamlClient
               raise ArgumentError.new("FnNamedArgsSingleStringOptional may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "FnNamedArgsSingleStringOptional", args: {
               myString: myString,
@@ -1366,7 +1366,7 @@ module BamlClient
               raise ArgumentError.new("FnOutputBool may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "FnOutputBool", args: {
               input: input,
@@ -1388,7 +1388,7 @@ module BamlClient
               raise ArgumentError.new("FnOutputClass may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "FnOutputClass", args: {
               input: input,
@@ -1410,7 +1410,7 @@ module BamlClient
               raise ArgumentError.new("FnOutputClassList may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "FnOutputClassList", args: {
               input: input,
@@ -1432,7 +1432,7 @@ module BamlClient
               raise ArgumentError.new("FnOutputClassNested may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "FnOutputClassNested", args: {
               input: input,
@@ -1454,7 +1454,7 @@ module BamlClient
               raise ArgumentError.new("FnOutputClassWithEnum may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "FnOutputClassWithEnum", args: {
               input: input,
@@ -1476,7 +1476,7 @@ module BamlClient
               raise ArgumentError.new("FnOutputInt may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "FnOutputInt", args: {
               input: input,
@@ -1498,7 +1498,7 @@ module BamlClient
               raise ArgumentError.new("FnOutputLiteralBool may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "FnOutputLiteralBool", args: {
               input: input,
@@ -1520,7 +1520,7 @@ module BamlClient
               raise ArgumentError.new("FnOutputLiteralInt may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "FnOutputLiteralInt", args: {
               input: input,
@@ -1542,7 +1542,7 @@ module BamlClient
               raise ArgumentError.new("FnOutputLiteralString may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "FnOutputLiteralString", args: {
               input: input,
@@ -1564,7 +1564,7 @@ module BamlClient
               raise ArgumentError.new("FnOutputStringList may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "FnOutputStringList", args: {
               input: input,
@@ -1586,7 +1586,7 @@ module BamlClient
               raise ArgumentError.new("FnTestAliasedEnumOutput may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "FnTestAliasedEnumOutput", args: {
               input: input,
@@ -1608,7 +1608,7 @@ module BamlClient
               raise ArgumentError.new("FnTestClassAlias may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "FnTestClassAlias", args: {
               input: input,
@@ -1630,7 +1630,7 @@ module BamlClient
               raise ArgumentError.new("FnTestNamedArgsSingleEnum may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "FnTestNamedArgsSingleEnum", args: {
               myArg: myArg,
@@ -1652,7 +1652,7 @@ module BamlClient
               raise ArgumentError.new("GetDataType may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "GetDataType", args: {
               text: text,
@@ -1674,7 +1674,7 @@ module BamlClient
               raise ArgumentError.new("GetOrderInfo may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "GetOrderInfo", args: {
               email: email,
@@ -1696,7 +1696,7 @@ module BamlClient
               raise ArgumentError.new("GetQuery may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "GetQuery", args: {
               query: query,
@@ -1718,7 +1718,7 @@ module BamlClient
               raise ArgumentError.new("InOutEnumMapKey may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "InOutEnumMapKey", args: {
               i1: i1,i2: i2,
@@ -1740,7 +1740,7 @@ module BamlClient
               raise ArgumentError.new("InOutLiteralStringUnionMapKey may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "InOutLiteralStringUnionMapKey", args: {
               i1: i1,i2: i2,
@@ -1762,7 +1762,7 @@ module BamlClient
               raise ArgumentError.new("InOutSingleLiteralStringMapKey may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "InOutSingleLiteralStringMapKey", args: {
               m: m,
@@ -1784,7 +1784,7 @@ module BamlClient
               raise ArgumentError.new("JsonTypeAliasCycle may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "JsonTypeAliasCycle", args: {
               input: input,
@@ -1806,7 +1806,7 @@ module BamlClient
               raise ArgumentError.new("LLMEcho may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "LLMEcho", args: {
               input: input,
@@ -1828,7 +1828,7 @@ module BamlClient
               raise ArgumentError.new("LiteralUnionsTest may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "LiteralUnionsTest", args: {
               input: input,
@@ -1850,7 +1850,7 @@ module BamlClient
               raise ArgumentError.new("LlmReturnNumber may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "LlmReturnNumber", args: {
               n: n,
@@ -1872,7 +1872,7 @@ module BamlClient
               raise ArgumentError.new("MakeBlockConstraint may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "MakeBlockConstraint", args: {
 
@@ -1894,7 +1894,7 @@ module BamlClient
               raise ArgumentError.new("MakeClassWithBlockDone may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "MakeClassWithBlockDone", args: {
 
@@ -1916,7 +1916,7 @@ module BamlClient
               raise ArgumentError.new("MakeClassWithExternalDone may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "MakeClassWithExternalDone", args: {
 
@@ -1938,7 +1938,7 @@ module BamlClient
               raise ArgumentError.new("MakeNestedBlockConstraint may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "MakeNestedBlockConstraint", args: {
 
@@ -1960,7 +1960,7 @@ module BamlClient
               raise ArgumentError.new("MakeSemanticContainer may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "MakeSemanticContainer", args: {
 
@@ -1982,7 +1982,7 @@ module BamlClient
               raise ArgumentError.new("MapAlias may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "MapAlias", args: {
               m: m,
@@ -2004,7 +2004,7 @@ module BamlClient
               raise ArgumentError.new("MergeAliasAttributes may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "MergeAliasAttributes", args: {
               money: money,
@@ -2026,7 +2026,7 @@ module BamlClient
               raise ArgumentError.new("MyFunc may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "MyFunc", args: {
               input: input,
@@ -2048,7 +2048,7 @@ module BamlClient
               raise ArgumentError.new("NestedAlias may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "NestedAlias", args: {
               c: c,
@@ -2070,7 +2070,7 @@ module BamlClient
               raise ArgumentError.new("NullLiteralClassHello may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "NullLiteralClassHello", args: {
               s: s,
@@ -2092,7 +2092,7 @@ module BamlClient
               raise ArgumentError.new("OpenAIGPT4oMissingBaseUrlEnvVar may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "OpenAIGPT4oMissingBaseUrlEnvVar", args: {
               input: input,
@@ -2114,7 +2114,7 @@ module BamlClient
               raise ArgumentError.new("OpenAIWithAnthropicResponseHello may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "OpenAIWithAnthropicResponseHello", args: {
               s: s,
@@ -2136,7 +2136,7 @@ module BamlClient
               raise ArgumentError.new("OptionalTest_Function may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "OptionalTest_Function", args: {
               input: input,
@@ -2158,7 +2158,7 @@ module BamlClient
               raise ArgumentError.new("PdfInput may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "PdfInput", args: {
               pdf: pdf,
@@ -2180,7 +2180,7 @@ module BamlClient
               raise ArgumentError.new("PdfInputAnthropic may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "PdfInputAnthropic", args: {
               pdf: pdf,
@@ -2202,7 +2202,7 @@ module BamlClient
               raise ArgumentError.new("PdfInputOpenai may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "PdfInputOpenai", args: {
               pdf: pdf,prompt: prompt,
@@ -2224,7 +2224,7 @@ module BamlClient
               raise ArgumentError.new("PdfInputVertex may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "PdfInputVertex", args: {
               pdf: pdf,
@@ -2246,7 +2246,7 @@ module BamlClient
               raise ArgumentError.new("PredictAge may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "PredictAge", args: {
               name: name,
@@ -2268,7 +2268,7 @@ module BamlClient
               raise ArgumentError.new("PredictAgeBare may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "PredictAgeBare", args: {
               inp: inp,
@@ -2290,7 +2290,7 @@ module BamlClient
               raise ArgumentError.new("PrimitiveAlias may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "PrimitiveAlias", args: {
               p: p,
@@ -2312,7 +2312,7 @@ module BamlClient
               raise ArgumentError.new("PromptTestClaude may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "PromptTestClaude", args: {
               input: input,
@@ -2334,7 +2334,7 @@ module BamlClient
               raise ArgumentError.new("PromptTestClaudeChat may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "PromptTestClaudeChat", args: {
               input: input,
@@ -2356,7 +2356,7 @@ module BamlClient
               raise ArgumentError.new("PromptTestClaudeChatNoSystem may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "PromptTestClaudeChatNoSystem", args: {
               input: input,
@@ -2378,7 +2378,7 @@ module BamlClient
               raise ArgumentError.new("PromptTestOpenAI may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "PromptTestOpenAI", args: {
               input: input,
@@ -2400,7 +2400,7 @@ module BamlClient
               raise ArgumentError.new("PromptTestOpenAIChat may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "PromptTestOpenAIChat", args: {
               input: input,
@@ -2422,7 +2422,7 @@ module BamlClient
               raise ArgumentError.new("PromptTestOpenAIChatNoSystem may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "PromptTestOpenAIChatNoSystem", args: {
               input: input,
@@ -2444,7 +2444,7 @@ module BamlClient
               raise ArgumentError.new("PromptTestStreaming may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "PromptTestStreaming", args: {
               input: input,
@@ -2466,7 +2466,7 @@ module BamlClient
               raise ArgumentError.new("RecursiveAliasCycle may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "RecursiveAliasCycle", args: {
               input: input,
@@ -2488,7 +2488,7 @@ module BamlClient
               raise ArgumentError.new("RecursiveClassWithAliasIndirection may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "RecursiveClassWithAliasIndirection", args: {
               cls: cls,
@@ -2510,7 +2510,7 @@ module BamlClient
               raise ArgumentError.new("RecursiveUnionTest may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "RecursiveUnionTest", args: {
               input: input,
@@ -2532,7 +2532,7 @@ module BamlClient
               raise ArgumentError.new("RenderDynamicClass may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "RenderDynamicClass", args: {
               input: input,
@@ -2554,7 +2554,7 @@ module BamlClient
               raise ArgumentError.new("RenderDynamicEnum may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "RenderDynamicEnum", args: {
               bike: bike,other: other,
@@ -2576,7 +2576,7 @@ module BamlClient
               raise ArgumentError.new("ReturnAliasWithMergedAttributes may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "ReturnAliasWithMergedAttributes", args: {
               money: money,
@@ -2598,7 +2598,7 @@ module BamlClient
               raise ArgumentError.new("ReturnFailingAssert may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "ReturnFailingAssert", args: {
               inp: inp,
@@ -2620,7 +2620,7 @@ module BamlClient
               raise ArgumentError.new("ReturnJsonEntry may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "ReturnJsonEntry", args: {
               s: s,
@@ -2642,7 +2642,7 @@ module BamlClient
               raise ArgumentError.new("ReturnMalformedConstraints may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "ReturnMalformedConstraints", args: {
               a: a,
@@ -2664,7 +2664,7 @@ module BamlClient
               raise ArgumentError.new("SchemaDescriptions may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "SchemaDescriptions", args: {
               input: input,
@@ -2686,7 +2686,7 @@ module BamlClient
               raise ArgumentError.new("SimpleRecursiveListAlias may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "SimpleRecursiveListAlias", args: {
               input: input,
@@ -2708,7 +2708,7 @@ module BamlClient
               raise ArgumentError.new("SimpleRecursiveMapAlias may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "SimpleRecursiveMapAlias", args: {
               input: input,
@@ -2730,7 +2730,7 @@ module BamlClient
               raise ArgumentError.new("StreamBigNumbers may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "StreamBigNumbers", args: {
               digits: digits,
@@ -2752,7 +2752,7 @@ module BamlClient
               raise ArgumentError.new("StreamFailingAssertion may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "StreamFailingAssertion", args: {
               theme: theme,length: length,
@@ -2774,7 +2774,7 @@ module BamlClient
               raise ArgumentError.new("StreamFailingCheck may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "StreamFailingCheck", args: {
               theme: theme,length: length,
@@ -2796,7 +2796,7 @@ module BamlClient
               raise ArgumentError.new("StreamOneBigNumber may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "StreamOneBigNumber", args: {
               digits: digits,
@@ -2818,7 +2818,7 @@ module BamlClient
               raise ArgumentError.new("StreamUnionIntegers may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "StreamUnionIntegers", args: {
               digits: digits,
@@ -2840,7 +2840,7 @@ module BamlClient
               raise ArgumentError.new("StreamingCompoundNumbers may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "StreamingCompoundNumbers", args: {
               digits: digits,yapping: yapping,
@@ -2862,7 +2862,7 @@ module BamlClient
               raise ArgumentError.new("StructureDocument1559 may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "StructureDocument1559", args: {
               document_txt: document_txt,
@@ -2884,7 +2884,7 @@ module BamlClient
               raise ArgumentError.new("TakeRecAliasDep may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "TakeRecAliasDep", args: {
               input: input,
@@ -2906,7 +2906,7 @@ module BamlClient
               raise ArgumentError.new("TellStory may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "TellStory", args: {
               story: story,
@@ -2928,7 +2928,7 @@ module BamlClient
               raise ArgumentError.new("TemplateStringTestEcho may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "TemplateStringTestEcho", args: {
               input: input,
@@ -2950,7 +2950,7 @@ module BamlClient
               raise ArgumentError.new("TestAbortFallbackChain may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "TestAbortFallbackChain", args: {
               input: input,
@@ -2972,7 +2972,7 @@ module BamlClient
               raise ArgumentError.new("TestAnthropic may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "TestAnthropic", args: {
               input: input,
@@ -2994,7 +2994,7 @@ module BamlClient
               raise ArgumentError.new("TestAnthropicShorthand may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "TestAnthropicShorthand", args: {
               input: input,
@@ -3016,7 +3016,7 @@ module BamlClient
               raise ArgumentError.new("TestAws may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "TestAws", args: {
               input: input,
@@ -3063,7 +3063,7 @@ module BamlClient
               raise ArgumentError.new("TestAwsClaude37 may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "TestAwsClaude37", args: {
               input: input,
@@ -3085,7 +3085,7 @@ module BamlClient
               raise ArgumentError.new("TestAwsInferenceProfile may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "TestAwsInferenceProfile", args: {
               input: input,
@@ -3107,7 +3107,7 @@ module BamlClient
               raise ArgumentError.new("TestAwsInvalidAccessKey may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "TestAwsInvalidAccessKey", args: {
               input: input,
@@ -3129,7 +3129,7 @@ module BamlClient
               raise ArgumentError.new("TestAwsInvalidEndpoint may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "TestAwsInvalidEndpoint", args: {
               input: input,
@@ -3151,7 +3151,7 @@ module BamlClient
               raise ArgumentError.new("TestAwsInvalidProfile may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "TestAwsInvalidProfile", args: {
               input: input,
@@ -3173,7 +3173,7 @@ module BamlClient
               raise ArgumentError.new("TestAwsInvalidRegion may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "TestAwsInvalidRegion", args: {
               input: input,
@@ -3195,7 +3195,7 @@ module BamlClient
               raise ArgumentError.new("TestAwsInvalidSessionToken may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "TestAwsInvalidSessionToken", args: {
               input: input,
@@ -3217,7 +3217,7 @@ module BamlClient
               raise ArgumentError.new("TestAwsVideoDescribe may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "TestAwsVideoDescribe", args: {
               video_input: video_input,
@@ -3239,7 +3239,7 @@ module BamlClient
               raise ArgumentError.new("TestAzure may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "TestAzure", args: {
               input: input,
@@ -3261,7 +3261,7 @@ module BamlClient
               raise ArgumentError.new("TestAzureFailure may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "TestAzureFailure", args: {
               input: input,
@@ -3283,7 +3283,7 @@ module BamlClient
               raise ArgumentError.new("TestAzureO1NoMaxTokens may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "TestAzureO1NoMaxTokens", args: {
               input: input,
@@ -3305,7 +3305,7 @@ module BamlClient
               raise ArgumentError.new("TestAzureO1WithMaxCompletionTokens may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "TestAzureO1WithMaxCompletionTokens", args: {
               input: input,
@@ -3327,7 +3327,7 @@ module BamlClient
               raise ArgumentError.new("TestAzureO1WithMaxTokens may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "TestAzureO1WithMaxTokens", args: {
               input: input,
@@ -3349,7 +3349,7 @@ module BamlClient
               raise ArgumentError.new("TestAzureO3NoMaxTokens may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "TestAzureO3NoMaxTokens", args: {
               input: input,
@@ -3371,7 +3371,7 @@ module BamlClient
               raise ArgumentError.new("TestAzureO3WithMaxCompletionTokens may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "TestAzureO3WithMaxCompletionTokens", args: {
               input: input,
@@ -3393,7 +3393,7 @@ module BamlClient
               raise ArgumentError.new("TestAzureWithMaxTokens may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "TestAzureWithMaxTokens", args: {
               input: input,
@@ -3415,7 +3415,7 @@ module BamlClient
               raise ArgumentError.new("TestCaching may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "TestCaching", args: {
               input: input,not_cached: not_cached,
@@ -3437,7 +3437,7 @@ module BamlClient
               raise ArgumentError.new("TestDefaultStreamingTimeout may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "TestDefaultStreamingTimeout", args: {
               input: input,
@@ -3459,7 +3459,7 @@ module BamlClient
               raise ArgumentError.new("TestFallbackClient may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "TestFallbackClient", args: {
 
@@ -3481,7 +3481,7 @@ module BamlClient
               raise ArgumentError.new("TestFallbackStrategy may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "TestFallbackStrategy", args: {
               input: input,
@@ -3503,7 +3503,7 @@ module BamlClient
               raise ArgumentError.new("TestFallbackToShorthand may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "TestFallbackToShorthand", args: {
               input: input,
@@ -3525,7 +3525,7 @@ module BamlClient
               raise ArgumentError.new("TestFnNamedArgsSingleBool may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "TestFnNamedArgsSingleBool", args: {
               myBool: myBool,
@@ -3547,7 +3547,7 @@ module BamlClient
               raise ArgumentError.new("TestFnNamedArgsSingleClass may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "TestFnNamedArgsSingleClass", args: {
               myArg: myArg,
@@ -3569,7 +3569,7 @@ module BamlClient
               raise ArgumentError.new("TestFnNamedArgsSingleEnumList may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "TestFnNamedArgsSingleEnumList", args: {
               myArg: myArg,
@@ -3591,7 +3591,7 @@ module BamlClient
               raise ArgumentError.new("TestFnNamedArgsSingleFloat may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "TestFnNamedArgsSingleFloat", args: {
               myFloat: myFloat,
@@ -3613,7 +3613,7 @@ module BamlClient
               raise ArgumentError.new("TestFnNamedArgsSingleInt may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "TestFnNamedArgsSingleInt", args: {
               myInt: myInt,
@@ -3635,7 +3635,7 @@ module BamlClient
               raise ArgumentError.new("TestFnNamedArgsSingleMapStringToClass may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "TestFnNamedArgsSingleMapStringToClass", args: {
               myMap: myMap,
@@ -3657,7 +3657,7 @@ module BamlClient
               raise ArgumentError.new("TestFnNamedArgsSingleMapStringToMap may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "TestFnNamedArgsSingleMapStringToMap", args: {
               myMap: myMap,
@@ -3679,7 +3679,7 @@ module BamlClient
               raise ArgumentError.new("TestFnNamedArgsSingleMapStringToString may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "TestFnNamedArgsSingleMapStringToString", args: {
               myMap: myMap,
@@ -3701,7 +3701,7 @@ module BamlClient
               raise ArgumentError.new("TestFnNamedArgsSingleString may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "TestFnNamedArgsSingleString", args: {
               myString: myString,
@@ -3723,7 +3723,7 @@ module BamlClient
               raise ArgumentError.new("TestFnNamedArgsSingleStringArray may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "TestFnNamedArgsSingleStringArray", args: {
               myStringArray: myStringArray,
@@ -3745,7 +3745,7 @@ module BamlClient
               raise ArgumentError.new("TestFnNamedArgsSingleStringList may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "TestFnNamedArgsSingleStringList", args: {
               myArg: myArg,
@@ -3767,7 +3767,7 @@ module BamlClient
               raise ArgumentError.new("TestGemini may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "TestGemini", args: {
               input: input,
@@ -3789,7 +3789,7 @@ module BamlClient
               raise ArgumentError.new("TestGeminiOpenAiGeneric may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "TestGeminiOpenAiGeneric", args: {
 
@@ -3811,7 +3811,7 @@ module BamlClient
               raise ArgumentError.new("TestGeminiSystem may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "TestGeminiSystem", args: {
               input: input,
@@ -3833,7 +3833,7 @@ module BamlClient
               raise ArgumentError.new("TestGeminiSystemAsChat may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "TestGeminiSystemAsChat", args: {
               input: input,
@@ -3855,7 +3855,7 @@ module BamlClient
               raise ArgumentError.new("TestGeminiThinking may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "TestGeminiThinking", args: {
               input: input,
@@ -3877,7 +3877,7 @@ module BamlClient
               raise ArgumentError.new("TestGroq may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "TestGroq", args: {
               input: input,
@@ -3899,7 +3899,7 @@ module BamlClient
               raise ArgumentError.new("TestImageInput may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "TestImageInput", args: {
               img: img,
@@ -3921,7 +3921,7 @@ module BamlClient
               raise ArgumentError.new("TestImageInputAnthropic may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "TestImageInputAnthropic", args: {
               img: img,
@@ -3943,7 +3943,7 @@ module BamlClient
               raise ArgumentError.new("TestImageListInput may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "TestImageListInput", args: {
               imgs: imgs,
@@ -3965,7 +3965,7 @@ module BamlClient
               raise ArgumentError.new("TestMemory may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "TestMemory", args: {
               input: input,
@@ -3987,7 +3987,7 @@ module BamlClient
               raise ArgumentError.new("TestMulticlassNamedArgs may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "TestMulticlassNamedArgs", args: {
               myArg: myArg,myArg2: myArg2,
@@ -4009,7 +4009,7 @@ module BamlClient
               raise ArgumentError.new("TestNamedArgsLiteralBool may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "TestNamedArgsLiteralBool", args: {
               myBool: myBool,
@@ -4031,7 +4031,7 @@ module BamlClient
               raise ArgumentError.new("TestNamedArgsLiteralInt may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "TestNamedArgsLiteralInt", args: {
               myInt: myInt,
@@ -4053,7 +4053,7 @@ module BamlClient
               raise ArgumentError.new("TestNamedArgsLiteralString may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "TestNamedArgsLiteralString", args: {
               myString: myString,
@@ -4075,7 +4075,7 @@ module BamlClient
               raise ArgumentError.new("TestOllama may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "TestOllama", args: {
               input: input,
@@ -4097,7 +4097,7 @@ module BamlClient
               raise ArgumentError.new("TestOllamaHaiku may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "TestOllamaHaiku", args: {
               input: input,
@@ -4119,7 +4119,7 @@ module BamlClient
               raise ArgumentError.new("TestOpenAI may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "TestOpenAI", args: {
               input: input,
@@ -4141,7 +4141,7 @@ module BamlClient
               raise ArgumentError.new("TestOpenAIDummyClient may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "TestOpenAIDummyClient", args: {
               input: input,
@@ -4163,7 +4163,7 @@ module BamlClient
               raise ArgumentError.new("TestOpenAIGPT4oMini may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "TestOpenAIGPT4oMini", args: {
               input: input,
@@ -4185,7 +4185,7 @@ module BamlClient
               raise ArgumentError.new("TestOpenAIGPT4oMini2 may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "TestOpenAIGPT4oMini2", args: {
               input: input,
@@ -4207,7 +4207,7 @@ module BamlClient
               raise ArgumentError.new("TestOpenAIGPT4oMini3 may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "TestOpenAIGPT4oMini3", args: {
               input: input,
@@ -4229,7 +4229,7 @@ module BamlClient
               raise ArgumentError.new("TestOpenAILegacyProvider may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "TestOpenAILegacyProvider", args: {
               input: input,
@@ -4251,7 +4251,7 @@ module BamlClient
               raise ArgumentError.new("TestOpenAIO1NoMaxTokens may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "TestOpenAIO1NoMaxTokens", args: {
               input: input,
@@ -4273,7 +4273,7 @@ module BamlClient
               raise ArgumentError.new("TestOpenAIO1WithMaxCompletionTokens may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "TestOpenAIO1WithMaxCompletionTokens", args: {
               input: input,
@@ -4295,7 +4295,7 @@ module BamlClient
               raise ArgumentError.new("TestOpenAIO1WithMaxTokens may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "TestOpenAIO1WithMaxTokens", args: {
               input: input,
@@ -4317,7 +4317,7 @@ module BamlClient
               raise ArgumentError.new("TestOpenAIProviderWithResponsesType may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "TestOpenAIProviderWithResponsesType", args: {
               input: input,
@@ -4339,7 +4339,7 @@ module BamlClient
               raise ArgumentError.new("TestOpenAIResponses may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "TestOpenAIResponses", args: {
               input: input,
@@ -4361,7 +4361,7 @@ module BamlClient
               raise ArgumentError.new("TestOpenAIResponsesAllRoles may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "TestOpenAIResponsesAllRoles", args: {
               problem: problem,
@@ -4383,7 +4383,7 @@ module BamlClient
               raise ArgumentError.new("TestOpenAIResponsesAutoType may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "TestOpenAIResponsesAutoType", args: {
               input: input,
@@ -4405,7 +4405,7 @@ module BamlClient
               raise ArgumentError.new("TestOpenAIResponsesConversation may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "TestOpenAIResponsesConversation", args: {
               topic: topic,
@@ -4427,7 +4427,7 @@ module BamlClient
               raise ArgumentError.new("TestOpenAIResponsesCustomURL may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "TestOpenAIResponsesCustomURL", args: {
               input: input,
@@ -4449,7 +4449,7 @@ module BamlClient
               raise ArgumentError.new("TestOpenAIResponsesDifferentModel may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "TestOpenAIResponsesDifferentModel", args: {
               input: input,
@@ -4471,7 +4471,7 @@ module BamlClient
               raise ArgumentError.new("TestOpenAIResponsesEndpoint may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "TestOpenAIResponsesEndpoint", args: {
               input: input,
@@ -4493,7 +4493,7 @@ module BamlClient
               raise ArgumentError.new("TestOpenAIResponsesExplicit may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "TestOpenAIResponsesExplicit", args: {
               input: input,
@@ -4515,7 +4515,7 @@ module BamlClient
               raise ArgumentError.new("TestOpenAIResponsesFunctionCall may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "TestOpenAIResponsesFunctionCall", args: {
               query: query,
@@ -4537,7 +4537,7 @@ module BamlClient
               raise ArgumentError.new("TestOpenAIResponsesImageInput may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "TestOpenAIResponsesImageInput", args: {
               image: image,
@@ -4559,7 +4559,7 @@ module BamlClient
               raise ArgumentError.new("TestOpenAIResponsesReasoning may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "TestOpenAIResponsesReasoning", args: {
               problem: problem,
@@ -4581,7 +4581,7 @@ module BamlClient
               raise ArgumentError.new("TestOpenAIResponsesShorthand may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "TestOpenAIResponsesShorthand", args: {
               input: input,
@@ -4603,7 +4603,7 @@ module BamlClient
               raise ArgumentError.new("TestOpenAIResponsesWebSearch may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "TestOpenAIResponsesWebSearch", args: {
               query: query,
@@ -4625,7 +4625,7 @@ module BamlClient
               raise ArgumentError.new("TestOpenAIResponsesWithOpenAIResponseType may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "TestOpenAIResponsesWithOpenAIResponseType", args: {
               input: input,
@@ -4647,7 +4647,7 @@ module BamlClient
               raise ArgumentError.new("TestOpenAIShorthand may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "TestOpenAIShorthand", args: {
               input: input,
@@ -4669,7 +4669,7 @@ module BamlClient
               raise ArgumentError.new("TestOpenAIWithFinishReasonError may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "TestOpenAIWithFinishReasonError", args: {
               input: input,
@@ -4691,7 +4691,7 @@ module BamlClient
               raise ArgumentError.new("TestOpenAIWithMaxTokens may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "TestOpenAIWithMaxTokens", args: {
               input: input,
@@ -4713,7 +4713,7 @@ module BamlClient
               raise ArgumentError.new("TestOpenAIWithNullMaxTokens may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "TestOpenAIWithNullMaxTokens", args: {
               input: input,
@@ -4735,7 +4735,7 @@ module BamlClient
               raise ArgumentError.new("TestOpenRouterMistralSmall3_1_24b may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "TestOpenRouterMistralSmall3_1_24b", args: {
               input: input,
@@ -4757,7 +4757,7 @@ module BamlClient
               raise ArgumentError.new("TestOpenaiResponsesPdfs may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "TestOpenaiResponsesPdfs", args: {
               pdf: pdf,
@@ -4779,7 +4779,7 @@ module BamlClient
               raise ArgumentError.new("TestRequestTimeout may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "TestRequestTimeout", args: {
               input: input,
@@ -4801,7 +4801,7 @@ module BamlClient
               raise ArgumentError.new("TestRetryConstant may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "TestRetryConstant", args: {
 
@@ -4823,7 +4823,7 @@ module BamlClient
               raise ArgumentError.new("TestRetryExponential may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "TestRetryExponential", args: {
 
@@ -4845,7 +4845,7 @@ module BamlClient
               raise ArgumentError.new("TestRoundRobinStrategy may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "TestRoundRobinStrategy", args: {
               input: input,
@@ -4867,7 +4867,7 @@ module BamlClient
               raise ArgumentError.new("TestSingleFallbackClient may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "TestSingleFallbackClient", args: {
 
@@ -4889,7 +4889,7 @@ module BamlClient
               raise ArgumentError.new("TestSkipDynamic may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "TestSkipDynamic", args: {
               input: input,
@@ -4911,7 +4911,7 @@ module BamlClient
               raise ArgumentError.new("TestSkipNonDynamic may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "TestSkipNonDynamic", args: {
               input: input,
@@ -4933,7 +4933,7 @@ module BamlClient
               raise ArgumentError.new("TestStreamingTimeout may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "TestStreamingTimeout", args: {
               input: input,
@@ -4955,7 +4955,7 @@ module BamlClient
               raise ArgumentError.new("TestThinking may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "TestThinking", args: {
               input: input,
@@ -4977,7 +4977,7 @@ module BamlClient
               raise ArgumentError.new("TestTimeoutError may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "TestTimeoutError", args: {
               input: input,
@@ -4999,7 +4999,7 @@ module BamlClient
               raise ArgumentError.new("TestTimeoutFallback may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "TestTimeoutFallback", args: {
               input: input,
@@ -5021,7 +5021,7 @@ module BamlClient
               raise ArgumentError.new("TestUniverseQuestion may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "TestUniverseQuestion", args: {
               question: question,
@@ -5043,7 +5043,7 @@ module BamlClient
               raise ArgumentError.new("TestVertex may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "TestVertex", args: {
               input: input,
@@ -5065,7 +5065,7 @@ module BamlClient
               raise ArgumentError.new("TestVertexClaude may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "TestVertexClaude", args: {
               input: input,
@@ -5112,7 +5112,7 @@ module BamlClient
               raise ArgumentError.new("TestVertexWithSystemInstructions may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "TestVertexWithSystemInstructions", args: {
 
@@ -5134,7 +5134,7 @@ module BamlClient
               raise ArgumentError.new("TestZeroTimeout may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "TestZeroTimeout", args: {
               input: input,
@@ -5156,7 +5156,7 @@ module BamlClient
               raise ArgumentError.new("UnionTest_Function may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "UnionTest_Function", args: {
               input: input,
@@ -5178,7 +5178,7 @@ module BamlClient
               raise ArgumentError.new("UseBlockConstraint may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "UseBlockConstraint", args: {
               inp: inp,
@@ -5200,7 +5200,7 @@ module BamlClient
               raise ArgumentError.new("UseMaintainFieldOrder may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "UseMaintainFieldOrder", args: {
               input: input,
@@ -5222,7 +5222,7 @@ module BamlClient
               raise ArgumentError.new("UseMalformedConstraints may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "UseMalformedConstraints", args: {
               a: a,
@@ -5244,7 +5244,7 @@ module BamlClient
               raise ArgumentError.new("UseNestedBlockConstraint may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "UseNestedBlockConstraint", args: {
               inp: inp,
@@ -5266,7 +5266,7 @@ module BamlClient
               raise ArgumentError.new("ValidateBasicResponses may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "ValidateBasicResponses", args: {
               input: input,
@@ -5288,7 +5288,7 @@ module BamlClient
               raise ArgumentError.new("ValidateResponseTypes may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "ValidateResponseTypes", args: {
               input: input,
@@ -5310,7 +5310,7 @@ module BamlClient
               raise ArgumentError.new("VideoInputGemini may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "VideoInputGemini", args: {
               vid: vid,
@@ -5332,7 +5332,7 @@ module BamlClient
               raise ArgumentError.new("VideoInputVertex may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __result__ = __options__.call_function_sync(function_name: "VideoInputVertex", args: {
               vid: vid,
@@ -5365,7 +5365,7 @@ module BamlClient
               raise ArgumentError.new("AaaSamOutputFormat may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "AaaSamOutputFormat", args: {
               recipe: recipe,
@@ -5390,7 +5390,7 @@ module BamlClient
               raise ArgumentError.new("AliasThatPointsToRecursiveType may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "AliasThatPointsToRecursiveType", args: {
               data: data,
@@ -5415,7 +5415,7 @@ module BamlClient
               raise ArgumentError.new("AliasWithMultipleAttrs may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "AliasWithMultipleAttrs", args: {
               money: money,
@@ -5440,7 +5440,7 @@ module BamlClient
               raise ArgumentError.new("AliasedInputClass may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "AliasedInputClass", args: {
               input: input,
@@ -5465,7 +5465,7 @@ module BamlClient
               raise ArgumentError.new("AliasedInputClass2 may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "AliasedInputClass2", args: {
               input: input,
@@ -5490,7 +5490,7 @@ module BamlClient
               raise ArgumentError.new("AliasedInputClassNested may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "AliasedInputClassNested", args: {
               input: input,
@@ -5515,7 +5515,7 @@ module BamlClient
               raise ArgumentError.new("AliasedInputEnum may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "AliasedInputEnum", args: {
               input: input,
@@ -5540,7 +5540,7 @@ module BamlClient
               raise ArgumentError.new("AliasedInputList may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "AliasedInputList", args: {
               input: input,
@@ -5565,7 +5565,7 @@ module BamlClient
               raise ArgumentError.new("AllowedOptionals may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "AllowedOptionals", args: {
               optionals: optionals,
@@ -5590,7 +5590,7 @@ module BamlClient
               raise ArgumentError.new("AssertFn may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "AssertFn", args: {
               a: a,
@@ -5615,7 +5615,7 @@ module BamlClient
               raise ArgumentError.new("AudioInput may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "AudioInput", args: {
               aud: aud,
@@ -5640,7 +5640,7 @@ module BamlClient
               raise ArgumentError.new("AudioInputOpenai may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "AudioInputOpenai", args: {
               aud: aud,prompt: prompt,
@@ -5665,7 +5665,7 @@ module BamlClient
               raise ArgumentError.new("BuildLinkedList may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "BuildLinkedList", args: {
               input: input,
@@ -5690,7 +5690,7 @@ module BamlClient
               raise ArgumentError.new("BuildTree may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "BuildTree", args: {
               input: input,
@@ -5715,7 +5715,7 @@ module BamlClient
               raise ArgumentError.new("CheckWordEquality may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "CheckWordEquality", args: {
               word: word,target: target,
@@ -5740,7 +5740,7 @@ module BamlClient
               raise ArgumentError.new("ChooseTodoTools may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "ChooseTodoTools", args: {
               query: query,
@@ -5765,7 +5765,7 @@ module BamlClient
               raise ArgumentError.new("ClassThatPointsToRecursiveClassThroughAlias may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "ClassThatPointsToRecursiveClassThroughAlias", args: {
               cls: cls,
@@ -5790,7 +5790,7 @@ module BamlClient
               raise ArgumentError.new("ClassifyDynEnumTwo may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "ClassifyDynEnumTwo", args: {
               input: input,
@@ -5815,7 +5815,7 @@ module BamlClient
               raise ArgumentError.new("ClassifyDynamicStatus may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "ClassifyDynamicStatus", args: {
               input: input,
@@ -5840,7 +5840,7 @@ module BamlClient
               raise ArgumentError.new("ClassifyMessage may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "ClassifyMessage", args: {
               input: input,
@@ -5865,7 +5865,7 @@ module BamlClient
               raise ArgumentError.new("ClassifyMessage2 may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "ClassifyMessage2", args: {
               input: input,
@@ -5890,7 +5890,7 @@ module BamlClient
               raise ArgumentError.new("ClassifyMessage3 may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "ClassifyMessage3", args: {
               input: input,
@@ -5915,7 +5915,7 @@ module BamlClient
               raise ArgumentError.new("Completion may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "Completion", args: {
               prefix: prefix,suffix: suffix,language: language,
@@ -5940,7 +5940,7 @@ module BamlClient
               raise ArgumentError.new("CustomTask may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "CustomTask", args: {
               input: input,
@@ -5965,7 +5965,7 @@ module BamlClient
               raise ArgumentError.new("DescribeAudio may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "DescribeAudio", args: {
               audio: audio,
@@ -5990,7 +5990,7 @@ module BamlClient
               raise ArgumentError.new("DescribeAudio2 may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "DescribeAudio2", args: {
               audio: audio,
@@ -6015,7 +6015,7 @@ module BamlClient
               raise ArgumentError.new("DescribeImage may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "DescribeImage", args: {
               img: img,
@@ -6040,7 +6040,7 @@ module BamlClient
               raise ArgumentError.new("DescribeImage2 may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "DescribeImage2", args: {
               classWithImage: classWithImage,img2: img2,
@@ -6065,7 +6065,7 @@ module BamlClient
               raise ArgumentError.new("DescribeImage3 may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "DescribeImage3", args: {
               classWithImage: classWithImage,img2: img2,
@@ -6090,7 +6090,7 @@ module BamlClient
               raise ArgumentError.new("DescribeImage4 may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "DescribeImage4", args: {
               classWithImage: classWithImage,img2: img2,
@@ -6115,7 +6115,7 @@ module BamlClient
               raise ArgumentError.new("DescribeMedia1599 may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "DescribeMedia1599", args: {
               img: img,client_sector: client_sector,client_name: client_name,
@@ -6140,7 +6140,7 @@ module BamlClient
               raise ArgumentError.new("DifferentiateUnions may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "DifferentiateUnions", args: {
 
@@ -6165,7 +6165,7 @@ module BamlClient
               raise ArgumentError.new("DummyOutputFunction may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "DummyOutputFunction", args: {
               input: input,
@@ -6190,7 +6190,7 @@ module BamlClient
               raise ArgumentError.new("DynamicFunc may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "DynamicFunc", args: {
               input: input,
@@ -6215,7 +6215,7 @@ module BamlClient
               raise ArgumentError.new("DynamicInputOutput may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "DynamicInputOutput", args: {
               input: input,
@@ -6240,7 +6240,7 @@ module BamlClient
               raise ArgumentError.new("DynamicListInputOutput may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "DynamicListInputOutput", args: {
               input: input,
@@ -6265,7 +6265,7 @@ module BamlClient
               raise ArgumentError.new("ExpectFailure may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "ExpectFailure", args: {
 
@@ -6290,7 +6290,7 @@ module BamlClient
               raise ArgumentError.new("ExtractContactInfo may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "ExtractContactInfo", args: {
               document: document,
@@ -6315,7 +6315,7 @@ module BamlClient
               raise ArgumentError.new("ExtractDynamicCategories may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "ExtractDynamicCategories", args: {
               input: input,
@@ -6340,7 +6340,7 @@ module BamlClient
               raise ArgumentError.new("ExtractEntities may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "ExtractEntities", args: {
               text: text,
@@ -6365,7 +6365,7 @@ module BamlClient
               raise ArgumentError.new("ExtractHobby may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "ExtractHobby", args: {
               text: text,
@@ -6390,7 +6390,7 @@ module BamlClient
               raise ArgumentError.new("ExtractName may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "ExtractName", args: {
               text: text,
@@ -6415,7 +6415,7 @@ module BamlClient
               raise ArgumentError.new("ExtractNames may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "ExtractNames", args: {
               input: input,
@@ -6440,7 +6440,7 @@ module BamlClient
               raise ArgumentError.new("ExtractPeople may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "ExtractPeople", args: {
               text: text,
@@ -6465,7 +6465,7 @@ module BamlClient
               raise ArgumentError.new("ExtractPersonWithMeta may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "ExtractPersonWithMeta", args: {
               input: input,
@@ -6490,7 +6490,7 @@ module BamlClient
               raise ArgumentError.new("ExtractReceiptInfo may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "ExtractReceiptInfo", args: {
               email: email,reason: reason,
@@ -6515,7 +6515,7 @@ module BamlClient
               raise ArgumentError.new("ExtractResume may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "ExtractResume", args: {
               resume: resume,img: img,
@@ -6540,7 +6540,7 @@ module BamlClient
               raise ArgumentError.new("ExtractResume2 may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "ExtractResume2", args: {
               resume: resume,
@@ -6565,7 +6565,7 @@ module BamlClient
               raise ArgumentError.new("FnAlwaysFails may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "FnAlwaysFails", args: {
               input: input,
@@ -6590,7 +6590,7 @@ module BamlClient
               raise ArgumentError.new("FnClassOptionalOutput may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "FnClassOptionalOutput", args: {
               input: input,
@@ -6615,7 +6615,7 @@ module BamlClient
               raise ArgumentError.new("FnClassOptionalOutput2 may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "FnClassOptionalOutput2", args: {
               input: input,
@@ -6640,7 +6640,7 @@ module BamlClient
               raise ArgumentError.new("FnEnumListOutput may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "FnEnumListOutput", args: {
               input: input,
@@ -6665,7 +6665,7 @@ module BamlClient
               raise ArgumentError.new("FnEnumOutput may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "FnEnumOutput", args: {
               input: input,
@@ -6690,7 +6690,7 @@ module BamlClient
               raise ArgumentError.new("FnFailRetryConstantDelay may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "FnFailRetryConstantDelay", args: {
               retries: retries,delay_ms: delay_ms,
@@ -6715,7 +6715,7 @@ module BamlClient
               raise ArgumentError.new("FnFailRetryExponentialDelay may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "FnFailRetryExponentialDelay", args: {
               retries: retries,initial_delay_ms: initial_delay_ms,
@@ -6740,7 +6740,7 @@ module BamlClient
               raise ArgumentError.new("FnFallbackAlwaysFails may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "FnFallbackAlwaysFails", args: {
               input: input,
@@ -6765,7 +6765,7 @@ module BamlClient
               raise ArgumentError.new("FnLiteralClassInputOutput may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "FnLiteralClassInputOutput", args: {
               input: input,
@@ -6790,7 +6790,7 @@ module BamlClient
               raise ArgumentError.new("FnLiteralUnionClassInputOutput may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "FnLiteralUnionClassInputOutput", args: {
               input: input,
@@ -6815,7 +6815,7 @@ module BamlClient
               raise ArgumentError.new("FnNamedArgsSingleStringOptional may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "FnNamedArgsSingleStringOptional", args: {
               myString: myString,
@@ -6840,7 +6840,7 @@ module BamlClient
               raise ArgumentError.new("FnOutputBool may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "FnOutputBool", args: {
               input: input,
@@ -6865,7 +6865,7 @@ module BamlClient
               raise ArgumentError.new("FnOutputClass may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "FnOutputClass", args: {
               input: input,
@@ -6890,7 +6890,7 @@ module BamlClient
               raise ArgumentError.new("FnOutputClassList may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "FnOutputClassList", args: {
               input: input,
@@ -6915,7 +6915,7 @@ module BamlClient
               raise ArgumentError.new("FnOutputClassNested may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "FnOutputClassNested", args: {
               input: input,
@@ -6940,7 +6940,7 @@ module BamlClient
               raise ArgumentError.new("FnOutputClassWithEnum may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "FnOutputClassWithEnum", args: {
               input: input,
@@ -6965,7 +6965,7 @@ module BamlClient
               raise ArgumentError.new("FnOutputInt may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "FnOutputInt", args: {
               input: input,
@@ -6990,7 +6990,7 @@ module BamlClient
               raise ArgumentError.new("FnOutputLiteralBool may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "FnOutputLiteralBool", args: {
               input: input,
@@ -7015,7 +7015,7 @@ module BamlClient
               raise ArgumentError.new("FnOutputLiteralInt may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "FnOutputLiteralInt", args: {
               input: input,
@@ -7040,7 +7040,7 @@ module BamlClient
               raise ArgumentError.new("FnOutputLiteralString may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "FnOutputLiteralString", args: {
               input: input,
@@ -7065,7 +7065,7 @@ module BamlClient
               raise ArgumentError.new("FnOutputStringList may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "FnOutputStringList", args: {
               input: input,
@@ -7090,7 +7090,7 @@ module BamlClient
               raise ArgumentError.new("FnTestAliasedEnumOutput may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "FnTestAliasedEnumOutput", args: {
               input: input,
@@ -7115,7 +7115,7 @@ module BamlClient
               raise ArgumentError.new("FnTestClassAlias may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "FnTestClassAlias", args: {
               input: input,
@@ -7140,7 +7140,7 @@ module BamlClient
               raise ArgumentError.new("FnTestNamedArgsSingleEnum may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "FnTestNamedArgsSingleEnum", args: {
               myArg: myArg,
@@ -7165,7 +7165,7 @@ module BamlClient
               raise ArgumentError.new("GetDataType may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "GetDataType", args: {
               text: text,
@@ -7190,7 +7190,7 @@ module BamlClient
               raise ArgumentError.new("GetOrderInfo may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "GetOrderInfo", args: {
               email: email,
@@ -7215,7 +7215,7 @@ module BamlClient
               raise ArgumentError.new("GetQuery may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "GetQuery", args: {
               query: query,
@@ -7240,7 +7240,7 @@ module BamlClient
               raise ArgumentError.new("InOutEnumMapKey may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "InOutEnumMapKey", args: {
               i1: i1,i2: i2,
@@ -7265,7 +7265,7 @@ module BamlClient
               raise ArgumentError.new("InOutLiteralStringUnionMapKey may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "InOutLiteralStringUnionMapKey", args: {
               i1: i1,i2: i2,
@@ -7290,7 +7290,7 @@ module BamlClient
               raise ArgumentError.new("InOutSingleLiteralStringMapKey may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "InOutSingleLiteralStringMapKey", args: {
               m: m,
@@ -7315,7 +7315,7 @@ module BamlClient
               raise ArgumentError.new("JsonTypeAliasCycle may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "JsonTypeAliasCycle", args: {
               input: input,
@@ -7340,7 +7340,7 @@ module BamlClient
               raise ArgumentError.new("LLMEcho may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "LLMEcho", args: {
               input: input,
@@ -7365,7 +7365,7 @@ module BamlClient
               raise ArgumentError.new("LiteralUnionsTest may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "LiteralUnionsTest", args: {
               input: input,
@@ -7390,7 +7390,7 @@ module BamlClient
               raise ArgumentError.new("LlmReturnNumber may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "LlmReturnNumber", args: {
               n: n,
@@ -7415,7 +7415,7 @@ module BamlClient
               raise ArgumentError.new("MakeBlockConstraint may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "MakeBlockConstraint", args: {
 
@@ -7440,7 +7440,7 @@ module BamlClient
               raise ArgumentError.new("MakeClassWithBlockDone may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "MakeClassWithBlockDone", args: {
 
@@ -7465,7 +7465,7 @@ module BamlClient
               raise ArgumentError.new("MakeClassWithExternalDone may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "MakeClassWithExternalDone", args: {
 
@@ -7490,7 +7490,7 @@ module BamlClient
               raise ArgumentError.new("MakeNestedBlockConstraint may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "MakeNestedBlockConstraint", args: {
 
@@ -7515,7 +7515,7 @@ module BamlClient
               raise ArgumentError.new("MakeSemanticContainer may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "MakeSemanticContainer", args: {
 
@@ -7540,7 +7540,7 @@ module BamlClient
               raise ArgumentError.new("MapAlias may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "MapAlias", args: {
               m: m,
@@ -7565,7 +7565,7 @@ module BamlClient
               raise ArgumentError.new("MergeAliasAttributes may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "MergeAliasAttributes", args: {
               money: money,
@@ -7590,7 +7590,7 @@ module BamlClient
               raise ArgumentError.new("MyFunc may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "MyFunc", args: {
               input: input,
@@ -7615,7 +7615,7 @@ module BamlClient
               raise ArgumentError.new("NestedAlias may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "NestedAlias", args: {
               c: c,
@@ -7640,7 +7640,7 @@ module BamlClient
               raise ArgumentError.new("NullLiteralClassHello may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "NullLiteralClassHello", args: {
               s: s,
@@ -7665,7 +7665,7 @@ module BamlClient
               raise ArgumentError.new("OpenAIGPT4oMissingBaseUrlEnvVar may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "OpenAIGPT4oMissingBaseUrlEnvVar", args: {
               input: input,
@@ -7690,7 +7690,7 @@ module BamlClient
               raise ArgumentError.new("OpenAIWithAnthropicResponseHello may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "OpenAIWithAnthropicResponseHello", args: {
               s: s,
@@ -7715,7 +7715,7 @@ module BamlClient
               raise ArgumentError.new("OptionalTest_Function may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "OptionalTest_Function", args: {
               input: input,
@@ -7740,7 +7740,7 @@ module BamlClient
               raise ArgumentError.new("PdfInput may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "PdfInput", args: {
               pdf: pdf,
@@ -7765,7 +7765,7 @@ module BamlClient
               raise ArgumentError.new("PdfInputAnthropic may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "PdfInputAnthropic", args: {
               pdf: pdf,
@@ -7790,7 +7790,7 @@ module BamlClient
               raise ArgumentError.new("PdfInputOpenai may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "PdfInputOpenai", args: {
               pdf: pdf,prompt: prompt,
@@ -7815,7 +7815,7 @@ module BamlClient
               raise ArgumentError.new("PdfInputVertex may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "PdfInputVertex", args: {
               pdf: pdf,
@@ -7840,7 +7840,7 @@ module BamlClient
               raise ArgumentError.new("PredictAge may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "PredictAge", args: {
               name: name,
@@ -7865,7 +7865,7 @@ module BamlClient
               raise ArgumentError.new("PredictAgeBare may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "PredictAgeBare", args: {
               inp: inp,
@@ -7890,7 +7890,7 @@ module BamlClient
               raise ArgumentError.new("PrimitiveAlias may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "PrimitiveAlias", args: {
               p: p,
@@ -7915,7 +7915,7 @@ module BamlClient
               raise ArgumentError.new("PromptTestClaude may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "PromptTestClaude", args: {
               input: input,
@@ -7940,7 +7940,7 @@ module BamlClient
               raise ArgumentError.new("PromptTestClaudeChat may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "PromptTestClaudeChat", args: {
               input: input,
@@ -7965,7 +7965,7 @@ module BamlClient
               raise ArgumentError.new("PromptTestClaudeChatNoSystem may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "PromptTestClaudeChatNoSystem", args: {
               input: input,
@@ -7990,7 +7990,7 @@ module BamlClient
               raise ArgumentError.new("PromptTestOpenAI may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "PromptTestOpenAI", args: {
               input: input,
@@ -8015,7 +8015,7 @@ module BamlClient
               raise ArgumentError.new("PromptTestOpenAIChat may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "PromptTestOpenAIChat", args: {
               input: input,
@@ -8040,7 +8040,7 @@ module BamlClient
               raise ArgumentError.new("PromptTestOpenAIChatNoSystem may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "PromptTestOpenAIChatNoSystem", args: {
               input: input,
@@ -8065,7 +8065,7 @@ module BamlClient
               raise ArgumentError.new("PromptTestStreaming may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "PromptTestStreaming", args: {
               input: input,
@@ -8090,7 +8090,7 @@ module BamlClient
               raise ArgumentError.new("RecursiveAliasCycle may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "RecursiveAliasCycle", args: {
               input: input,
@@ -8115,7 +8115,7 @@ module BamlClient
               raise ArgumentError.new("RecursiveClassWithAliasIndirection may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "RecursiveClassWithAliasIndirection", args: {
               cls: cls,
@@ -8140,7 +8140,7 @@ module BamlClient
               raise ArgumentError.new("RecursiveUnionTest may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "RecursiveUnionTest", args: {
               input: input,
@@ -8165,7 +8165,7 @@ module BamlClient
               raise ArgumentError.new("RenderDynamicClass may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "RenderDynamicClass", args: {
               input: input,
@@ -8190,7 +8190,7 @@ module BamlClient
               raise ArgumentError.new("RenderDynamicEnum may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "RenderDynamicEnum", args: {
               bike: bike,other: other,
@@ -8215,7 +8215,7 @@ module BamlClient
               raise ArgumentError.new("ReturnAliasWithMergedAttributes may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "ReturnAliasWithMergedAttributes", args: {
               money: money,
@@ -8240,7 +8240,7 @@ module BamlClient
               raise ArgumentError.new("ReturnFailingAssert may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "ReturnFailingAssert", args: {
               inp: inp,
@@ -8265,7 +8265,7 @@ module BamlClient
               raise ArgumentError.new("ReturnJsonEntry may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "ReturnJsonEntry", args: {
               s: s,
@@ -8290,7 +8290,7 @@ module BamlClient
               raise ArgumentError.new("ReturnMalformedConstraints may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "ReturnMalformedConstraints", args: {
               a: a,
@@ -8315,7 +8315,7 @@ module BamlClient
               raise ArgumentError.new("SchemaDescriptions may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "SchemaDescriptions", args: {
               input: input,
@@ -8340,7 +8340,7 @@ module BamlClient
               raise ArgumentError.new("SimpleRecursiveListAlias may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "SimpleRecursiveListAlias", args: {
               input: input,
@@ -8365,7 +8365,7 @@ module BamlClient
               raise ArgumentError.new("SimpleRecursiveMapAlias may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "SimpleRecursiveMapAlias", args: {
               input: input,
@@ -8390,7 +8390,7 @@ module BamlClient
               raise ArgumentError.new("StreamBigNumbers may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "StreamBigNumbers", args: {
               digits: digits,
@@ -8415,7 +8415,7 @@ module BamlClient
               raise ArgumentError.new("StreamFailingAssertion may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "StreamFailingAssertion", args: {
               theme: theme,length: length,
@@ -8440,7 +8440,7 @@ module BamlClient
               raise ArgumentError.new("StreamFailingCheck may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "StreamFailingCheck", args: {
               theme: theme,length: length,
@@ -8465,7 +8465,7 @@ module BamlClient
               raise ArgumentError.new("StreamOneBigNumber may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "StreamOneBigNumber", args: {
               digits: digits,
@@ -8490,7 +8490,7 @@ module BamlClient
               raise ArgumentError.new("StreamUnionIntegers may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "StreamUnionIntegers", args: {
               digits: digits,
@@ -8515,7 +8515,7 @@ module BamlClient
               raise ArgumentError.new("StreamingCompoundNumbers may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "StreamingCompoundNumbers", args: {
               digits: digits,yapping: yapping,
@@ -8540,7 +8540,7 @@ module BamlClient
               raise ArgumentError.new("StructureDocument1559 may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "StructureDocument1559", args: {
               document_txt: document_txt,
@@ -8565,7 +8565,7 @@ module BamlClient
               raise ArgumentError.new("TakeRecAliasDep may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "TakeRecAliasDep", args: {
               input: input,
@@ -8590,7 +8590,7 @@ module BamlClient
               raise ArgumentError.new("TellStory may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "TellStory", args: {
               story: story,
@@ -8615,7 +8615,7 @@ module BamlClient
               raise ArgumentError.new("TemplateStringTestEcho may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "TemplateStringTestEcho", args: {
               input: input,
@@ -8640,7 +8640,7 @@ module BamlClient
               raise ArgumentError.new("TestAbortFallbackChain may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "TestAbortFallbackChain", args: {
               input: input,
@@ -8665,7 +8665,7 @@ module BamlClient
               raise ArgumentError.new("TestAnthropic may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "TestAnthropic", args: {
               input: input,
@@ -8690,7 +8690,7 @@ module BamlClient
               raise ArgumentError.new("TestAnthropicShorthand may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "TestAnthropicShorthand", args: {
               input: input,
@@ -8715,7 +8715,7 @@ module BamlClient
               raise ArgumentError.new("TestAws may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "TestAws", args: {
               input: input,
@@ -8765,7 +8765,7 @@ module BamlClient
               raise ArgumentError.new("TestAwsClaude37 may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "TestAwsClaude37", args: {
               input: input,
@@ -8790,7 +8790,7 @@ module BamlClient
               raise ArgumentError.new("TestAwsInferenceProfile may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "TestAwsInferenceProfile", args: {
               input: input,
@@ -8815,7 +8815,7 @@ module BamlClient
               raise ArgumentError.new("TestAwsInvalidAccessKey may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "TestAwsInvalidAccessKey", args: {
               input: input,
@@ -8840,7 +8840,7 @@ module BamlClient
               raise ArgumentError.new("TestAwsInvalidEndpoint may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "TestAwsInvalidEndpoint", args: {
               input: input,
@@ -8865,7 +8865,7 @@ module BamlClient
               raise ArgumentError.new("TestAwsInvalidProfile may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "TestAwsInvalidProfile", args: {
               input: input,
@@ -8890,7 +8890,7 @@ module BamlClient
               raise ArgumentError.new("TestAwsInvalidRegion may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "TestAwsInvalidRegion", args: {
               input: input,
@@ -8915,7 +8915,7 @@ module BamlClient
               raise ArgumentError.new("TestAwsInvalidSessionToken may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "TestAwsInvalidSessionToken", args: {
               input: input,
@@ -8940,7 +8940,7 @@ module BamlClient
               raise ArgumentError.new("TestAwsVideoDescribe may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "TestAwsVideoDescribe", args: {
               video_input: video_input,
@@ -8965,7 +8965,7 @@ module BamlClient
               raise ArgumentError.new("TestAzure may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "TestAzure", args: {
               input: input,
@@ -8990,7 +8990,7 @@ module BamlClient
               raise ArgumentError.new("TestAzureFailure may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "TestAzureFailure", args: {
               input: input,
@@ -9015,7 +9015,7 @@ module BamlClient
               raise ArgumentError.new("TestAzureO1NoMaxTokens may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "TestAzureO1NoMaxTokens", args: {
               input: input,
@@ -9040,7 +9040,7 @@ module BamlClient
               raise ArgumentError.new("TestAzureO1WithMaxCompletionTokens may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "TestAzureO1WithMaxCompletionTokens", args: {
               input: input,
@@ -9065,7 +9065,7 @@ module BamlClient
               raise ArgumentError.new("TestAzureO1WithMaxTokens may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "TestAzureO1WithMaxTokens", args: {
               input: input,
@@ -9090,7 +9090,7 @@ module BamlClient
               raise ArgumentError.new("TestAzureO3NoMaxTokens may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "TestAzureO3NoMaxTokens", args: {
               input: input,
@@ -9115,7 +9115,7 @@ module BamlClient
               raise ArgumentError.new("TestAzureO3WithMaxCompletionTokens may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "TestAzureO3WithMaxCompletionTokens", args: {
               input: input,
@@ -9140,7 +9140,7 @@ module BamlClient
               raise ArgumentError.new("TestAzureWithMaxTokens may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "TestAzureWithMaxTokens", args: {
               input: input,
@@ -9165,7 +9165,7 @@ module BamlClient
               raise ArgumentError.new("TestCaching may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "TestCaching", args: {
               input: input,not_cached: not_cached,
@@ -9190,7 +9190,7 @@ module BamlClient
               raise ArgumentError.new("TestDefaultStreamingTimeout may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "TestDefaultStreamingTimeout", args: {
               input: input,
@@ -9215,7 +9215,7 @@ module BamlClient
               raise ArgumentError.new("TestFallbackClient may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "TestFallbackClient", args: {
 
@@ -9240,7 +9240,7 @@ module BamlClient
               raise ArgumentError.new("TestFallbackStrategy may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "TestFallbackStrategy", args: {
               input: input,
@@ -9265,7 +9265,7 @@ module BamlClient
               raise ArgumentError.new("TestFallbackToShorthand may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "TestFallbackToShorthand", args: {
               input: input,
@@ -9290,7 +9290,7 @@ module BamlClient
               raise ArgumentError.new("TestFnNamedArgsSingleBool may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "TestFnNamedArgsSingleBool", args: {
               myBool: myBool,
@@ -9315,7 +9315,7 @@ module BamlClient
               raise ArgumentError.new("TestFnNamedArgsSingleClass may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "TestFnNamedArgsSingleClass", args: {
               myArg: myArg,
@@ -9340,7 +9340,7 @@ module BamlClient
               raise ArgumentError.new("TestFnNamedArgsSingleEnumList may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "TestFnNamedArgsSingleEnumList", args: {
               myArg: myArg,
@@ -9365,7 +9365,7 @@ module BamlClient
               raise ArgumentError.new("TestFnNamedArgsSingleFloat may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "TestFnNamedArgsSingleFloat", args: {
               myFloat: myFloat,
@@ -9390,7 +9390,7 @@ module BamlClient
               raise ArgumentError.new("TestFnNamedArgsSingleInt may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "TestFnNamedArgsSingleInt", args: {
               myInt: myInt,
@@ -9415,7 +9415,7 @@ module BamlClient
               raise ArgumentError.new("TestFnNamedArgsSingleMapStringToClass may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "TestFnNamedArgsSingleMapStringToClass", args: {
               myMap: myMap,
@@ -9440,7 +9440,7 @@ module BamlClient
               raise ArgumentError.new("TestFnNamedArgsSingleMapStringToMap may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "TestFnNamedArgsSingleMapStringToMap", args: {
               myMap: myMap,
@@ -9465,7 +9465,7 @@ module BamlClient
               raise ArgumentError.new("TestFnNamedArgsSingleMapStringToString may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "TestFnNamedArgsSingleMapStringToString", args: {
               myMap: myMap,
@@ -9490,7 +9490,7 @@ module BamlClient
               raise ArgumentError.new("TestFnNamedArgsSingleString may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "TestFnNamedArgsSingleString", args: {
               myString: myString,
@@ -9515,7 +9515,7 @@ module BamlClient
               raise ArgumentError.new("TestFnNamedArgsSingleStringArray may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "TestFnNamedArgsSingleStringArray", args: {
               myStringArray: myStringArray,
@@ -9540,7 +9540,7 @@ module BamlClient
               raise ArgumentError.new("TestFnNamedArgsSingleStringList may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "TestFnNamedArgsSingleStringList", args: {
               myArg: myArg,
@@ -9565,7 +9565,7 @@ module BamlClient
               raise ArgumentError.new("TestGemini may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "TestGemini", args: {
               input: input,
@@ -9590,7 +9590,7 @@ module BamlClient
               raise ArgumentError.new("TestGeminiOpenAiGeneric may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "TestGeminiOpenAiGeneric", args: {
 
@@ -9615,7 +9615,7 @@ module BamlClient
               raise ArgumentError.new("TestGeminiSystem may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "TestGeminiSystem", args: {
               input: input,
@@ -9640,7 +9640,7 @@ module BamlClient
               raise ArgumentError.new("TestGeminiSystemAsChat may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "TestGeminiSystemAsChat", args: {
               input: input,
@@ -9665,7 +9665,7 @@ module BamlClient
               raise ArgumentError.new("TestGeminiThinking may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "TestGeminiThinking", args: {
               input: input,
@@ -9690,7 +9690,7 @@ module BamlClient
               raise ArgumentError.new("TestGroq may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "TestGroq", args: {
               input: input,
@@ -9715,7 +9715,7 @@ module BamlClient
               raise ArgumentError.new("TestImageInput may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "TestImageInput", args: {
               img: img,
@@ -9740,7 +9740,7 @@ module BamlClient
               raise ArgumentError.new("TestImageInputAnthropic may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "TestImageInputAnthropic", args: {
               img: img,
@@ -9765,7 +9765,7 @@ module BamlClient
               raise ArgumentError.new("TestImageListInput may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "TestImageListInput", args: {
               imgs: imgs,
@@ -9790,7 +9790,7 @@ module BamlClient
               raise ArgumentError.new("TestMemory may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "TestMemory", args: {
               input: input,
@@ -9815,7 +9815,7 @@ module BamlClient
               raise ArgumentError.new("TestMulticlassNamedArgs may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "TestMulticlassNamedArgs", args: {
               myArg: myArg,myArg2: myArg2,
@@ -9840,7 +9840,7 @@ module BamlClient
               raise ArgumentError.new("TestNamedArgsLiteralBool may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "TestNamedArgsLiteralBool", args: {
               myBool: myBool,
@@ -9865,7 +9865,7 @@ module BamlClient
               raise ArgumentError.new("TestNamedArgsLiteralInt may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "TestNamedArgsLiteralInt", args: {
               myInt: myInt,
@@ -9890,7 +9890,7 @@ module BamlClient
               raise ArgumentError.new("TestNamedArgsLiteralString may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "TestNamedArgsLiteralString", args: {
               myString: myString,
@@ -9915,7 +9915,7 @@ module BamlClient
               raise ArgumentError.new("TestOllama may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "TestOllama", args: {
               input: input,
@@ -9940,7 +9940,7 @@ module BamlClient
               raise ArgumentError.new("TestOllamaHaiku may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "TestOllamaHaiku", args: {
               input: input,
@@ -9965,7 +9965,7 @@ module BamlClient
               raise ArgumentError.new("TestOpenAI may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "TestOpenAI", args: {
               input: input,
@@ -9990,7 +9990,7 @@ module BamlClient
               raise ArgumentError.new("TestOpenAIDummyClient may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "TestOpenAIDummyClient", args: {
               input: input,
@@ -10015,7 +10015,7 @@ module BamlClient
               raise ArgumentError.new("TestOpenAIGPT4oMini may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "TestOpenAIGPT4oMini", args: {
               input: input,
@@ -10040,7 +10040,7 @@ module BamlClient
               raise ArgumentError.new("TestOpenAIGPT4oMini2 may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "TestOpenAIGPT4oMini2", args: {
               input: input,
@@ -10065,7 +10065,7 @@ module BamlClient
               raise ArgumentError.new("TestOpenAIGPT4oMini3 may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "TestOpenAIGPT4oMini3", args: {
               input: input,
@@ -10090,7 +10090,7 @@ module BamlClient
               raise ArgumentError.new("TestOpenAILegacyProvider may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "TestOpenAILegacyProvider", args: {
               input: input,
@@ -10115,7 +10115,7 @@ module BamlClient
               raise ArgumentError.new("TestOpenAIO1NoMaxTokens may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "TestOpenAIO1NoMaxTokens", args: {
               input: input,
@@ -10140,7 +10140,7 @@ module BamlClient
               raise ArgumentError.new("TestOpenAIO1WithMaxCompletionTokens may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "TestOpenAIO1WithMaxCompletionTokens", args: {
               input: input,
@@ -10165,7 +10165,7 @@ module BamlClient
               raise ArgumentError.new("TestOpenAIO1WithMaxTokens may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "TestOpenAIO1WithMaxTokens", args: {
               input: input,
@@ -10190,7 +10190,7 @@ module BamlClient
               raise ArgumentError.new("TestOpenAIProviderWithResponsesType may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "TestOpenAIProviderWithResponsesType", args: {
               input: input,
@@ -10215,7 +10215,7 @@ module BamlClient
               raise ArgumentError.new("TestOpenAIResponses may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "TestOpenAIResponses", args: {
               input: input,
@@ -10240,7 +10240,7 @@ module BamlClient
               raise ArgumentError.new("TestOpenAIResponsesAllRoles may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "TestOpenAIResponsesAllRoles", args: {
               problem: problem,
@@ -10265,7 +10265,7 @@ module BamlClient
               raise ArgumentError.new("TestOpenAIResponsesAutoType may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "TestOpenAIResponsesAutoType", args: {
               input: input,
@@ -10290,7 +10290,7 @@ module BamlClient
               raise ArgumentError.new("TestOpenAIResponsesConversation may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "TestOpenAIResponsesConversation", args: {
               topic: topic,
@@ -10315,7 +10315,7 @@ module BamlClient
               raise ArgumentError.new("TestOpenAIResponsesCustomURL may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "TestOpenAIResponsesCustomURL", args: {
               input: input,
@@ -10340,7 +10340,7 @@ module BamlClient
               raise ArgumentError.new("TestOpenAIResponsesDifferentModel may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "TestOpenAIResponsesDifferentModel", args: {
               input: input,
@@ -10365,7 +10365,7 @@ module BamlClient
               raise ArgumentError.new("TestOpenAIResponsesEndpoint may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "TestOpenAIResponsesEndpoint", args: {
               input: input,
@@ -10390,7 +10390,7 @@ module BamlClient
               raise ArgumentError.new("TestOpenAIResponsesExplicit may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "TestOpenAIResponsesExplicit", args: {
               input: input,
@@ -10415,7 +10415,7 @@ module BamlClient
               raise ArgumentError.new("TestOpenAIResponsesFunctionCall may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "TestOpenAIResponsesFunctionCall", args: {
               query: query,
@@ -10440,7 +10440,7 @@ module BamlClient
               raise ArgumentError.new("TestOpenAIResponsesImageInput may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "TestOpenAIResponsesImageInput", args: {
               image: image,
@@ -10465,7 +10465,7 @@ module BamlClient
               raise ArgumentError.new("TestOpenAIResponsesReasoning may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "TestOpenAIResponsesReasoning", args: {
               problem: problem,
@@ -10490,7 +10490,7 @@ module BamlClient
               raise ArgumentError.new("TestOpenAIResponsesShorthand may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "TestOpenAIResponsesShorthand", args: {
               input: input,
@@ -10515,7 +10515,7 @@ module BamlClient
               raise ArgumentError.new("TestOpenAIResponsesWebSearch may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "TestOpenAIResponsesWebSearch", args: {
               query: query,
@@ -10540,7 +10540,7 @@ module BamlClient
               raise ArgumentError.new("TestOpenAIResponsesWithOpenAIResponseType may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "TestOpenAIResponsesWithOpenAIResponseType", args: {
               input: input,
@@ -10565,7 +10565,7 @@ module BamlClient
               raise ArgumentError.new("TestOpenAIShorthand may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "TestOpenAIShorthand", args: {
               input: input,
@@ -10590,7 +10590,7 @@ module BamlClient
               raise ArgumentError.new("TestOpenAIWithFinishReasonError may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "TestOpenAIWithFinishReasonError", args: {
               input: input,
@@ -10615,7 +10615,7 @@ module BamlClient
               raise ArgumentError.new("TestOpenAIWithMaxTokens may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "TestOpenAIWithMaxTokens", args: {
               input: input,
@@ -10640,7 +10640,7 @@ module BamlClient
               raise ArgumentError.new("TestOpenAIWithNullMaxTokens may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "TestOpenAIWithNullMaxTokens", args: {
               input: input,
@@ -10665,7 +10665,7 @@ module BamlClient
               raise ArgumentError.new("TestOpenRouterMistralSmall3_1_24b may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "TestOpenRouterMistralSmall3_1_24b", args: {
               input: input,
@@ -10690,7 +10690,7 @@ module BamlClient
               raise ArgumentError.new("TestOpenaiResponsesPdfs may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "TestOpenaiResponsesPdfs", args: {
               pdf: pdf,
@@ -10715,7 +10715,7 @@ module BamlClient
               raise ArgumentError.new("TestRequestTimeout may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "TestRequestTimeout", args: {
               input: input,
@@ -10740,7 +10740,7 @@ module BamlClient
               raise ArgumentError.new("TestRetryConstant may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "TestRetryConstant", args: {
 
@@ -10765,7 +10765,7 @@ module BamlClient
               raise ArgumentError.new("TestRetryExponential may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "TestRetryExponential", args: {
 
@@ -10790,7 +10790,7 @@ module BamlClient
               raise ArgumentError.new("TestRoundRobinStrategy may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "TestRoundRobinStrategy", args: {
               input: input,
@@ -10815,7 +10815,7 @@ module BamlClient
               raise ArgumentError.new("TestSingleFallbackClient may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "TestSingleFallbackClient", args: {
 
@@ -10840,7 +10840,7 @@ module BamlClient
               raise ArgumentError.new("TestSkipDynamic may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "TestSkipDynamic", args: {
               input: input,
@@ -10865,7 +10865,7 @@ module BamlClient
               raise ArgumentError.new("TestSkipNonDynamic may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "TestSkipNonDynamic", args: {
               input: input,
@@ -10890,7 +10890,7 @@ module BamlClient
               raise ArgumentError.new("TestStreamingTimeout may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "TestStreamingTimeout", args: {
               input: input,
@@ -10915,7 +10915,7 @@ module BamlClient
               raise ArgumentError.new("TestThinking may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "TestThinking", args: {
               input: input,
@@ -10940,7 +10940,7 @@ module BamlClient
               raise ArgumentError.new("TestTimeoutError may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "TestTimeoutError", args: {
               input: input,
@@ -10965,7 +10965,7 @@ module BamlClient
               raise ArgumentError.new("TestTimeoutFallback may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "TestTimeoutFallback", args: {
               input: input,
@@ -10990,7 +10990,7 @@ module BamlClient
               raise ArgumentError.new("TestUniverseQuestion may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "TestUniverseQuestion", args: {
               question: question,
@@ -11015,7 +11015,7 @@ module BamlClient
               raise ArgumentError.new("TestVertex may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "TestVertex", args: {
               input: input,
@@ -11040,7 +11040,7 @@ module BamlClient
               raise ArgumentError.new("TestVertexClaude may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "TestVertexClaude", args: {
               input: input,
@@ -11090,7 +11090,7 @@ module BamlClient
               raise ArgumentError.new("TestVertexWithSystemInstructions may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "TestVertexWithSystemInstructions", args: {
 
@@ -11115,7 +11115,7 @@ module BamlClient
               raise ArgumentError.new("TestZeroTimeout may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "TestZeroTimeout", args: {
               input: input,
@@ -11140,7 +11140,7 @@ module BamlClient
               raise ArgumentError.new("UnionTest_Function may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "UnionTest_Function", args: {
               input: input,
@@ -11165,7 +11165,7 @@ module BamlClient
               raise ArgumentError.new("UseBlockConstraint may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "UseBlockConstraint", args: {
               inp: inp,
@@ -11190,7 +11190,7 @@ module BamlClient
               raise ArgumentError.new("UseMaintainFieldOrder may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "UseMaintainFieldOrder", args: {
               input: input,
@@ -11215,7 +11215,7 @@ module BamlClient
               raise ArgumentError.new("UseMalformedConstraints may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "UseMalformedConstraints", args: {
               a: a,
@@ -11240,7 +11240,7 @@ module BamlClient
               raise ArgumentError.new("UseNestedBlockConstraint may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "UseNestedBlockConstraint", args: {
               inp: inp,
@@ -11265,7 +11265,7 @@ module BamlClient
               raise ArgumentError.new("ValidateBasicResponses may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "ValidateBasicResponses", args: {
               input: input,
@@ -11290,7 +11290,7 @@ module BamlClient
               raise ArgumentError.new("ValidateResponseTypes may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "ValidateResponseTypes", args: {
               input: input,
@@ -11315,7 +11315,7 @@ module BamlClient
               raise ArgumentError.new("VideoInputGemini may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "VideoInputGemini", args: {
               vid: vid,
@@ -11340,7 +11340,7 @@ module BamlClient
               raise ArgumentError.new("VideoInputVertex may only be called with keyword arguments")
           end
 
-          __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
           __ctx__, __result__ = __options__.create_sync_stream(function_name: "VideoInputVertex", args: {
               vid: vid,

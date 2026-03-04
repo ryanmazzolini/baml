@@ -3,7 +3,7 @@ extend T::Sig
 
 sig {returns(BamlSyncClient)}
 def self.b
-  @baml_sync_client ||= BamlSyncClient.new(BamlClient::Internal::DoNotUseDirectlyCallManager.new(BamlCallOptions.from_hash({})))
+  @baml_sync_client ||= BamlSyncClient.new(BamlClient::Internal::DoNotUseDirectlyCallManager.new(BamlCallOptions.new))
 end
 
 class BamlSyncClient
@@ -22,13 +22,13 @@ class BamlSyncClient
 
     sig {params(collector: T.nilable(T.any(Baml::Collector, T::Array[Baml::Collector])), tb: T.nilable(Baml::TypeBuilder), client_registry: T.nilable(Baml::ClientRegistry), env_vars: T.nilable(T::Hash[Symbol, String]), tags: T.nilable(T::Hash[String, String])).returns(BamlSyncClient)}
     def with_options(collector: nil, tb: nil, client_registry: nil, env_vars: nil, tags: nil)
-        BamlSyncClient.new(@options.merge_options(BamlCallOptions.from_hash({
+        BamlSyncClient.new(@options.merge_options(BamlCallOptions.new(
             collector: collector,
             tb: tb,
             client_registry: client_registry,
-            env_vars: env_vars,
+            env: env_vars,
             tags: tags,
-        })))
+        )))
     end
 
     {% for func in functions -%}
@@ -50,7 +50,7 @@ class BamlSyncClient
             raise ArgumentError.new("{{func.name}} may only be called with keyword arguments")
         end
 
-        __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+        __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
         __result__ = __options__.call_function_sync(function_name: "{{func.name}}", args: {
             {% for arg in func.args -%}
@@ -90,7 +90,7 @@ class BamlStreamClient
             raise ArgumentError.new("{{func.name}} may only be called with keyword arguments")
         end
 
-        __options__ = @options.merge_options(BamlCallOptions.from_hash(baml_options))
+        __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
 
         __ctx__, __result__ = __options__.create_sync_stream(function_name: "{{func.name}}", args: {
             {% for arg in func.args -%}
