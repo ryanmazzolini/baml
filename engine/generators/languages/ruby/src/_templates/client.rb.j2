@@ -58,10 +58,7 @@ class BamlSyncClient
             {%- endfor %}
         })
 
-        __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-        # for sorbet we need to cast to the return type since parsed is now the right value
-        # We just need to tell sorbet that the return type is the right type
-        __parsed__.cast_to({{ func.return_type.serialize_type(pkg) }})
+        __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
     end
     {% endfor %}
 end

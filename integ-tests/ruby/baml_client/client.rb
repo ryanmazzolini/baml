@@ -74,10 +74,7 @@ module BamlClient
               recipe: recipe,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(BamlClient::Types::Recipe)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -99,10 +96,7 @@ module BamlClient
               data: data,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(BamlClient::Types::LinkedListAliasNode)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -124,10 +118,7 @@ module BamlClient
               money: money,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(BamlClient::Types::Checked[Integer])
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -149,10 +140,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -174,10 +162,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -199,10 +184,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -224,10 +206,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -249,10 +228,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -274,10 +250,7 @@ module BamlClient
               optionals: optionals,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(BamlClient::Types::OptionalListAndMap)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -299,10 +272,7 @@ module BamlClient
               a: a,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(Integer)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -324,10 +294,7 @@ module BamlClient
               aud: aud,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -349,10 +316,7 @@ module BamlClient
               aud: aud,prompt: prompt,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -374,10 +338,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(BamlClient::Types::LinkedList)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -399,10 +360,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(BamlClient::Types::Tree)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -424,10 +382,7 @@ module BamlClient
               word: word,target: target,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(T::Boolean)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -449,10 +404,7 @@ module BamlClient
               query: query,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(T::Array[T.any(BamlClient::Types::AddTodoItem, BamlClient::Types::TodoMessageToUser)])
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -474,10 +426,7 @@ module BamlClient
               cls: cls,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(BamlClient::Types::ClassToRecAlias)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -499,10 +448,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(T.any(BamlClient::Types::DynEnumTwo, String))
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -524,10 +470,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(T.any(BamlClient::Types::DynEnumOne, String))
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -549,10 +492,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(BamlClient::Types::Category)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -574,10 +514,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(BamlClient::Types::Category)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -599,10 +536,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(BamlClient::Types::Category)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -624,10 +558,7 @@ module BamlClient
               prefix: prefix,suffix: suffix,language: language,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -649,10 +580,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(T.any(BamlClient::Types::BookOrder, BamlClient::Types::FlightConfirmation, BamlClient::Types::GroceryReceipt))
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -674,10 +602,7 @@ module BamlClient
               audio: audio,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -699,10 +624,7 @@ module BamlClient
               audio: audio,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -724,10 +646,7 @@ module BamlClient
               img: img,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -749,10 +668,7 @@ module BamlClient
               classWithImage: classWithImage,img2: img2,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -774,10 +690,7 @@ module BamlClient
               classWithImage: classWithImage,img2: img2,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -799,10 +712,7 @@ module BamlClient
               classWithImage: classWithImage,img2: img2,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -824,10 +734,7 @@ module BamlClient
               img: img,client_sector: client_sector,client_name: client_name,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -849,10 +756,7 @@ module BamlClient
 
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(T.any(BamlClient::Types::OriginalA, BamlClient::Types::OriginalB))
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -874,10 +778,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(BamlClient::Types::DummyOutput)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -899,10 +800,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(BamlClient::Types::DynamicClassTwo)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -924,10 +822,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(BamlClient::Types::DynInputOutput)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -949,10 +844,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(T::Array[BamlClient::Types::DynInputOutput])
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -974,10 +866,7 @@ module BamlClient
 
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -999,10 +888,7 @@ module BamlClient
               document: document,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(BamlClient::Types::ContactInfo)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -1024,10 +910,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(T::Array[T.any(BamlClient::Types::DynEnumTwo, String)])
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -1049,10 +932,7 @@ module BamlClient
               text: text,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(BamlClient::Types::DynamicSchema)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -1074,10 +954,7 @@ module BamlClient
               text: text,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(T::Array[T.any(BamlClient::Types::Hobby, String)])
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -1099,10 +976,7 @@ module BamlClient
               text: text,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -1124,10 +998,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(T::Array[String])
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -1149,10 +1020,7 @@ module BamlClient
               text: text,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(T::Array[BamlClient::Types::Person])
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -1174,10 +1042,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(BamlClient::Types::PersonWithMeta)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -1199,10 +1064,7 @@ module BamlClient
               email: email,reason: reason,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(BamlClient::Types::ReceiptInfo)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -1224,10 +1086,7 @@ module BamlClient
               resume: resume,img: img,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(BamlClient::Types::Resume)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -1249,10 +1108,7 @@ module BamlClient
               resume: resume,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(BamlClient::Types::Resume)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -1274,10 +1130,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -1299,10 +1152,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(T.nilable(BamlClient::Types::ClassOptionalOutput))
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -1324,10 +1174,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(T.nilable(BamlClient::Types::ClassOptionalOutput2))
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -1349,10 +1196,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(T::Array[BamlClient::Types::EnumOutput])
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -1374,10 +1218,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(BamlClient::Types::EnumOutput)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -1399,10 +1240,7 @@ module BamlClient
               retries: retries,delay_ms: delay_ms,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -1424,10 +1262,7 @@ module BamlClient
               retries: retries,initial_delay_ms: initial_delay_ms,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -1449,10 +1284,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -1474,10 +1306,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(BamlClient::Types::LiteralClassHello)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -1499,10 +1328,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(T.any(BamlClient::Types::LiteralClassOne, BamlClient::Types::LiteralClassTwo))
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -1524,10 +1350,7 @@ module BamlClient
               myString: myString,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -1549,10 +1372,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(T::Boolean)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -1574,10 +1394,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(BamlClient::Types::TestOutputClass)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -1599,10 +1416,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(T::Array[BamlClient::Types::TestOutputClass])
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -1624,10 +1438,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(BamlClient::Types::TestClassNested)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -1649,10 +1460,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(BamlClient::Types::TestClassWithEnum)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -1674,10 +1482,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(Integer)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -1699,10 +1504,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(T::Boolean)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -1724,10 +1526,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(Integer)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -1749,10 +1548,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -1774,10 +1570,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(T::Array[String])
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -1799,10 +1592,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(BamlClient::Types::TestEnum)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -1824,10 +1614,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(BamlClient::Types::TestClassAlias)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -1849,10 +1636,7 @@ module BamlClient
               myArg: myArg,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -1874,10 +1658,7 @@ module BamlClient
               text: text,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(BamlClient::Types::RaysData)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -1899,10 +1680,7 @@ module BamlClient
               email: email,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(BamlClient::Types::OrderInfo)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -1924,10 +1702,7 @@ module BamlClient
               query: query,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(BamlClient::Types::SearchParams)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -1949,10 +1724,7 @@ module BamlClient
               i1: i1,i2: i2,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(T::Hash[BamlClient::Types::MapKey, String])
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -1974,10 +1746,7 @@ module BamlClient
               i1: i1,i2: i2,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(T::Hash[T.any(String, String, String, String), String])
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -1999,10 +1768,7 @@ module BamlClient
               m: m,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(T::Hash[String, String])
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -2024,10 +1790,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(BamlClient::Types::JsonValue)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -2049,10 +1812,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -2074,10 +1834,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(T.any(Integer, T::Boolean, String))
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -2099,10 +1856,7 @@ module BamlClient
               n: n,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(Integer)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -2124,10 +1878,7 @@ module BamlClient
 
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(BamlClient::Types::Checked[BamlClient::Types::BlockConstraint])
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -2149,10 +1900,7 @@ module BamlClient
 
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(BamlClient::Types::ClassWithBlockDone)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -2174,10 +1922,7 @@ module BamlClient
 
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(BamlClient::Types::ClassWithoutDone)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -2199,10 +1944,7 @@ module BamlClient
 
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(BamlClient::Types::NestedBlockConstraint)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -2224,10 +1966,7 @@ module BamlClient
 
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(BamlClient::Types::SemanticContainer)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -2249,10 +1988,7 @@ module BamlClient
               m: m,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(T::Hash[String, T::Array[String]])
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -2274,10 +2010,7 @@ module BamlClient
               money: money,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(BamlClient::Types::MergeAttrs)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -2299,10 +2032,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(BamlClient::Types::DynamicOutput)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -2324,10 +2054,7 @@ module BamlClient
               c: c,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(T.any(Integer, String, T::Boolean, Float, T::Array[String], T::Hash[String, T::Array[String]]))
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -2349,10 +2076,7 @@ module BamlClient
               s: s,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(BamlClient::Types::ClassForNullLiteral)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -2374,10 +2098,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -2399,10 +2120,7 @@ module BamlClient
               s: s,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -2424,10 +2142,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(T::Array[T.nilable(BamlClient::Types::OptionalTest_ReturnType)])
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -2449,10 +2164,7 @@ module BamlClient
               pdf: pdf,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -2474,10 +2186,7 @@ module BamlClient
               pdf: pdf,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -2499,10 +2208,7 @@ module BamlClient
               pdf: pdf,prompt: prompt,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -2524,10 +2230,7 @@ module BamlClient
               pdf: pdf,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -2549,10 +2252,7 @@ module BamlClient
               name: name,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(BamlClient::Types::FooAny)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -2574,10 +2274,7 @@ module BamlClient
               inp: inp,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(BamlClient::Types::Checked[Integer])
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -2599,10 +2296,7 @@ module BamlClient
               p: p,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(T.any(Integer, String, T::Boolean, Float))
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -2624,10 +2318,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -2649,10 +2340,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -2674,10 +2362,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -2699,10 +2384,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -2724,10 +2406,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -2749,10 +2428,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -2774,10 +2450,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -2799,10 +2472,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(BamlClient::Types::RecAliasOne)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -2824,10 +2494,7 @@ module BamlClient
               cls: cls,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(BamlClient::Types::NodeWithAliasIndirection)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -2849,10 +2516,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(BamlClient::Types::RecursiveUnion)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -2874,10 +2538,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -2899,10 +2560,7 @@ module BamlClient
               bike: bike,other: other,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -2924,10 +2582,7 @@ module BamlClient
               money: money,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(BamlClient::Types::Checked[Integer])
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -2949,10 +2604,7 @@ module BamlClient
               inp: inp,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(Integer)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -2974,10 +2626,7 @@ module BamlClient
               s: s,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(BamlClient::Types::JsonTemplate)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -2999,10 +2648,7 @@ module BamlClient
               a: a,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(BamlClient::Types::MalformedConstraints)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -3024,10 +2670,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(BamlClient::Types::Schema)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -3049,10 +2692,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(BamlClient::Types::RecursiveListAlias)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -3074,10 +2714,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(BamlClient::Types::RecursiveMapAlias)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -3099,10 +2736,7 @@ module BamlClient
               digits: digits,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(BamlClient::Types::BigNumbers)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -3124,10 +2758,7 @@ module BamlClient
               theme: theme,length: length,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(BamlClient::Types::TwoStoriesOneTitle)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -3149,10 +2780,7 @@ module BamlClient
               theme: theme,length: length,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(BamlClient::Types::TwoStoriesOneTitleCheck)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -3174,10 +2802,7 @@ module BamlClient
               digits: digits,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(Integer)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -3199,10 +2824,7 @@ module BamlClient
               digits: digits,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(T::Array[T.any(Integer, String)])
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -3224,10 +2846,7 @@ module BamlClient
               digits: digits,yapping: yapping,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(BamlClient::Types::CompoundBigNumbers)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -3249,10 +2868,7 @@ module BamlClient
               document_txt: document_txt,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(BamlClient::Types::Document1559)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -3274,10 +2890,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(BamlClient::Types::RecursiveAliasDependency)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -3299,10 +2912,7 @@ module BamlClient
               story: story,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -3324,10 +2934,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -3349,10 +2956,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -3374,10 +2978,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -3399,10 +3000,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -3424,10 +3022,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -3474,10 +3069,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -3499,10 +3091,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -3524,10 +3113,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -3549,10 +3135,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -3574,10 +3157,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -3599,10 +3179,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -3624,10 +3201,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -3649,10 +3223,7 @@ module BamlClient
               video_input: video_input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -3674,10 +3245,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -3699,10 +3267,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -3724,10 +3289,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -3749,10 +3311,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -3774,10 +3333,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -3799,10 +3355,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -3824,10 +3377,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -3849,10 +3399,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -3874,10 +3421,7 @@ module BamlClient
               input: input,not_cached: not_cached,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -3899,10 +3443,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -3924,10 +3465,7 @@ module BamlClient
 
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -3949,10 +3487,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -3974,10 +3509,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -3999,10 +3531,7 @@ module BamlClient
               myBool: myBool,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -4024,10 +3553,7 @@ module BamlClient
               myArg: myArg,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -4049,10 +3575,7 @@ module BamlClient
               myArg: myArg,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -4074,10 +3597,7 @@ module BamlClient
               myFloat: myFloat,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -4099,10 +3619,7 @@ module BamlClient
               myInt: myInt,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -4124,10 +3641,7 @@ module BamlClient
               myMap: myMap,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(T::Hash[String, BamlClient::Types::StringToClassEntry])
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -4149,10 +3663,7 @@ module BamlClient
               myMap: myMap,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(T::Hash[String, T::Hash[String, String]])
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -4174,10 +3685,7 @@ module BamlClient
               myMap: myMap,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(T::Hash[String, String])
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -4199,10 +3707,7 @@ module BamlClient
               myString: myString,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -4224,10 +3729,7 @@ module BamlClient
               myStringArray: myStringArray,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -4249,10 +3751,7 @@ module BamlClient
               myArg: myArg,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(T::Array[String])
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -4274,10 +3773,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -4299,10 +3795,7 @@ module BamlClient
 
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -4324,10 +3817,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -4349,10 +3839,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -4374,10 +3861,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -4399,10 +3883,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -4424,10 +3905,7 @@ module BamlClient
               img: img,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -4449,10 +3927,7 @@ module BamlClient
               img: img,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -4474,10 +3949,7 @@ module BamlClient
               imgs: imgs,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -4499,10 +3971,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(BamlClient::Types::TestMemoryOutput)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -4524,10 +3993,7 @@ module BamlClient
               myArg: myArg,myArg2: myArg2,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -4549,10 +4015,7 @@ module BamlClient
               myBool: myBool,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -4574,10 +4037,7 @@ module BamlClient
               myInt: myInt,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -4599,10 +4059,7 @@ module BamlClient
               myString: myString,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -4624,10 +4081,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(T.nilable(String))
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -4649,10 +4103,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(BamlClient::Types::Haiku)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -4674,10 +4125,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -4699,10 +4147,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -4724,10 +4169,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -4749,10 +4191,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -4774,10 +4213,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -4799,10 +4235,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -4824,10 +4257,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -4849,10 +4279,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -4874,10 +4301,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -4899,10 +4323,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -4924,10 +4345,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -4949,10 +4367,7 @@ module BamlClient
               problem: problem,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -4974,10 +4389,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -4999,10 +4411,7 @@ module BamlClient
               topic: topic,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -5024,10 +4433,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -5049,10 +4455,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -5074,10 +4477,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -5099,10 +4499,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -5124,10 +4521,7 @@ module BamlClient
               query: query,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -5149,10 +4543,7 @@ module BamlClient
               image: image,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -5174,10 +4565,7 @@ module BamlClient
               problem: problem,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -5199,10 +4587,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -5224,10 +4609,7 @@ module BamlClient
               query: query,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -5249,10 +4631,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -5274,10 +4653,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -5299,10 +4675,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -5324,10 +4697,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -5349,10 +4719,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -5374,10 +4741,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -5399,10 +4763,7 @@ module BamlClient
               pdf: pdf,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -5424,10 +4785,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -5449,10 +4807,7 @@ module BamlClient
 
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -5474,10 +4829,7 @@ module BamlClient
 
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -5499,10 +4851,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -5524,10 +4873,7 @@ module BamlClient
 
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -5549,10 +4895,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(BamlClient::Types::SkipDynamicClass)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -5574,10 +4917,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(BamlClient::Types::SkipNonDynamicClass)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -5599,10 +4939,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -5624,10 +4961,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(BamlClient::Types::CustomStory)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -5649,10 +4983,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -5674,10 +5005,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -5699,10 +5027,7 @@ module BamlClient
               question: question,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(BamlClient::Types::UniverseQuestion)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -5724,10 +5049,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -5749,10 +5071,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -5799,10 +5118,7 @@ module BamlClient
 
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -5824,10 +5140,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -5849,10 +5162,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(BamlClient::Types::UnionTest_ReturnType)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -5874,10 +5184,7 @@ module BamlClient
               inp: inp,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(Integer)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -5899,10 +5206,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(BamlClient::Types::MaintainFieldOrder)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -5924,10 +5228,7 @@ module BamlClient
               a: a,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(Integer)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -5949,10 +5250,7 @@ module BamlClient
               inp: inp,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(Integer)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -5974,10 +5272,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -5999,10 +5294,7 @@ module BamlClient
               input: input,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -6024,10 +5316,7 @@ module BamlClient
               vid: vid,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
       sig {params(
           varargs: T.untyped,
@@ -6049,10 +5338,7 @@ module BamlClient
               vid: vid,
           })
 
-          __parsed__ = __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
-          # for sorbet we need to cast to the return type since parsed is now the right value
-          # We just need to tell sorbet that the return type is the right type
-          __parsed__.cast_to(String)
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
       end
 
   end
