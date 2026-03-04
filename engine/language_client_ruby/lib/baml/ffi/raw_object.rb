@@ -42,13 +42,9 @@ module Baml
       # Populated by requiring type_builder.rb, media.rb, etc.
       WRAPPER_CLASS = {}
 
-      @tracked = []
-      @mutex = Mutex.new
       @shutting_down = false
 
       class << self
-        attr_reader :tracked, :mutex
-
         def shutting_down?
           @shutting_down
         end
@@ -91,7 +87,7 @@ module Baml
         @runtime_ptr = runtime_ptr
         @mutex = Mutex.new
 
-        track_and_register_finalizer
+        register_finalizer
       end
 
       # Call a method on this CFFI object.
@@ -130,11 +126,8 @@ module Baml
         Proto::InvocationResponse.decode(raw)
       end
 
-      def track_and_register_finalizer
-        RawObject.mutex.synchronize { RawObject.tracked << self }
-
-        destructor_data = [@object_type, @pointer, @runtime_ptr, @mutex]
-        destructor = RawObject.make_destructor(*destructor_data)
+      def register_finalizer
+        destructor = RawObject.make_destructor(@object_type, @pointer, @runtime_ptr, @mutex)
         ObjectSpace.define_finalizer(self, destructor)
       end
 
@@ -214,7 +207,6 @@ module Baml
     # separately via an explicit flush call (see Process Safety milestone).
     at_exit do
       RawObject.instance_variable_set(:@shutting_down, true)
-      RawObject.mutex.synchronize { RawObject.tracked.clear }
     end
   end
 end
