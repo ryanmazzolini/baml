@@ -23,7 +23,7 @@ module Baml
 
       def [](key)
         key = key.to_sym if key.is_a?(String)
-        @props[key]
+        send(key)
       end
 
       def inspect
