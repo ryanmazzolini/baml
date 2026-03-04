@@ -1,4 +1,5 @@
 require "rake/testtask"
+require "dotenv/load"
 
 task :generate do
   sh "ruby", \

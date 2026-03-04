@@ -13,6 +13,7 @@ GEM
     benchmark (0.4.1)
     bigdecimal (4.0.1)
     builder (3.3.0)
+    dotenv (3.2.0)
     erubi (1.13.1)
     ffi (1.17.3-aarch64-linux-gnu)
     ffi (1.17.3-aarch64-linux-musl)
@@ -83,6 +84,7 @@ PLATFORMS
 DEPENDENCIES
   baml!
   base64
+  dotenv
   minitest-reporters
   ostruct
   rake (~> 13.0)
