@@ -1,32 +1,39 @@
 require "rake/testtask"
-require "dotenv/load"
+require "dotenv"
+Dotenv.load("../.env")
 
+REPO_ROOT = File.expand_path("../..", __dir__)
+RUBY_LIB = File.join(REPO_ROOT, "engine/language_client_ruby/lib")
+
+desc "Build the Rust CFFI library"
+task :build do
+  sh "cargo", "build", "--manifest-path", "#{REPO_ROOT}/engine/Cargo.toml", "-p", "baml_cffi"
+end
+
+desc "Build and use the local debug binary for tests"
+task :build_debug => :build do
+  ENV["BAML_LIBRARY_PATH"] = File.join(REPO_ROOT, "engine/target/debug/libbaml_cffi.so")
+end
+
+desc "Generate the Ruby client from baml_src"
 task :generate do
-  sh "ruby", \
-     "-I../../engine/language_client_ruby/lib", \
-     "../../engine/language_client_ruby/exe/baml-cli", \
+  sh "ruby", "-I#{RUBY_LIB}",
+     "#{REPO_ROOT}/engine/language_client_ruby/exe/baml-cli",
      "generate", "--from", "../baml_src"
 end
 
-# Default test task that runs all tests
+# Filtering:
+#   rake test TEST=test_functions.rb             — single file
+#   rake test N=/image/                          — name filter (string or /regexp/)
+#   rake test TEST=test_functions.rb N=/image/   — both
 Rake::TestTask.new(:test) do |t|
-  t.libs << "../../engine/language_client_ruby/lib"
+  t.libs << RUBY_LIB
   t.libs << "baml_client"
-  t.test_files = FileList["test_*.rb"]
-  t.options = '--verbose'
+  t.test_files = FileList[ENV["TEST"] || "test_*.rb"]
+  t.options = "--verbose"
+  # -n must be joined with the pattern (no space) so rake_test_loader
+  # doesn't try to interpret the pattern as a file path.
+  t.options += " -n#{ENV['N']}" if ENV["N"]
 end
 
-# Task to run specific tests
-Rake::TestTask.new(:test_spec) do |t|
-  t.libs << "../../engine/language_client_ruby/lib"
-  t.libs << "baml_client"
-  t.test_files = FileList[ENV['TEST'] || "test_*.rb"]
-  t.options = '--verbose'
-end
-
-# Add a description for the tasks
-desc "Run all tests"
-task :test
-
-desc "Run specific tests (use TEST=test_env_vars.rb)"
-task :test_specific
+task default: [:build, :generate, :test]
