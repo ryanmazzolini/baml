@@ -554,7 +554,7 @@ describe "ruby<->baml integration tests" do
       # Check for @stream.with_state.
       if !msg.class_needed.nil?
         if !msg.class_needed.s_20_words.value.nil?
-          if len(msg.class_needed.s_20_words.value.split(" ")) < 3 && msg.final_string.nil?
+          if msg.class_needed.s_20_words.value.split(" ").length < 3 && msg.final_string.nil?
             puts(msg)
             assert msg.class_needed.s_20_words.state == "Incomplete"
           end

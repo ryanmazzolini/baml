@@ -143,26 +143,53 @@ module Baml
 
       # Coerce a hash with "__baml_class__" into a typed struct or DynamicStruct.
       def coerce_class_hash(class_name, value, types_module)
+        klass = types_module&.const_defined?(class_name, false) &&
+                types_module.const_get(class_name, false)
+
+        if klass.is_a?(Class) && klass < T::Struct
+          build_struct(klass, value, types_module)
+        elsif klass
+          value
+        else
+          build_dynamic_struct(value, types_module)
+        end
+      end
+
+      def build_struct(klass, value, types_module)
+        props = klass.props
+        kwargs = {}
+        value.each do |k, v|
+          next if k == "__baml_class__"
+          sym = k.to_sym
+          # When a prop references a class from a different module (e.g.
+          # StreamTypes prop typed as Types::Foo), coerce using that module.
+          nested_module = enclosing_module(props.dig(sym, :type)) || types_module
+          kwargs[sym] = coerce_to_struct(v, nested_module)
+        end
+        known_kwargs = kwargs.select { |k, _| props.key?(k) }
+        instance = klass.new(**known_kwargs)
+        instance.instance_variable_set(:@props, kwargs)
+        instance
+      end
+
+      def build_dynamic_struct(value, types_module)
         kwargs = {}
         value.each do |k, v|
           next if k == "__baml_class__"
           kwargs[k.to_sym] = coerce_to_struct(v, types_module)
         end
+        Baml::DynamicStruct.new(**kwargs)
+      end
 
-        klass = types_module&.const_defined?(class_name, false) &&
-                types_module.const_get(class_name, false)
-
-        if klass.is_a?(Class) && klass < T::Struct
-          known_props = klass.props.keys.to_set
-          known_kwargs = kwargs.select { |k, _| known_props.include?(k) }
-          instance = klass.new(**known_kwargs)
-          instance.instance_variable_set(:@props, kwargs)
-          instance
-        elsif klass
-          value
-        else
-          Baml::DynamicStruct.new(**kwargs)
-        end
+      # Returns the enclosing module of a T::Struct class, or nil.
+      # Used to resolve cross-module type references during coercion.
+      def enclosing_module(type)
+        return nil unless type.is_a?(Class) && type < T::Struct
+        parts = type.name&.split("::")
+        return nil unless parts && parts.length > 1
+        Object.const_get(parts[0..-2].join("::"))
+      rescue NameError
+        nil
       end
 
       def coerce_enum(enum_name, value, types_module)
