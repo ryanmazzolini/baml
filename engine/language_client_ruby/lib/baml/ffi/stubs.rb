@@ -48,46 +48,6 @@ module Baml
       end
     end
 
-    # Aliased as Baml::Image. Referenced in generated type signatures.
-    # Factory methods return stub instances. Full CFFI-backed objects (BamlObjectHandle)
-    # will be implemented in a later phase; for now these store the source info.
-    class Image
-      attr_reader :url, :base64, :media_type
-
-      def self.from_url(url)
-        obj = new
-        obj.instance_variable_set(:@url, url)
-        obj
-      end
-
-      def self.from_base64(media_type, base64)
-        obj = new
-        obj.instance_variable_set(:@media_type, media_type)
-        obj.instance_variable_set(:@base64, base64)
-        obj
-      end
-    end
-
-    # Aliased as Baml::Audio. Referenced in generated type signatures.
-    # Factory methods return stub instances. Full CFFI-backed objects (BamlObjectHandle)
-    # will be implemented in a later phase; for now these store the source info.
-    class Audio
-      attr_reader :url, :base64, :media_type
-
-      def self.from_url(url)
-        obj = new
-        obj.instance_variable_set(:@url, url)
-        obj
-      end
-
-      def self.from_base64(media_type, base64)
-        obj = new
-        obj.instance_variable_set(:@media_type, media_type)
-        obj.instance_variable_set(:@base64, base64)
-        obj
-      end
-    end
-
     # Aliased as Baml::Collector. Wrapped in an array by the generated resolve()
     # helper before passing to call_function / stream_function.
     class Collector; end

@@ -11,9 +11,34 @@ module Baml
     class BamlClientError < BamlError; end
     # TODO: parse Rust error strings into typed errors when Go does (ref: engine/language_client_go/pkg/callbacks.go:154)
 
+    # Thread-safe default runtime pointer, strictly for backwards compatibility
+    # with static factory APIs (e.g. Baml::Image.from_url). New code should use
+    # the canonical runtime methods (e.g. runtime.new_image) instead.
+    # Set during BamlRuntime#initialize; last-writer-wins (single runtime per process).
+    @runtime_mutex = Mutex.new
+    @default_runtime_ptr = nil
+
+    class << self
+      def default_runtime_ptr
+        @runtime_mutex.synchronize { @default_runtime_ptr }
+      end
+
+      # Returns the default runtime pointer, raising if none has been registered.
+      def default_runtime_ptr!
+        ptr = default_runtime_ptr
+        raise BamlError, "BamlRuntime must be initialized before creating media objects" unless ptr
+        ptr
+      end
+
+      def register_runtime(ptr)
+        @runtime_mutex.synchronize { @default_runtime_ptr = ptr }
+      end
+    end
+
     class BamlRuntime
       def initialize(runtime_ptr)
         @ptr = runtime_ptr
+        Baml::Ffi.register_runtime(@ptr)
 
         ptr_to_free = @ptr
         ObjectSpace.define_finalizer(self, self.class.release_fn(ptr_to_free))
@@ -47,6 +72,12 @@ module Baml
       def new_type_builder
         TypeBuilder.create(@ptr)
       end
+
+      # Canonical media constructors
+      def new_image(**kwargs) = Image.create(@ptr, **kwargs)
+      def new_audio(**kwargs) = Audio.create(@ptr, **kwargs)
+      def new_pdf(**kwargs) = Pdf.create(@ptr, **kwargs)
+      def new_video(**kwargs) = Video.create(@ptr, **kwargs)
 
       def create_context_manager
         # TODO: implement via CFFI once context manager is exposed

@@ -7,6 +7,8 @@ module Baml
   ClientRegistry = Baml::Ffi::ClientRegistry
   Image = Baml::Ffi::Image
   Audio = Baml::Ffi::Audio
+  Pdf = Baml::Ffi::Pdf
+  Video = Baml::Ffi::Video
   Collector = Baml::Ffi::Collector
 
   # Reexport Checked types.
