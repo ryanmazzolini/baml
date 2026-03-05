@@ -48,9 +48,6 @@ module Baml
       end
     end
 
-    # Aliased as Baml::Collector. Wrapped in an array by the generated resolve()
-    # helper before passing to call_function / stream_function.
-    class Collector; end
 
     # TypeBuilder, FieldType, ClassBuilder, EnumBuilder are now real
     # implementations in type_builder.rb (backed by CFFI RawObject handles).

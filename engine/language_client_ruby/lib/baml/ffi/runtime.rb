@@ -73,7 +73,8 @@ module Baml
         TypeBuilder.create(@ptr)
       end
 
-      # Canonical media constructors
+      # Canonical constructors
+      def new_collector(name: "") = Collector.create(@ptr, name: name)
       def new_image(**kwargs) = Image.create(@ptr, **kwargs)
       def new_audio(**kwargs) = Audio.create(@ptr, **kwargs)
       def new_pdf(**kwargs) = Pdf.create(@ptr, **kwargs)
@@ -90,7 +91,7 @@ module Baml
         call_id = Callbacks.next_id
         queue = Callbacks.create(call_id)
 
-        encoded = Serde.encode_function_args(args, env_vars: env_vars || {}, type_builder: tb)
+        encoded = Serde.encode_function_args(args, env_vars: env_vars || {}, type_builder: tb, collectors: collectors || [])
         encoded_bytes = Baml::Cffi::V1::HostFunctionArguments.encode(encoded)
 
         args_ptr = FFI::MemoryPointer.new(:char, encoded_bytes.bytesize)
@@ -113,7 +114,7 @@ module Baml
         call_id = Callbacks.next_id
         queue = Callbacks.create(call_id)
 
-        encoded = Serde.encode_function_args(args, env_vars: env_vars || {}, type_builder: tb)
+        encoded = Serde.encode_function_args(args, env_vars: env_vars || {}, type_builder: tb, collectors: collectors || [])
         encoded_bytes = Baml::Cffi::V1::HostFunctionArguments.encode(encoded)
 
         args_ptr = FFI::MemoryPointer.new(:char, encoded_bytes.bytesize)

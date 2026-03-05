@@ -61,13 +61,16 @@ module Baml
         end
       end
 
-      def encode_function_args(kwargs, env_vars: {}, type_builder: nil)
+      def encode_function_args(kwargs, env_vars: {}, type_builder: nil, collectors: [])
         entries = kwargs.map do |key, val|
           Proto::HostMapEntry.new(string_key: key.to_s, value: encode_value(val))
         end
         env = env_vars.map { |k, v| Proto::HostEnvVar.new(key: k.to_s, value: v.to_s) }
         tb_handle = type_builder&.encode_handle
-        Proto::HostFunctionArguments.new(kwargs: entries, env: env, type_builder: tb_handle)
+        collector_handles = collectors.map(&:encode_handle)
+        Proto::HostFunctionArguments.new(
+          kwargs: entries, env: env, type_builder: tb_handle, collectors: collector_handles
+        )
       end
 
       def decode_value(holder)

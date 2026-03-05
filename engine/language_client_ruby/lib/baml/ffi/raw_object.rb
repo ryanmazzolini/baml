@@ -39,8 +39,16 @@ module Baml
       }.freeze
 
       # Subclass registry: object_type → wrapper class.
-      # Populated by requiring type_builder.rb, media.rb, etc.
+      # Populated by requiring type_builder.rb, media.rb, collector.rb, etc.
       WRAPPER_CLASS = {}
+
+      # Class macro: generates methods that delegate to call_method.
+      # Usage: cffi_method :usage, :name, :logs
+      def self.cffi_method(*names)
+        names.each do |name|
+          define_method(name) { call_method(name.to_s) }
+        end
+      end
 
       @shutting_down = false
 

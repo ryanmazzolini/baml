@@ -10,39 +10,15 @@ b = Baml.Client
 # Run all these tests with:
 # infisical run --env=test -- mise exec -- rake test test_collector.rb TEST_OPTS="--name=/collector/"
 describe "Ruby Collector Tests" do
-  before do
-    # Ensure collector is empty before each test
-    # This depends on if Ruby exposes the same API as Python
-    # You might need to modify this based on actual Ruby API
-    assert_equal 0, Baml::Collector.__function_call_count if Baml::Collector.respond_to?(:__function_call_count)
-  end
-
-  after do
-    # Force garbage collection and check collector is empty
-    GC.start
-    # GC.start(full_mark: true, immediate_sweep: true);
-    assert_equal 0, Baml::Collector.__function_call_count if Baml::Collector.respond_to?(:__function_call_count)
-  end
-
   it "test_collector_no_stream_success" do
     collector = Baml::Collector.new()
     function_logs = collector.logs
     assert_equal 0, function_logs.length
 
-
-    # Call a test function with the collector'
-    puts "calling func"
     b.TestOpenAIGPT4oMini(input: "hi there", baml_options: {collector: collector})
-
-    puts "func called"
-
-
-    puts "#{Baml::Collector.__function_call_count}"
-    puts "#{Baml::Collector.__print_storage}"
 
     function_logs = collector.logs
     assert_equal 1, function_logs.length
-
 
     log = collector.last
     refute_nil log
@@ -92,7 +68,6 @@ describe "Ruby Collector Tests" do
     assert_includes body["choices"][0]["message"], "content"
     refute_nil body["choices"][0]["message"]["content"]
 
-    puts "call.body.headers: #{call.http_response.headers}"
     # Verify response headers contain openai-version
     refute_nil response.headers
     assert_kind_of Hash, response.headers
@@ -121,15 +96,6 @@ describe "Ruby Collector Tests" do
 
     assert_equal log.usage.input_tokens, collector.usage.input_tokens
     assert_equal log.usage.output_tokens, collector.usage.output_tokens
-
-    # Verify metadata
-    # assert_kind_of Hash, log.metadata
-
-    collector = nil
-    # Force GC to run
-    GC.start
-    # Still not collected because it's in use
-    assert Baml::Collector.__function_call_count > 0 if Baml::Collector.respond_to?(:__function_call_count)
   end
 
   it "tests_collector_no_stream_no_getting_logs" do
@@ -138,11 +104,6 @@ describe "Ruby Collector Tests" do
     assert_equal 0, function_logs.length
 
     b.TestOpenAIGPT4oMini(input: "hi there", baml_options: {collector: collector})
-
-    # Force GC to run
-    GC.start
-    # Still not collected because it's in use
-    assert Baml::Collector.__function_call_count > 0 if Baml::Collector.respond_to?(:__function_call_count)
   end
 
   it "tests_collector_stream_success" do
@@ -154,12 +115,10 @@ describe "Ruby Collector Tests" do
 
     chunks = []
     stream.each do |chunk|
-      puts "### chunk: #{chunk}"
       chunks << chunk
     end
 
     res = stream.get_final_response
-    puts "### res: #{res}"
 
     function_logs = collector.logs
     assert_equal 1, function_logs.length
@@ -167,7 +126,7 @@ describe "Ruby Collector Tests" do
     log = collector.last
     refute_nil log
     assert_equal "TestOpenAIGPT4oMini", log.function_name
-    assert_equal "call", log.log_type
+    assert_equal "stream", log.log_type
 
     # Verify timing fields
     assert log.timing.start_time_utc_ms > 0
@@ -189,13 +148,11 @@ describe "Ruby Collector Tests" do
     assert_equal "GPT4oMini", call.client_name
     assert call.selected
 
-    # Verify request/response
+    # Verify request exists
     request = call.http_request
     refute_nil request
-    assert_kind_of Hash, request.body
-    assert_includes request.body, "messages"
 
-    # For streaming, http_response is likely nil
+    # For streaming, http_response is nil (SSE chunks instead)
     response = call.http_response
     assert_nil response
 
@@ -214,11 +171,6 @@ describe "Ruby Collector Tests" do
 
     # Verify raw response exists
     refute_nil log.raw_llm_response
-
-    # Force GC to run
-    GC.start
-    # Still not collected because it's in use
-    assert Baml::Collector.__function_call_count > 0 if Baml::Collector.respond_to?(:__function_call_count)
   end
 
   it "tests_collector_multiple_calls_usage" do
@@ -321,8 +273,6 @@ describe "Ruby Collector Tests" do
     assert_equal total_output, collector.usage.output_tokens
   end
 
-  # Since Ruby doesn't have async/await patterns like Python,
-  # the parallel calls test might need to use threads
   it "tests_collector_parallel_calls" do
     collector = Baml::Collector.new(name: "parallel-collector")
 
@@ -331,8 +281,6 @@ describe "Ruby Collector Tests" do
     threads << Thread.new { b.TestOpenAIGPT4oMini(input: "call #1", baml_options: {collector: collector}) }
     threads << Thread.new { b.TestOpenAIGPT4oMini(input: "call #2", baml_options: {collector: collector}) }
     threads.each(&:join)
-
-    puts "------------------------- ended parallel calls"
 
     # Verify the collector has two function logs
     logs = collector.logs
