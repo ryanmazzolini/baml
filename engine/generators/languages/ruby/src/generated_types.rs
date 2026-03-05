@@ -437,7 +437,7 @@ pub(crate) fn render_rb_types<T: askama::Template>(
 ///     extend T::Generic
 ///     Value = type_member
 ///     const :value, Value
-///     const :state, Symbol
+///     const :state, String
 /// end
 /// ```
 #[derive(askama::Template)]

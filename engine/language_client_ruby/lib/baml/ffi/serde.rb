@@ -9,6 +9,12 @@ module Baml
     module Serde
       Proto = Baml::Cffi::V1
 
+      STREAM_STATE_NAMES = {
+        PENDING: "Pending",
+        STARTED: "Incomplete",
+        DONE: "Complete",
+      }.freeze
+
       module_function
 
       def encode_value(value)
@@ -67,52 +73,64 @@ module Baml
       def decode_value(holder)
         case holder.value
         when :string_value then holder.string_value
-        when :int_value    then holder.int_value
-        when :float_value  then holder.float_value
-        when :bool_value   then holder.bool_value
-        when :null_value   then nil
-        when :list_value
-          holder.list_value.items.map { |v| decode_value(v) }
-        when :map_value
-          holder.map_value.entries.each_with_object({}) do |entry, hash|
-            hash[entry.key] = decode_value(entry.value)
-          end
-        when :class_value
-          fields = holder.class_value.fields.each_with_object({}) do |entry, hash|
-            hash[entry.key] = decode_value(entry.value)
-          end
-          { "__baml_class__" => holder.class_value.name.name, **fields }
-        when :enum_value
-          { "__baml_enum__" => holder.enum_value.name.name, "value" => holder.enum_value.value }
-        when :union_variant_value
-          decode_value(holder.union_variant_value.value)
-        when :checked_value
-          cv = holder.checked_value
-          checks = cv.checks.each_with_object({}) do |check, hash|
-            hash[check.name.to_sym] = {
-              "__baml_class__" => "Check",
-              "name" => check.name,
-              "expr" => check.expression,
-              "status" => check.status,
-            }
-          end
-          { "__baml_class__" => "Checked", "value" => decode_value(cv.value), "checks" => checks }
-        when :literal_value
-          lit = holder.literal_value
-          case lit.literal
-          when :string_literal then lit.string_literal.value
-          when :int_literal    then lit.int_literal.value
-          when :bool_literal   then lit.bool_literal.value
-          else lit
-          end
-        when :streaming_state_value
-          ss = holder.streaming_state_value
-          { "__baml_class__" => "StreamState", "value" => decode_value(ss.value), "state" => ss.state }
-        when :object_value
-          nil
-        else
-          raise ArgumentError, "unsupported BAML decode type: #{holder.value}"
+        when :int_value then holder.int_value
+        when :float_value then holder.float_value
+        when :bool_value then holder.bool_value
+        when :null_value then nil
+        when :list_value then holder.list_value.items.map { |v| decode_value(v) }
+        when :map_value then decode_map(holder.map_value)
+        when :class_value then decode_class(holder.class_value)
+        when :enum_value then decode_enum(holder.enum_value)
+        when :union_variant_value then decode_value(holder.union_variant_value.value)
+        when :checked_value then decode_checked(holder.checked_value)
+        when :literal_value then decode_literal(holder.literal_value)
+        when :streaming_state_value then decode_streaming_state(holder.streaming_state_value)
+        when :object_value then nil
+        else raise ArgumentError, "unsupported BAML decode type: #{holder.value}"
         end
+      end
+
+      def decode_map(map)
+        map.entries.each_with_object({}) do |entry, hash|
+          hash[entry.key] = decode_value(entry.value)
+        end
+      end
+
+      def decode_class(cls)
+        fields = cls.fields.each_with_object({}) do |entry, hash|
+          hash[entry.key] = decode_value(entry.value)
+        end
+        { "__baml_class__" => cls.name.name, **fields }
+      end
+
+      def decode_enum(enum)
+        { "__baml_enum__" => enum.name.name, "value" => enum.value }
+      end
+
+      def decode_checked(cv)
+        checks = cv.checks.each_with_object({}) do |check, hash|
+          hash[check.name.to_sym] = {
+            "__baml_class__" => "Check",
+            "name" => check.name,
+            "expr" => check.expression,
+            "status" => check.status,
+          }
+        end
+        { "__baml_class__" => "Checked", "value" => decode_value(cv.value), "checks" => checks }
+      end
+
+      def decode_literal(lit)
+        case lit.literal
+        when :string_literal then lit.string_literal.value
+        when :int_literal then lit.int_literal.value
+        when :bool_literal then lit.bool_literal.value
+        else lit
+        end
+      end
+
+      def decode_streaming_state(ss)
+        state = STREAM_STATE_NAMES[ss.state] || ss.state.to_s
+        { "__baml_class__" => "StreamState", "value" => decode_value(ss.value), "state" => state }
       end
 
       def decode_value_holder(bytes)

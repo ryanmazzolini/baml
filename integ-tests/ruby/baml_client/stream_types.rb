@@ -23,7 +23,7 @@ module BamlClient
       extend T::Generic
       Value = type_member
       const :value, Value
-      const :state, Symbol
+      const :state, String
   end
   # #########################################################################
   # Generated type aliases (21)
@@ -285,15 +285,6 @@ module BamlClient
   end
 
 
-  class GroceryReceipt < T::Struct
-      include Baml::Sorbet::Struct
-      const :receiptId, T.nilable(String)
-      const :storeName, T.nilable(String)
-      const :items, T::Array[T.any(String, Integer, Float)]
-      const :totalAmount, T.nilable(Float)
-  end
-
-
   class FlightConfirmation < T::Struct
       include Baml::Sorbet::Struct
       const :confirmationNumber, T.nilable(String)
@@ -301,6 +292,15 @@ module BamlClient
       const :departureTime, T.nilable(String)
       const :arrivalTime, T.nilable(String)
       const :seatNumber, T.nilable(String)
+  end
+
+
+  class GroceryReceipt < T::Struct
+      include Baml::Sorbet::Struct
+      const :receiptId, T.nilable(String)
+      const :storeName, T.nilable(String)
+      const :items, T::Array[T.any(String, Integer, Float)]
+      const :totalAmount, T.nilable(Float)
   end
 
 

@@ -23,7 +23,7 @@ module Baml
     Value = type_member
 
     const :value, Value
-    const :state, Symbol
+    const :state, String
 
     def initialize(props)
       super(value: props[:value], state: props[:state])
