@@ -50,6 +50,10 @@ module Baml
             [:pointer, :string, :pointer, :size_t, :uint32], Buffer.by_value
           attach_function :call_function_stream_from_c,
             [:pointer, :string, :pointer, :size_t, :uint32], Buffer.by_value
+          attach_function :build_request_from_c,
+            [:pointer, :string, :pointer, :size_t, :uint32], Buffer.by_value
+          attach_function :call_function_parse_from_c,
+            [:pointer, :string, :pointer, :size_t, :uint32], Buffer.by_value
           attach_function :call_object_constructor,
             [:pointer, :size_t], Buffer.by_value
           attach_function :call_object_method,

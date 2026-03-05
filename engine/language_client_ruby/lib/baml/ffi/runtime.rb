@@ -85,35 +85,46 @@ module Baml
         RuntimeContextManager.new
       end
 
-      # Matches the 8-arg signature the generated client code calls:
-      #   runtime.call_function(name, args, ctx, tb, client_registry, collectors, env_vars, tags)
       def call_function(function_name, args, ctx, tb, client_registry, collectors, env_vars, tags = {})
-        call_id = Callbacks.next_id
-        queue = Callbacks.create(call_id)
-
-        encoded = Serde.encode_function_args(
-          args, env_vars: env_vars || {}, type_builder: tb,
-          client_registry: client_registry, collectors: collectors || [], tags: tags || {}
-        )
-        encoded_bytes = Baml::Cffi::V1::HostFunctionArguments.encode(encoded)
-
-        args_ptr = FFI::MemoryPointer.new(:char, encoded_bytes.bytesize)
-        args_ptr.put_bytes(0, encoded_bytes)
-
-        buf = Bindings.call_function_from_c(@ptr, function_name, args_ptr, encoded_bytes.bytesize, call_id)
-        spawn_bytes = Bindings.read_buffer(buf)
-        Bindings.free_buffer(buf)
-        Serde.decode_spawn_response(spawn_bytes)
-
-        result = queue.pop
-        Callbacks.remove(call_id)
-
-        raise BamlError, result[:error] if result[:error]
+        result = spawn_and_wait(function_name, args, env_vars: env_vars, tb: tb,
+          client_registry: client_registry, collectors: collectors, tags: tags) do |ptr, len, call_id|
+          Bindings.call_function_from_c(@ptr, function_name, ptr, len, call_id)
+        end
         FunctionResult.new(result[:bytes])
       end
 
-      # Same 8-arg signature, returns a FunctionResultStream
       def stream_function(function_name, args, ctx, tb, client_registry, collectors, env_vars, tags = {})
+        call_id, queue = spawn(function_name, args, env_vars: env_vars, tb: tb,
+          client_registry: client_registry, collectors: collectors, tags: tags) do |ptr, len, id|
+          Bindings.call_function_stream_from_c(@ptr, function_name, ptr, len, id)
+        end
+        FunctionResultStream.new(call_id, queue)
+      end
+
+      # Build an HTTP request without executing it. Returns an HTTPRequest RawObject.
+      def request_function(function_name, args, ctx, tb, client_registry, env_vars, stream: false, tags: {})
+        # Rust extracts and removes the stream flag from kwargs
+        result = spawn_and_wait(function_name, args.merge("stream" => stream),
+          env_vars: env_vars, tb: tb, client_registry: client_registry, tags: tags) do |ptr, len, call_id|
+          Bindings.build_request_from_c(@ptr, function_name, ptr, len, call_id)
+        end
+        response = Baml::Cffi::V1::InvocationResponse.decode(result[:bytes])
+        RawObject.decode_object_response(response, @ptr)
+      end
+
+      # Parse an LLM response string into a typed result. Returns a FunctionResult.
+      def parse_function(function_name, llm_response, ctx, tb, client_registry, env_vars, allow_partials: false, tags: {})
+        result = spawn_and_wait(function_name, { "text" => llm_response, "stream" => allow_partials },
+          env_vars: env_vars, tb: tb, client_registry: client_registry, tags: tags) do |ptr, len, call_id|
+          Bindings.call_function_parse_from_c(@ptr, function_name, ptr, len, call_id)
+        end
+        FunctionResult.new(result[:bytes])
+      end
+
+      private
+
+      # Encode args, invoke FFI via block, return [call_id, queue] for streaming.
+      def spawn(function_name, args, env_vars:, tb: nil, client_registry: nil, collectors: [], tags: {})
         call_id = Callbacks.next_id
         queue = Callbacks.create(call_id)
 
@@ -126,12 +137,21 @@ module Baml
         args_ptr = FFI::MemoryPointer.new(:char, encoded_bytes.bytesize)
         args_ptr.put_bytes(0, encoded_bytes)
 
-        buf = Bindings.call_function_stream_from_c(@ptr, function_name, args_ptr, encoded_bytes.bytesize, call_id)
+        buf = yield(args_ptr, encoded_bytes.bytesize, call_id)
         spawn_bytes = Bindings.read_buffer(buf)
         Bindings.free_buffer(buf)
         Serde.decode_spawn_response(spawn_bytes)
 
-        FunctionResultStream.new(call_id, queue)
+        [call_id, queue]
+      end
+
+      # Spawn, wait for single result, raise on error.
+      def spawn_and_wait(function_name, args, **opts, &block)
+        call_id, queue = spawn(function_name, args, **opts, &block)
+        result = queue.pop
+        Callbacks.remove(call_id)
+        raise BamlError, result[:error] if result[:error]
+        result
       end
     end
   end

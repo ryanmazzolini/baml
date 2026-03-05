@@ -81,6 +81,28 @@ module Internal
         )
         [ctx, result]
       end
+
+      sig { params(function_name: String, args: T::Hash[String, T.untyped], stream: T::Boolean).returns(Baml::Ffi::HTTPRequest) }
+      def build_request_sync(function_name:, args:, stream: false)
+        r = resolve
+        runtime = Internal::DO_NOT_USE_DIRECTLY_UNLESS_YOU_KNOW_WHAT_YOU_RE_DOING_RUNTIME
+        ctx = Internal::DO_NOT_USE_DIRECTLY_UNLESS_YOU_KNOW_WHAT_YOU_RE_DOING_CTX
+        runtime.request_function(
+          function_name, args, ctx, r.tb, r.client_registry, r.env_vars,
+          stream: stream, tags: r.tags,
+        )
+      end
+
+      sig { params(function_name: String, llm_response: String, allow_partials: T::Boolean).returns(Baml::Ffi::FunctionResult) }
+      def parse_sync(function_name:, llm_response:, allow_partials: false)
+        r = resolve
+        runtime = Internal::DO_NOT_USE_DIRECTLY_UNLESS_YOU_KNOW_WHAT_YOU_RE_DOING_RUNTIME
+        ctx = Internal::DO_NOT_USE_DIRECTLY_UNLESS_YOU_KNOW_WHAT_YOU_RE_DOING_CTX
+        runtime.parse_function(
+          function_name, llm_response, ctx, r.tb, r.client_registry, r.env_vars,
+          allow_partials: allow_partials, tags: r.tags,
+        )
+      end
       # -------------------------------------------------------------------------
       # Private helpers
       # -------------------------------------------------------------------------

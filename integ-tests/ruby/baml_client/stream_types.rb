@@ -258,13 +258,13 @@ module BamlClient
   end
 
 
-  class EmailAddress < T::Struct
+  class PhoneNumber < T::Struct
       include Baml::Sorbet::Struct
       const :value, T.nilable(String)
   end
 
 
-  class PhoneNumber < T::Struct
+  class EmailAddress < T::Struct
       include Baml::Sorbet::Struct
       const :value, T.nilable(String)
   end

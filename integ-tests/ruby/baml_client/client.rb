@@ -43,6 +43,26 @@ module BamlClient
           BamlStreamClient.new(@options)
       end
 
+      sig {returns(BamlRequestClient)}
+      def request
+          BamlRequestClient.new(@options)
+      end
+
+      sig {returns(BamlStreamRequestClient)}
+      def stream_request
+          BamlStreamRequestClient.new(@options)
+      end
+
+      sig {returns(BamlParseClient)}
+      def parse
+          BamlParseClient.new(@options)
+      end
+
+      sig {returns(BamlParseStreamClient)}
+      def parse_stream
+          BamlParseStreamClient.new(@options)
+      end
+
       sig {params(collector: T.nilable(T.any(Baml::Collector, T::Array[Baml::Collector])), tb: T.nilable(Baml::TypeBuilder), client_registry: T.nilable(Baml::ClientRegistry), env_vars: T.nilable(T::Hash[Symbol, String]), tags: T.nilable(T::Hash[String, String])).returns(BamlSyncClient)}
       def with_options(collector: nil, tb: nil, client_registry: nil, env_vars: nil, tags: nil)
           BamlSyncClient.new(@options.merge_options(BamlCallOptions.new(
@@ -11350,6 +11370,19090 @@ module BamlClient
               ffi_stream: __result__,
               ctx_manager: __ctx__
           )
+      end
+
+  end
+
+  class BamlRequestClient
+      extend T::Sig
+
+      sig {params(options: BamlClient::Internal::DoNotUseDirectlyCallManager).void}
+      def initialize(options)
+          @options = options
+      end
+
+      sig {params(
+          varargs: T.untyped,
+          recipe: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def AaaSamOutputFormat(
+          *varargs,
+          recipe:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("AaaSamOutputFormat may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "AaaSamOutputFormat", args: {
+              recipe: recipe,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          data: BamlClient::Types::LinkedListAliasNode,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def AliasThatPointsToRecursiveType(
+          *varargs,
+          data:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("AliasThatPointsToRecursiveType may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "AliasThatPointsToRecursiveType", args: {
+              data: data,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          money: Integer,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def AliasWithMultipleAttrs(
+          *varargs,
+          money:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("AliasWithMultipleAttrs may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "AliasWithMultipleAttrs", args: {
+              money: money,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: BamlClient::Types::InputClass,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def AliasedInputClass(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("AliasedInputClass may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "AliasedInputClass", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: BamlClient::Types::InputClass,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def AliasedInputClass2(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("AliasedInputClass2 may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "AliasedInputClass2", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: BamlClient::Types::InputClassNested,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def AliasedInputClassNested(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("AliasedInputClassNested may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "AliasedInputClassNested", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: BamlClient::Types::AliasedEnum,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def AliasedInputEnum(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("AliasedInputEnum may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "AliasedInputEnum", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: T::Array[BamlClient::Types::AliasedEnum],
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def AliasedInputList(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("AliasedInputList may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "AliasedInputList", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          optionals: BamlClient::Types::OptionalListAndMap,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def AllowedOptionals(
+          *varargs,
+          optionals:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("AllowedOptionals may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "AllowedOptionals", args: {
+              optionals: optionals,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          a: Integer,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def AssertFn(
+          *varargs,
+          a:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("AssertFn may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "AssertFn", args: {
+              a: a,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          aud: Baml::Audio,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def AudioInput(
+          *varargs,
+          aud:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("AudioInput may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "AudioInput", args: {
+              aud: aud,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          aud: Baml::Audio,prompt: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def AudioInputOpenai(
+          *varargs,
+          aud:,prompt:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("AudioInputOpenai may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "AudioInputOpenai", args: {
+              aud: aud,prompt: prompt,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: T::Array[Integer],
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def BuildLinkedList(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("BuildLinkedList may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "BuildLinkedList", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: BamlClient::Types::BinaryNode,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def BuildTree(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("BuildTree may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "BuildTree", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          word: String,target: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def CheckWordEquality(
+          *varargs,
+          word:,target:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("CheckWordEquality may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "CheckWordEquality", args: {
+              word: word,target: target,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          query: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def ChooseTodoTools(
+          *varargs,
+          query:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("ChooseTodoTools may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "ChooseTodoTools", args: {
+              query: query,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          cls: BamlClient::Types::ClassToRecAlias,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def ClassThatPointsToRecursiveClassThroughAlias(
+          *varargs,
+          cls:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("ClassThatPointsToRecursiveClassThroughAlias may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "ClassThatPointsToRecursiveClassThroughAlias", args: {
+              cls: cls,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def ClassifyDynEnumTwo(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("ClassifyDynEnumTwo may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "ClassifyDynEnumTwo", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def ClassifyDynamicStatus(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("ClassifyDynamicStatus may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "ClassifyDynamicStatus", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def ClassifyMessage(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("ClassifyMessage may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "ClassifyMessage", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def ClassifyMessage2(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("ClassifyMessage2 may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "ClassifyMessage2", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def ClassifyMessage3(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("ClassifyMessage3 may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "ClassifyMessage3", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          prefix: String,suffix: String,language: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def Completion(
+          *varargs,
+          prefix:,suffix:,language:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("Completion may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "Completion", args: {
+              prefix: prefix,suffix: suffix,language: language,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def CustomTask(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("CustomTask may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "CustomTask", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          audio: Baml::Audio,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def DescribeAudio(
+          *varargs,
+          audio:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("DescribeAudio may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "DescribeAudio", args: {
+              audio: audio,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          audio: Baml::Audio,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def DescribeAudio2(
+          *varargs,
+          audio:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("DescribeAudio2 may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "DescribeAudio2", args: {
+              audio: audio,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          img: Baml::Image,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def DescribeImage(
+          *varargs,
+          img:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("DescribeImage may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "DescribeImage", args: {
+              img: img,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          classWithImage: BamlClient::Types::ClassWithImage,img2: Baml::Image,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def DescribeImage2(
+          *varargs,
+          classWithImage:,img2:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("DescribeImage2 may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "DescribeImage2", args: {
+              classWithImage: classWithImage,img2: img2,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          classWithImage: BamlClient::Types::ClassWithImage,img2: Baml::Image,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def DescribeImage3(
+          *varargs,
+          classWithImage:,img2:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("DescribeImage3 may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "DescribeImage3", args: {
+              classWithImage: classWithImage,img2: img2,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          classWithImage: BamlClient::Types::ClassWithImage,img2: Baml::Image,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def DescribeImage4(
+          *varargs,
+          classWithImage:,img2:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("DescribeImage4 may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "DescribeImage4", args: {
+              classWithImage: classWithImage,img2: img2,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          img: Baml::Image,client_sector: String,client_name: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def DescribeMedia1599(
+          *varargs,
+          img:,client_sector:,client_name:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("DescribeMedia1599 may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "DescribeMedia1599", args: {
+              img: img,client_sector: client_sector,client_name: client_name,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def DifferentiateUnions(
+          *varargs,
+
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("DifferentiateUnions may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "DifferentiateUnions", args: {
+
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def DummyOutputFunction(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("DummyOutputFunction may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "DummyOutputFunction", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: BamlClient::Types::DynamicClassOne,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def DynamicFunc(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("DynamicFunc may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "DynamicFunc", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: BamlClient::Types::DynInputOutput,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def DynamicInputOutput(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("DynamicInputOutput may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "DynamicInputOutput", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: T::Array[BamlClient::Types::DynInputOutput],
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def DynamicListInputOutput(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("DynamicListInputOutput may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "DynamicListInputOutput", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def ExpectFailure(
+          *varargs,
+
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("ExpectFailure may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "ExpectFailure", args: {
+
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          document: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def ExtractContactInfo(
+          *varargs,
+          document:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("ExtractContactInfo may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "ExtractContactInfo", args: {
+              document: document,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def ExtractDynamicCategories(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("ExtractDynamicCategories may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "ExtractDynamicCategories", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          text: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def ExtractEntities(
+          *varargs,
+          text:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("ExtractEntities may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "ExtractEntities", args: {
+              text: text,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          text: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def ExtractHobby(
+          *varargs,
+          text:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("ExtractHobby may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "ExtractHobby", args: {
+              text: text,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          text: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def ExtractName(
+          *varargs,
+          text:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("ExtractName may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "ExtractName", args: {
+              text: text,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def ExtractNames(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("ExtractNames may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "ExtractNames", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          text: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def ExtractPeople(
+          *varargs,
+          text:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("ExtractPeople may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "ExtractPeople", args: {
+              text: text,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def ExtractPersonWithMeta(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("ExtractPersonWithMeta may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "ExtractPersonWithMeta", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          email: String,reason: T.any(String, String),
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def ExtractReceiptInfo(
+          *varargs,
+          email:,reason:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("ExtractReceiptInfo may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "ExtractReceiptInfo", args: {
+              email: email,reason: reason,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          resume: String,img: T.nilable(Baml::Image),
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def ExtractResume(
+          *varargs,
+          resume:,img:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("ExtractResume may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "ExtractResume", args: {
+              resume: resume,img: img,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          resume: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def ExtractResume2(
+          *varargs,
+          resume:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("ExtractResume2 may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "ExtractResume2", args: {
+              resume: resume,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def FnAlwaysFails(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("FnAlwaysFails may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "FnAlwaysFails", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def FnClassOptionalOutput(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("FnClassOptionalOutput may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "FnClassOptionalOutput", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def FnClassOptionalOutput2(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("FnClassOptionalOutput2 may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "FnClassOptionalOutput2", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def FnEnumListOutput(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("FnEnumListOutput may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "FnEnumListOutput", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def FnEnumOutput(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("FnEnumOutput may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "FnEnumOutput", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          retries: Integer,delay_ms: Integer,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def FnFailRetryConstantDelay(
+          *varargs,
+          retries:,delay_ms:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("FnFailRetryConstantDelay may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "FnFailRetryConstantDelay", args: {
+              retries: retries,delay_ms: delay_ms,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          retries: Integer,initial_delay_ms: Integer,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def FnFailRetryExponentialDelay(
+          *varargs,
+          retries:,initial_delay_ms:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("FnFailRetryExponentialDelay may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "FnFailRetryExponentialDelay", args: {
+              retries: retries,initial_delay_ms: initial_delay_ms,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def FnFallbackAlwaysFails(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("FnFallbackAlwaysFails may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "FnFallbackAlwaysFails", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: BamlClient::Types::LiteralClassHello,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def FnLiteralClassInputOutput(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("FnLiteralClassInputOutput may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "FnLiteralClassInputOutput", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: T.any(BamlClient::Types::LiteralClassOne, BamlClient::Types::LiteralClassTwo),
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def FnLiteralUnionClassInputOutput(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("FnLiteralUnionClassInputOutput may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "FnLiteralUnionClassInputOutput", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          myString: T.nilable(String),
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def FnNamedArgsSingleStringOptional(
+          *varargs,
+          myString:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("FnNamedArgsSingleStringOptional may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "FnNamedArgsSingleStringOptional", args: {
+              myString: myString,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def FnOutputBool(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("FnOutputBool may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "FnOutputBool", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def FnOutputClass(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("FnOutputClass may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "FnOutputClass", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def FnOutputClassList(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("FnOutputClassList may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "FnOutputClassList", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def FnOutputClassNested(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("FnOutputClassNested may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "FnOutputClassNested", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def FnOutputClassWithEnum(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("FnOutputClassWithEnum may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "FnOutputClassWithEnum", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def FnOutputInt(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("FnOutputInt may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "FnOutputInt", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def FnOutputLiteralBool(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("FnOutputLiteralBool may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "FnOutputLiteralBool", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def FnOutputLiteralInt(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("FnOutputLiteralInt may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "FnOutputLiteralInt", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def FnOutputLiteralString(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("FnOutputLiteralString may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "FnOutputLiteralString", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def FnOutputStringList(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("FnOutputStringList may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "FnOutputStringList", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def FnTestAliasedEnumOutput(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("FnTestAliasedEnumOutput may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "FnTestAliasedEnumOutput", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def FnTestClassAlias(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("FnTestClassAlias may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "FnTestClassAlias", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          myArg: BamlClient::Types::NamedArgsSingleEnum,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def FnTestNamedArgsSingleEnum(
+          *varargs,
+          myArg:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("FnTestNamedArgsSingleEnum may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "FnTestNamedArgsSingleEnum", args: {
+              myArg: myArg,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          text: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def GetDataType(
+          *varargs,
+          text:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("GetDataType may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "GetDataType", args: {
+              text: text,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          email: BamlClient::Types::Email,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def GetOrderInfo(
+          *varargs,
+          email:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("GetOrderInfo may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "GetOrderInfo", args: {
+              email: email,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          query: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def GetQuery(
+          *varargs,
+          query:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("GetQuery may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "GetQuery", args: {
+              query: query,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          i1: T::Hash[BamlClient::Types::MapKey, String],i2: T::Hash[BamlClient::Types::MapKey, String],
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def InOutEnumMapKey(
+          *varargs,
+          i1:,i2:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("InOutEnumMapKey may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "InOutEnumMapKey", args: {
+              i1: i1,i2: i2,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          i1: T::Hash[T.any(String, String, String, String), String],i2: T::Hash[T.any(String, String, String, String), String],
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def InOutLiteralStringUnionMapKey(
+          *varargs,
+          i1:,i2:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("InOutLiteralStringUnionMapKey may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "InOutLiteralStringUnionMapKey", args: {
+              i1: i1,i2: i2,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          m: T::Hash[String, String],
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def InOutSingleLiteralStringMapKey(
+          *varargs,
+          m:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("InOutSingleLiteralStringMapKey may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "InOutSingleLiteralStringMapKey", args: {
+              m: m,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: BamlClient::Types::JsonValue,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def JsonTypeAliasCycle(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("JsonTypeAliasCycle may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "JsonTypeAliasCycle", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def LLMEcho(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("LLMEcho may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "LLMEcho", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def LiteralUnionsTest(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("LiteralUnionsTest may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "LiteralUnionsTest", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          n: Integer,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def LlmReturnNumber(
+          *varargs,
+          n:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("LlmReturnNumber may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "LlmReturnNumber", args: {
+              n: n,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def MakeBlockConstraint(
+          *varargs,
+
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("MakeBlockConstraint may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "MakeBlockConstraint", args: {
+
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def MakeClassWithBlockDone(
+          *varargs,
+
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("MakeClassWithBlockDone may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "MakeClassWithBlockDone", args: {
+
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def MakeClassWithExternalDone(
+          *varargs,
+
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("MakeClassWithExternalDone may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "MakeClassWithExternalDone", args: {
+
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def MakeNestedBlockConstraint(
+          *varargs,
+
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("MakeNestedBlockConstraint may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "MakeNestedBlockConstraint", args: {
+
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def MakeSemanticContainer(
+          *varargs,
+
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("MakeSemanticContainer may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "MakeSemanticContainer", args: {
+
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          m: T::Hash[String, T::Array[String]],
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def MapAlias(
+          *varargs,
+          m:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("MapAlias may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "MapAlias", args: {
+              m: m,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          money: Integer,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def MergeAliasAttributes(
+          *varargs,
+          money:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("MergeAliasAttributes may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "MergeAliasAttributes", args: {
+              money: money,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def MyFunc(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("MyFunc may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "MyFunc", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          c: T.any(Integer, String, T::Boolean, Float, T::Array[String], T::Hash[String, T::Array[String]]),
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def NestedAlias(
+          *varargs,
+          c:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("NestedAlias may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "NestedAlias", args: {
+              c: c,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          s: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def NullLiteralClassHello(
+          *varargs,
+          s:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("NullLiteralClassHello may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "NullLiteralClassHello", args: {
+              s: s,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def OpenAIGPT4oMissingBaseUrlEnvVar(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("OpenAIGPT4oMissingBaseUrlEnvVar may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "OpenAIGPT4oMissingBaseUrlEnvVar", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          s: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def OpenAIWithAnthropicResponseHello(
+          *varargs,
+          s:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("OpenAIWithAnthropicResponseHello may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "OpenAIWithAnthropicResponseHello", args: {
+              s: s,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def OptionalTest_Function(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("OptionalTest_Function may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "OptionalTest_Function", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          pdf: Baml::Pdf,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def PdfInput(
+          *varargs,
+          pdf:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("PdfInput may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "PdfInput", args: {
+              pdf: pdf,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          pdf: Baml::Pdf,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def PdfInputAnthropic(
+          *varargs,
+          pdf:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("PdfInputAnthropic may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "PdfInputAnthropic", args: {
+              pdf: pdf,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          pdf: Baml::Pdf,prompt: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def PdfInputOpenai(
+          *varargs,
+          pdf:,prompt:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("PdfInputOpenai may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "PdfInputOpenai", args: {
+              pdf: pdf,prompt: prompt,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          pdf: Baml::Pdf,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def PdfInputVertex(
+          *varargs,
+          pdf:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("PdfInputVertex may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "PdfInputVertex", args: {
+              pdf: pdf,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          name: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def PredictAge(
+          *varargs,
+          name:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("PredictAge may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "PredictAge", args: {
+              name: name,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          inp: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def PredictAgeBare(
+          *varargs,
+          inp:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("PredictAgeBare may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "PredictAgeBare", args: {
+              inp: inp,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          p: T.any(Integer, String, T::Boolean, Float),
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def PrimitiveAlias(
+          *varargs,
+          p:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("PrimitiveAlias may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "PrimitiveAlias", args: {
+              p: p,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def PromptTestClaude(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("PromptTestClaude may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "PromptTestClaude", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def PromptTestClaudeChat(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("PromptTestClaudeChat may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "PromptTestClaudeChat", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def PromptTestClaudeChatNoSystem(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("PromptTestClaudeChatNoSystem may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "PromptTestClaudeChatNoSystem", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def PromptTestOpenAI(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("PromptTestOpenAI may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "PromptTestOpenAI", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def PromptTestOpenAIChat(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("PromptTestOpenAIChat may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "PromptTestOpenAIChat", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def PromptTestOpenAIChatNoSystem(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("PromptTestOpenAIChatNoSystem may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "PromptTestOpenAIChatNoSystem", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def PromptTestStreaming(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("PromptTestStreaming may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "PromptTestStreaming", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: BamlClient::Types::RecAliasOne,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def RecursiveAliasCycle(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("RecursiveAliasCycle may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "RecursiveAliasCycle", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          cls: BamlClient::Types::NodeWithAliasIndirection,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def RecursiveClassWithAliasIndirection(
+          *varargs,
+          cls:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("RecursiveClassWithAliasIndirection may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "RecursiveClassWithAliasIndirection", args: {
+              cls: cls,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: BamlClient::Types::RecursiveUnion,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def RecursiveUnionTest(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("RecursiveUnionTest may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "RecursiveUnionTest", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: BamlClient::Types::RenderTestClass,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def RenderDynamicClass(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("RenderDynamicClass may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "RenderDynamicClass", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          bike: T.any(BamlClient::Types::RenderTestEnum, String),other: T.any(BamlClient::Types::RenderTestEnum, String),
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def RenderDynamicEnum(
+          *varargs,
+          bike:,other:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("RenderDynamicEnum may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "RenderDynamicEnum", args: {
+              bike: bike,other: other,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          money: Integer,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def ReturnAliasWithMergedAttributes(
+          *varargs,
+          money:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("ReturnAliasWithMergedAttributes may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "ReturnAliasWithMergedAttributes", args: {
+              money: money,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          inp: Integer,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def ReturnFailingAssert(
+          *varargs,
+          inp:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("ReturnFailingAssert may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "ReturnFailingAssert", args: {
+              inp: inp,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          s: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def ReturnJsonEntry(
+          *varargs,
+          s:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("ReturnJsonEntry may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "ReturnJsonEntry", args: {
+              s: s,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          a: Integer,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def ReturnMalformedConstraints(
+          *varargs,
+          a:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("ReturnMalformedConstraints may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "ReturnMalformedConstraints", args: {
+              a: a,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def SchemaDescriptions(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("SchemaDescriptions may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "SchemaDescriptions", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: BamlClient::Types::RecursiveListAlias,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def SimpleRecursiveListAlias(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("SimpleRecursiveListAlias may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "SimpleRecursiveListAlias", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: BamlClient::Types::RecursiveMapAlias,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def SimpleRecursiveMapAlias(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("SimpleRecursiveMapAlias may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "SimpleRecursiveMapAlias", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          digits: Integer,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def StreamBigNumbers(
+          *varargs,
+          digits:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("StreamBigNumbers may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "StreamBigNumbers", args: {
+              digits: digits,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          theme: String,length: Integer,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def StreamFailingAssertion(
+          *varargs,
+          theme:,length:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("StreamFailingAssertion may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "StreamFailingAssertion", args: {
+              theme: theme,length: length,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          theme: String,length: Integer,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def StreamFailingCheck(
+          *varargs,
+          theme:,length:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("StreamFailingCheck may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "StreamFailingCheck", args: {
+              theme: theme,length: length,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          digits: Integer,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def StreamOneBigNumber(
+          *varargs,
+          digits:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("StreamOneBigNumber may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "StreamOneBigNumber", args: {
+              digits: digits,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          digits: Integer,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def StreamUnionIntegers(
+          *varargs,
+          digits:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("StreamUnionIntegers may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "StreamUnionIntegers", args: {
+              digits: digits,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          digits: Integer,yapping: T::Boolean,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def StreamingCompoundNumbers(
+          *varargs,
+          digits:,yapping:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("StreamingCompoundNumbers may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "StreamingCompoundNumbers", args: {
+              digits: digits,yapping: yapping,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          document_txt: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def StructureDocument1559(
+          *varargs,
+          document_txt:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("StructureDocument1559 may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "StructureDocument1559", args: {
+              document_txt: document_txt,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: BamlClient::Types::RecursiveAliasDependency,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TakeRecAliasDep(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TakeRecAliasDep may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TakeRecAliasDep", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          story: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TellStory(
+          *varargs,
+          story:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TellStory may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TellStory", args: {
+              story: story,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TemplateStringTestEcho(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TemplateStringTestEcho may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TemplateStringTestEcho", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestAbortFallbackChain(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestAbortFallbackChain may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestAbortFallbackChain", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestAnthropic(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestAnthropic may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestAnthropic", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestAnthropicShorthand(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestAnthropicShorthand may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestAnthropicShorthand", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestAws(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestAws may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestAws", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestAwsClaude37(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestAwsClaude37 may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestAwsClaude37", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestAwsInferenceProfile(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestAwsInferenceProfile may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestAwsInferenceProfile", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestAwsInvalidAccessKey(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestAwsInvalidAccessKey may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestAwsInvalidAccessKey", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestAwsInvalidEndpoint(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestAwsInvalidEndpoint may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestAwsInvalidEndpoint", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestAwsInvalidProfile(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestAwsInvalidProfile may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestAwsInvalidProfile", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestAwsInvalidRegion(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestAwsInvalidRegion may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestAwsInvalidRegion", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestAwsInvalidSessionToken(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestAwsInvalidSessionToken may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestAwsInvalidSessionToken", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          video_input: Baml::Video,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestAwsVideoDescribe(
+          *varargs,
+          video_input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestAwsVideoDescribe may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestAwsVideoDescribe", args: {
+              video_input: video_input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestAzure(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestAzure may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestAzure", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestAzureFailure(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestAzureFailure may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestAzureFailure", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestAzureO1NoMaxTokens(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestAzureO1NoMaxTokens may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestAzureO1NoMaxTokens", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestAzureO1WithMaxCompletionTokens(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestAzureO1WithMaxCompletionTokens may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestAzureO1WithMaxCompletionTokens", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestAzureO1WithMaxTokens(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestAzureO1WithMaxTokens may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestAzureO1WithMaxTokens", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestAzureO3NoMaxTokens(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestAzureO3NoMaxTokens may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestAzureO3NoMaxTokens", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestAzureO3WithMaxCompletionTokens(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestAzureO3WithMaxCompletionTokens may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestAzureO3WithMaxCompletionTokens", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestAzureWithMaxTokens(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestAzureWithMaxTokens may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestAzureWithMaxTokens", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,not_cached: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestCaching(
+          *varargs,
+          input:,not_cached:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestCaching may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestCaching", args: {
+              input: input,not_cached: not_cached,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestDefaultStreamingTimeout(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestDefaultStreamingTimeout may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestDefaultStreamingTimeout", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestFallbackClient(
+          *varargs,
+
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestFallbackClient may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestFallbackClient", args: {
+
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestFallbackStrategy(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestFallbackStrategy may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestFallbackStrategy", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestFallbackToShorthand(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestFallbackToShorthand may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestFallbackToShorthand", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          myBool: T::Boolean,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestFnNamedArgsSingleBool(
+          *varargs,
+          myBool:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestFnNamedArgsSingleBool may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestFnNamedArgsSingleBool", args: {
+              myBool: myBool,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          myArg: BamlClient::Types::NamedArgsSingleClass,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestFnNamedArgsSingleClass(
+          *varargs,
+          myArg:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestFnNamedArgsSingleClass may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestFnNamedArgsSingleClass", args: {
+              myArg: myArg,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          myArg: T::Array[BamlClient::Types::NamedArgsSingleEnumList],
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestFnNamedArgsSingleEnumList(
+          *varargs,
+          myArg:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestFnNamedArgsSingleEnumList may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestFnNamedArgsSingleEnumList", args: {
+              myArg: myArg,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          myFloat: Float,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestFnNamedArgsSingleFloat(
+          *varargs,
+          myFloat:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestFnNamedArgsSingleFloat may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestFnNamedArgsSingleFloat", args: {
+              myFloat: myFloat,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          myInt: Integer,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestFnNamedArgsSingleInt(
+          *varargs,
+          myInt:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestFnNamedArgsSingleInt may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestFnNamedArgsSingleInt", args: {
+              myInt: myInt,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          myMap: T::Hash[String, BamlClient::Types::StringToClassEntry],
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestFnNamedArgsSingleMapStringToClass(
+          *varargs,
+          myMap:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestFnNamedArgsSingleMapStringToClass may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestFnNamedArgsSingleMapStringToClass", args: {
+              myMap: myMap,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          myMap: T::Hash[String, T::Hash[String, String]],
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestFnNamedArgsSingleMapStringToMap(
+          *varargs,
+          myMap:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestFnNamedArgsSingleMapStringToMap may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestFnNamedArgsSingleMapStringToMap", args: {
+              myMap: myMap,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          myMap: T::Hash[String, String],
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestFnNamedArgsSingleMapStringToString(
+          *varargs,
+          myMap:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestFnNamedArgsSingleMapStringToString may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestFnNamedArgsSingleMapStringToString", args: {
+              myMap: myMap,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          myString: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestFnNamedArgsSingleString(
+          *varargs,
+          myString:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestFnNamedArgsSingleString may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestFnNamedArgsSingleString", args: {
+              myString: myString,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          myStringArray: T::Array[String],
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestFnNamedArgsSingleStringArray(
+          *varargs,
+          myStringArray:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestFnNamedArgsSingleStringArray may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestFnNamedArgsSingleStringArray", args: {
+              myStringArray: myStringArray,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          myArg: T::Array[String],
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestFnNamedArgsSingleStringList(
+          *varargs,
+          myArg:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestFnNamedArgsSingleStringList may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestFnNamedArgsSingleStringList", args: {
+              myArg: myArg,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestGemini(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestGemini may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestGemini", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestGeminiOpenAiGeneric(
+          *varargs,
+
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestGeminiOpenAiGeneric may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestGeminiOpenAiGeneric", args: {
+
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestGeminiSystem(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestGeminiSystem may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestGeminiSystem", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestGeminiSystemAsChat(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestGeminiSystemAsChat may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestGeminiSystemAsChat", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestGeminiThinking(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestGeminiThinking may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestGeminiThinking", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestGroq(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestGroq may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestGroq", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          img: Baml::Image,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestImageInput(
+          *varargs,
+          img:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestImageInput may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestImageInput", args: {
+              img: img,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          img: Baml::Image,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestImageInputAnthropic(
+          *varargs,
+          img:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestImageInputAnthropic may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestImageInputAnthropic", args: {
+              img: img,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          imgs: T::Array[Baml::Image],
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestImageListInput(
+          *varargs,
+          imgs:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestImageListInput may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestImageListInput", args: {
+              imgs: imgs,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestMemory(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestMemory may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestMemory", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          myArg: BamlClient::Types::NamedArgsSingleClass,myArg2: BamlClient::Types::NamedArgsSingleClass,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestMulticlassNamedArgs(
+          *varargs,
+          myArg:,myArg2:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestMulticlassNamedArgs may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestMulticlassNamedArgs", args: {
+              myArg: myArg,myArg2: myArg2,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          myBool: T::Boolean,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestNamedArgsLiteralBool(
+          *varargs,
+          myBool:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestNamedArgsLiteralBool may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestNamedArgsLiteralBool", args: {
+              myBool: myBool,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          myInt: Integer,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestNamedArgsLiteralInt(
+          *varargs,
+          myInt:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestNamedArgsLiteralInt may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestNamedArgsLiteralInt", args: {
+              myInt: myInt,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          myString: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestNamedArgsLiteralString(
+          *varargs,
+          myString:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestNamedArgsLiteralString may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestNamedArgsLiteralString", args: {
+              myString: myString,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestOllama(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOllama may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestOllama", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestOllamaHaiku(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOllamaHaiku may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestOllamaHaiku", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestOpenAI(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOpenAI may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestOpenAI", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestOpenAIDummyClient(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOpenAIDummyClient may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestOpenAIDummyClient", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestOpenAIGPT4oMini(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOpenAIGPT4oMini may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestOpenAIGPT4oMini", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestOpenAIGPT4oMini2(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOpenAIGPT4oMini2 may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestOpenAIGPT4oMini2", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestOpenAIGPT4oMini3(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOpenAIGPT4oMini3 may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestOpenAIGPT4oMini3", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestOpenAILegacyProvider(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOpenAILegacyProvider may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestOpenAILegacyProvider", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestOpenAIO1NoMaxTokens(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOpenAIO1NoMaxTokens may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestOpenAIO1NoMaxTokens", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestOpenAIO1WithMaxCompletionTokens(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOpenAIO1WithMaxCompletionTokens may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestOpenAIO1WithMaxCompletionTokens", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestOpenAIO1WithMaxTokens(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOpenAIO1WithMaxTokens may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestOpenAIO1WithMaxTokens", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestOpenAIProviderWithResponsesType(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOpenAIProviderWithResponsesType may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestOpenAIProviderWithResponsesType", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestOpenAIResponses(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOpenAIResponses may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestOpenAIResponses", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          problem: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestOpenAIResponsesAllRoles(
+          *varargs,
+          problem:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOpenAIResponsesAllRoles may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestOpenAIResponsesAllRoles", args: {
+              problem: problem,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestOpenAIResponsesAutoType(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOpenAIResponsesAutoType may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestOpenAIResponsesAutoType", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          topic: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestOpenAIResponsesConversation(
+          *varargs,
+          topic:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOpenAIResponsesConversation may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestOpenAIResponsesConversation", args: {
+              topic: topic,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestOpenAIResponsesCustomURL(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOpenAIResponsesCustomURL may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestOpenAIResponsesCustomURL", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestOpenAIResponsesDifferentModel(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOpenAIResponsesDifferentModel may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestOpenAIResponsesDifferentModel", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestOpenAIResponsesEndpoint(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOpenAIResponsesEndpoint may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestOpenAIResponsesEndpoint", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestOpenAIResponsesExplicit(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOpenAIResponsesExplicit may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestOpenAIResponsesExplicit", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          query: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestOpenAIResponsesFunctionCall(
+          *varargs,
+          query:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOpenAIResponsesFunctionCall may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestOpenAIResponsesFunctionCall", args: {
+              query: query,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          image: T.any(Baml::Image, String, Baml::Pdf, Baml::Audio),
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestOpenAIResponsesImageInput(
+          *varargs,
+          image:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOpenAIResponsesImageInput may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestOpenAIResponsesImageInput", args: {
+              image: image,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          problem: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestOpenAIResponsesReasoning(
+          *varargs,
+          problem:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOpenAIResponsesReasoning may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestOpenAIResponsesReasoning", args: {
+              problem: problem,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestOpenAIResponsesShorthand(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOpenAIResponsesShorthand may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestOpenAIResponsesShorthand", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          query: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestOpenAIResponsesWebSearch(
+          *varargs,
+          query:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOpenAIResponsesWebSearch may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestOpenAIResponsesWebSearch", args: {
+              query: query,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestOpenAIResponsesWithOpenAIResponseType(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOpenAIResponsesWithOpenAIResponseType may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestOpenAIResponsesWithOpenAIResponseType", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestOpenAIShorthand(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOpenAIShorthand may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestOpenAIShorthand", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestOpenAIWithFinishReasonError(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOpenAIWithFinishReasonError may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestOpenAIWithFinishReasonError", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestOpenAIWithMaxTokens(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOpenAIWithMaxTokens may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestOpenAIWithMaxTokens", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestOpenAIWithNullMaxTokens(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOpenAIWithNullMaxTokens may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestOpenAIWithNullMaxTokens", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestOpenRouterMistralSmall3_1_24b(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOpenRouterMistralSmall3_1_24b may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestOpenRouterMistralSmall3_1_24b", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          pdf: Baml::Pdf,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestOpenaiResponsesPdfs(
+          *varargs,
+          pdf:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOpenaiResponsesPdfs may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestOpenaiResponsesPdfs", args: {
+              pdf: pdf,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestRequestTimeout(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestRequestTimeout may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestRequestTimeout", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestRetryConstant(
+          *varargs,
+
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestRetryConstant may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestRetryConstant", args: {
+
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestRetryExponential(
+          *varargs,
+
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestRetryExponential may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestRetryExponential", args: {
+
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestRoundRobinStrategy(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestRoundRobinStrategy may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestRoundRobinStrategy", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestSingleFallbackClient(
+          *varargs,
+
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestSingleFallbackClient may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestSingleFallbackClient", args: {
+
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestSkipDynamic(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestSkipDynamic may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestSkipDynamic", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestSkipNonDynamic(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestSkipNonDynamic may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestSkipNonDynamic", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestStreamingTimeout(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestStreamingTimeout may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestStreamingTimeout", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestThinking(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestThinking may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestThinking", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestTimeoutError(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestTimeoutError may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestTimeoutError", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestTimeoutFallback(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestTimeoutFallback may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestTimeoutFallback", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          question: BamlClient::Types::UniverseQuestionInput,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestUniverseQuestion(
+          *varargs,
+          question:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestUniverseQuestion may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestUniverseQuestion", args: {
+              question: question,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestVertex(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestVertex may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestVertex", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestVertexClaude(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestVertexClaude may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestVertexClaude", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestVertexWithSystemInstructions(
+          *varargs,
+
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestVertexWithSystemInstructions may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestVertexWithSystemInstructions", args: {
+
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestZeroTimeout(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestZeroTimeout may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestZeroTimeout", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: T.any(String, T::Boolean),
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def UnionTest_Function(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("UnionTest_Function may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "UnionTest_Function", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          inp: BamlClient::Types::BlockConstraintForParam,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def UseBlockConstraint(
+          *varargs,
+          inp:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("UseBlockConstraint may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "UseBlockConstraint", args: {
+              inp: inp,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: BamlClient::Types::MaintainFieldOrder,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def UseMaintainFieldOrder(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("UseMaintainFieldOrder may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "UseMaintainFieldOrder", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          a: BamlClient::Types::MalformedConstraints2,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def UseMalformedConstraints(
+          *varargs,
+          a:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("UseMalformedConstraints may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "UseMalformedConstraints", args: {
+              a: a,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          inp: BamlClient::Types::NestedBlockConstraintForParam,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def UseNestedBlockConstraint(
+          *varargs,
+          inp:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("UseNestedBlockConstraint may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "UseNestedBlockConstraint", args: {
+              inp: inp,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def ValidateBasicResponses(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("ValidateBasicResponses may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "ValidateBasicResponses", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def ValidateResponseTypes(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("ValidateResponseTypes may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "ValidateResponseTypes", args: {
+              input: input,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          vid: Baml::Video,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def VideoInputGemini(
+          *varargs,
+          vid:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("VideoInputGemini may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "VideoInputGemini", args: {
+              vid: vid,
+          }, stream: false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          vid: Baml::Video,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def VideoInputVertex(
+          *varargs,
+          vid:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("VideoInputVertex may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "VideoInputVertex", args: {
+              vid: vid,
+          }, stream: false)
+      end
+
+  end
+
+  class BamlStreamRequestClient
+      extend T::Sig
+
+      sig {params(options: BamlClient::Internal::DoNotUseDirectlyCallManager).void}
+      def initialize(options)
+          @options = options
+      end
+
+      sig {params(
+          varargs: T.untyped,
+          recipe: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def AaaSamOutputFormat(
+          *varargs,
+          recipe:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("AaaSamOutputFormat may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "AaaSamOutputFormat", args: {
+              recipe: recipe,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          data: BamlClient::Types::LinkedListAliasNode,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def AliasThatPointsToRecursiveType(
+          *varargs,
+          data:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("AliasThatPointsToRecursiveType may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "AliasThatPointsToRecursiveType", args: {
+              data: data,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          money: Integer,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def AliasWithMultipleAttrs(
+          *varargs,
+          money:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("AliasWithMultipleAttrs may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "AliasWithMultipleAttrs", args: {
+              money: money,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: BamlClient::Types::InputClass,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def AliasedInputClass(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("AliasedInputClass may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "AliasedInputClass", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: BamlClient::Types::InputClass,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def AliasedInputClass2(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("AliasedInputClass2 may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "AliasedInputClass2", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: BamlClient::Types::InputClassNested,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def AliasedInputClassNested(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("AliasedInputClassNested may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "AliasedInputClassNested", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: BamlClient::Types::AliasedEnum,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def AliasedInputEnum(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("AliasedInputEnum may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "AliasedInputEnum", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: T::Array[BamlClient::Types::AliasedEnum],
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def AliasedInputList(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("AliasedInputList may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "AliasedInputList", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          optionals: BamlClient::Types::OptionalListAndMap,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def AllowedOptionals(
+          *varargs,
+          optionals:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("AllowedOptionals may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "AllowedOptionals", args: {
+              optionals: optionals,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          a: Integer,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def AssertFn(
+          *varargs,
+          a:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("AssertFn may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "AssertFn", args: {
+              a: a,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          aud: Baml::Audio,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def AudioInput(
+          *varargs,
+          aud:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("AudioInput may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "AudioInput", args: {
+              aud: aud,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          aud: Baml::Audio,prompt: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def AudioInputOpenai(
+          *varargs,
+          aud:,prompt:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("AudioInputOpenai may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "AudioInputOpenai", args: {
+              aud: aud,prompt: prompt,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: T::Array[Integer],
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def BuildLinkedList(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("BuildLinkedList may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "BuildLinkedList", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: BamlClient::Types::BinaryNode,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def BuildTree(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("BuildTree may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "BuildTree", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          word: String,target: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def CheckWordEquality(
+          *varargs,
+          word:,target:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("CheckWordEquality may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "CheckWordEquality", args: {
+              word: word,target: target,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          query: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def ChooseTodoTools(
+          *varargs,
+          query:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("ChooseTodoTools may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "ChooseTodoTools", args: {
+              query: query,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          cls: BamlClient::Types::ClassToRecAlias,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def ClassThatPointsToRecursiveClassThroughAlias(
+          *varargs,
+          cls:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("ClassThatPointsToRecursiveClassThroughAlias may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "ClassThatPointsToRecursiveClassThroughAlias", args: {
+              cls: cls,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def ClassifyDynEnumTwo(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("ClassifyDynEnumTwo may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "ClassifyDynEnumTwo", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def ClassifyDynamicStatus(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("ClassifyDynamicStatus may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "ClassifyDynamicStatus", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def ClassifyMessage(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("ClassifyMessage may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "ClassifyMessage", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def ClassifyMessage2(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("ClassifyMessage2 may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "ClassifyMessage2", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def ClassifyMessage3(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("ClassifyMessage3 may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "ClassifyMessage3", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          prefix: String,suffix: String,language: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def Completion(
+          *varargs,
+          prefix:,suffix:,language:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("Completion may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "Completion", args: {
+              prefix: prefix,suffix: suffix,language: language,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def CustomTask(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("CustomTask may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "CustomTask", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          audio: Baml::Audio,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def DescribeAudio(
+          *varargs,
+          audio:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("DescribeAudio may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "DescribeAudio", args: {
+              audio: audio,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          audio: Baml::Audio,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def DescribeAudio2(
+          *varargs,
+          audio:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("DescribeAudio2 may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "DescribeAudio2", args: {
+              audio: audio,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          img: Baml::Image,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def DescribeImage(
+          *varargs,
+          img:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("DescribeImage may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "DescribeImage", args: {
+              img: img,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          classWithImage: BamlClient::Types::ClassWithImage,img2: Baml::Image,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def DescribeImage2(
+          *varargs,
+          classWithImage:,img2:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("DescribeImage2 may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "DescribeImage2", args: {
+              classWithImage: classWithImage,img2: img2,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          classWithImage: BamlClient::Types::ClassWithImage,img2: Baml::Image,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def DescribeImage3(
+          *varargs,
+          classWithImage:,img2:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("DescribeImage3 may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "DescribeImage3", args: {
+              classWithImage: classWithImage,img2: img2,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          classWithImage: BamlClient::Types::ClassWithImage,img2: Baml::Image,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def DescribeImage4(
+          *varargs,
+          classWithImage:,img2:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("DescribeImage4 may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "DescribeImage4", args: {
+              classWithImage: classWithImage,img2: img2,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          img: Baml::Image,client_sector: String,client_name: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def DescribeMedia1599(
+          *varargs,
+          img:,client_sector:,client_name:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("DescribeMedia1599 may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "DescribeMedia1599", args: {
+              img: img,client_sector: client_sector,client_name: client_name,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def DifferentiateUnions(
+          *varargs,
+
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("DifferentiateUnions may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "DifferentiateUnions", args: {
+
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def DummyOutputFunction(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("DummyOutputFunction may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "DummyOutputFunction", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: BamlClient::Types::DynamicClassOne,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def DynamicFunc(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("DynamicFunc may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "DynamicFunc", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: BamlClient::Types::DynInputOutput,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def DynamicInputOutput(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("DynamicInputOutput may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "DynamicInputOutput", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: T::Array[BamlClient::Types::DynInputOutput],
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def DynamicListInputOutput(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("DynamicListInputOutput may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "DynamicListInputOutput", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def ExpectFailure(
+          *varargs,
+
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("ExpectFailure may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "ExpectFailure", args: {
+
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          document: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def ExtractContactInfo(
+          *varargs,
+          document:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("ExtractContactInfo may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "ExtractContactInfo", args: {
+              document: document,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def ExtractDynamicCategories(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("ExtractDynamicCategories may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "ExtractDynamicCategories", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          text: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def ExtractEntities(
+          *varargs,
+          text:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("ExtractEntities may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "ExtractEntities", args: {
+              text: text,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          text: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def ExtractHobby(
+          *varargs,
+          text:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("ExtractHobby may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "ExtractHobby", args: {
+              text: text,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          text: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def ExtractName(
+          *varargs,
+          text:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("ExtractName may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "ExtractName", args: {
+              text: text,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def ExtractNames(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("ExtractNames may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "ExtractNames", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          text: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def ExtractPeople(
+          *varargs,
+          text:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("ExtractPeople may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "ExtractPeople", args: {
+              text: text,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def ExtractPersonWithMeta(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("ExtractPersonWithMeta may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "ExtractPersonWithMeta", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          email: String,reason: T.any(String, String),
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def ExtractReceiptInfo(
+          *varargs,
+          email:,reason:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("ExtractReceiptInfo may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "ExtractReceiptInfo", args: {
+              email: email,reason: reason,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          resume: String,img: T.nilable(Baml::Image),
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def ExtractResume(
+          *varargs,
+          resume:,img:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("ExtractResume may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "ExtractResume", args: {
+              resume: resume,img: img,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          resume: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def ExtractResume2(
+          *varargs,
+          resume:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("ExtractResume2 may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "ExtractResume2", args: {
+              resume: resume,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def FnAlwaysFails(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("FnAlwaysFails may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "FnAlwaysFails", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def FnClassOptionalOutput(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("FnClassOptionalOutput may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "FnClassOptionalOutput", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def FnClassOptionalOutput2(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("FnClassOptionalOutput2 may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "FnClassOptionalOutput2", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def FnEnumListOutput(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("FnEnumListOutput may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "FnEnumListOutput", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def FnEnumOutput(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("FnEnumOutput may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "FnEnumOutput", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          retries: Integer,delay_ms: Integer,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def FnFailRetryConstantDelay(
+          *varargs,
+          retries:,delay_ms:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("FnFailRetryConstantDelay may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "FnFailRetryConstantDelay", args: {
+              retries: retries,delay_ms: delay_ms,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          retries: Integer,initial_delay_ms: Integer,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def FnFailRetryExponentialDelay(
+          *varargs,
+          retries:,initial_delay_ms:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("FnFailRetryExponentialDelay may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "FnFailRetryExponentialDelay", args: {
+              retries: retries,initial_delay_ms: initial_delay_ms,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def FnFallbackAlwaysFails(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("FnFallbackAlwaysFails may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "FnFallbackAlwaysFails", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: BamlClient::Types::LiteralClassHello,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def FnLiteralClassInputOutput(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("FnLiteralClassInputOutput may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "FnLiteralClassInputOutput", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: T.any(BamlClient::Types::LiteralClassOne, BamlClient::Types::LiteralClassTwo),
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def FnLiteralUnionClassInputOutput(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("FnLiteralUnionClassInputOutput may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "FnLiteralUnionClassInputOutput", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          myString: T.nilable(String),
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def FnNamedArgsSingleStringOptional(
+          *varargs,
+          myString:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("FnNamedArgsSingleStringOptional may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "FnNamedArgsSingleStringOptional", args: {
+              myString: myString,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def FnOutputBool(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("FnOutputBool may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "FnOutputBool", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def FnOutputClass(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("FnOutputClass may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "FnOutputClass", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def FnOutputClassList(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("FnOutputClassList may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "FnOutputClassList", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def FnOutputClassNested(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("FnOutputClassNested may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "FnOutputClassNested", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def FnOutputClassWithEnum(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("FnOutputClassWithEnum may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "FnOutputClassWithEnum", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def FnOutputInt(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("FnOutputInt may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "FnOutputInt", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def FnOutputLiteralBool(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("FnOutputLiteralBool may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "FnOutputLiteralBool", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def FnOutputLiteralInt(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("FnOutputLiteralInt may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "FnOutputLiteralInt", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def FnOutputLiteralString(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("FnOutputLiteralString may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "FnOutputLiteralString", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def FnOutputStringList(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("FnOutputStringList may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "FnOutputStringList", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def FnTestAliasedEnumOutput(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("FnTestAliasedEnumOutput may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "FnTestAliasedEnumOutput", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def FnTestClassAlias(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("FnTestClassAlias may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "FnTestClassAlias", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          myArg: BamlClient::Types::NamedArgsSingleEnum,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def FnTestNamedArgsSingleEnum(
+          *varargs,
+          myArg:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("FnTestNamedArgsSingleEnum may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "FnTestNamedArgsSingleEnum", args: {
+              myArg: myArg,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          text: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def GetDataType(
+          *varargs,
+          text:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("GetDataType may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "GetDataType", args: {
+              text: text,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          email: BamlClient::Types::Email,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def GetOrderInfo(
+          *varargs,
+          email:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("GetOrderInfo may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "GetOrderInfo", args: {
+              email: email,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          query: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def GetQuery(
+          *varargs,
+          query:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("GetQuery may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "GetQuery", args: {
+              query: query,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          i1: T::Hash[BamlClient::Types::MapKey, String],i2: T::Hash[BamlClient::Types::MapKey, String],
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def InOutEnumMapKey(
+          *varargs,
+          i1:,i2:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("InOutEnumMapKey may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "InOutEnumMapKey", args: {
+              i1: i1,i2: i2,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          i1: T::Hash[T.any(String, String, String, String), String],i2: T::Hash[T.any(String, String, String, String), String],
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def InOutLiteralStringUnionMapKey(
+          *varargs,
+          i1:,i2:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("InOutLiteralStringUnionMapKey may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "InOutLiteralStringUnionMapKey", args: {
+              i1: i1,i2: i2,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          m: T::Hash[String, String],
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def InOutSingleLiteralStringMapKey(
+          *varargs,
+          m:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("InOutSingleLiteralStringMapKey may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "InOutSingleLiteralStringMapKey", args: {
+              m: m,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: BamlClient::Types::JsonValue,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def JsonTypeAliasCycle(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("JsonTypeAliasCycle may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "JsonTypeAliasCycle", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def LLMEcho(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("LLMEcho may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "LLMEcho", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def LiteralUnionsTest(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("LiteralUnionsTest may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "LiteralUnionsTest", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          n: Integer,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def LlmReturnNumber(
+          *varargs,
+          n:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("LlmReturnNumber may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "LlmReturnNumber", args: {
+              n: n,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def MakeBlockConstraint(
+          *varargs,
+
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("MakeBlockConstraint may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "MakeBlockConstraint", args: {
+
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def MakeClassWithBlockDone(
+          *varargs,
+
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("MakeClassWithBlockDone may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "MakeClassWithBlockDone", args: {
+
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def MakeClassWithExternalDone(
+          *varargs,
+
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("MakeClassWithExternalDone may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "MakeClassWithExternalDone", args: {
+
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def MakeNestedBlockConstraint(
+          *varargs,
+
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("MakeNestedBlockConstraint may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "MakeNestedBlockConstraint", args: {
+
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def MakeSemanticContainer(
+          *varargs,
+
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("MakeSemanticContainer may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "MakeSemanticContainer", args: {
+
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          m: T::Hash[String, T::Array[String]],
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def MapAlias(
+          *varargs,
+          m:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("MapAlias may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "MapAlias", args: {
+              m: m,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          money: Integer,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def MergeAliasAttributes(
+          *varargs,
+          money:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("MergeAliasAttributes may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "MergeAliasAttributes", args: {
+              money: money,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def MyFunc(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("MyFunc may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "MyFunc", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          c: T.any(Integer, String, T::Boolean, Float, T::Array[String], T::Hash[String, T::Array[String]]),
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def NestedAlias(
+          *varargs,
+          c:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("NestedAlias may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "NestedAlias", args: {
+              c: c,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          s: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def NullLiteralClassHello(
+          *varargs,
+          s:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("NullLiteralClassHello may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "NullLiteralClassHello", args: {
+              s: s,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def OpenAIGPT4oMissingBaseUrlEnvVar(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("OpenAIGPT4oMissingBaseUrlEnvVar may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "OpenAIGPT4oMissingBaseUrlEnvVar", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          s: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def OpenAIWithAnthropicResponseHello(
+          *varargs,
+          s:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("OpenAIWithAnthropicResponseHello may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "OpenAIWithAnthropicResponseHello", args: {
+              s: s,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def OptionalTest_Function(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("OptionalTest_Function may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "OptionalTest_Function", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          pdf: Baml::Pdf,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def PdfInput(
+          *varargs,
+          pdf:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("PdfInput may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "PdfInput", args: {
+              pdf: pdf,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          pdf: Baml::Pdf,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def PdfInputAnthropic(
+          *varargs,
+          pdf:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("PdfInputAnthropic may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "PdfInputAnthropic", args: {
+              pdf: pdf,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          pdf: Baml::Pdf,prompt: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def PdfInputOpenai(
+          *varargs,
+          pdf:,prompt:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("PdfInputOpenai may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "PdfInputOpenai", args: {
+              pdf: pdf,prompt: prompt,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          pdf: Baml::Pdf,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def PdfInputVertex(
+          *varargs,
+          pdf:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("PdfInputVertex may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "PdfInputVertex", args: {
+              pdf: pdf,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          name: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def PredictAge(
+          *varargs,
+          name:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("PredictAge may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "PredictAge", args: {
+              name: name,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          inp: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def PredictAgeBare(
+          *varargs,
+          inp:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("PredictAgeBare may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "PredictAgeBare", args: {
+              inp: inp,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          p: T.any(Integer, String, T::Boolean, Float),
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def PrimitiveAlias(
+          *varargs,
+          p:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("PrimitiveAlias may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "PrimitiveAlias", args: {
+              p: p,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def PromptTestClaude(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("PromptTestClaude may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "PromptTestClaude", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def PromptTestClaudeChat(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("PromptTestClaudeChat may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "PromptTestClaudeChat", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def PromptTestClaudeChatNoSystem(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("PromptTestClaudeChatNoSystem may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "PromptTestClaudeChatNoSystem", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def PromptTestOpenAI(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("PromptTestOpenAI may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "PromptTestOpenAI", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def PromptTestOpenAIChat(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("PromptTestOpenAIChat may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "PromptTestOpenAIChat", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def PromptTestOpenAIChatNoSystem(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("PromptTestOpenAIChatNoSystem may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "PromptTestOpenAIChatNoSystem", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def PromptTestStreaming(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("PromptTestStreaming may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "PromptTestStreaming", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: BamlClient::Types::RecAliasOne,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def RecursiveAliasCycle(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("RecursiveAliasCycle may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "RecursiveAliasCycle", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          cls: BamlClient::Types::NodeWithAliasIndirection,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def RecursiveClassWithAliasIndirection(
+          *varargs,
+          cls:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("RecursiveClassWithAliasIndirection may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "RecursiveClassWithAliasIndirection", args: {
+              cls: cls,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: BamlClient::Types::RecursiveUnion,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def RecursiveUnionTest(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("RecursiveUnionTest may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "RecursiveUnionTest", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: BamlClient::Types::RenderTestClass,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def RenderDynamicClass(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("RenderDynamicClass may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "RenderDynamicClass", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          bike: T.any(BamlClient::Types::RenderTestEnum, String),other: T.any(BamlClient::Types::RenderTestEnum, String),
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def RenderDynamicEnum(
+          *varargs,
+          bike:,other:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("RenderDynamicEnum may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "RenderDynamicEnum", args: {
+              bike: bike,other: other,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          money: Integer,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def ReturnAliasWithMergedAttributes(
+          *varargs,
+          money:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("ReturnAliasWithMergedAttributes may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "ReturnAliasWithMergedAttributes", args: {
+              money: money,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          inp: Integer,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def ReturnFailingAssert(
+          *varargs,
+          inp:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("ReturnFailingAssert may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "ReturnFailingAssert", args: {
+              inp: inp,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          s: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def ReturnJsonEntry(
+          *varargs,
+          s:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("ReturnJsonEntry may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "ReturnJsonEntry", args: {
+              s: s,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          a: Integer,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def ReturnMalformedConstraints(
+          *varargs,
+          a:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("ReturnMalformedConstraints may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "ReturnMalformedConstraints", args: {
+              a: a,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def SchemaDescriptions(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("SchemaDescriptions may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "SchemaDescriptions", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: BamlClient::Types::RecursiveListAlias,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def SimpleRecursiveListAlias(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("SimpleRecursiveListAlias may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "SimpleRecursiveListAlias", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: BamlClient::Types::RecursiveMapAlias,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def SimpleRecursiveMapAlias(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("SimpleRecursiveMapAlias may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "SimpleRecursiveMapAlias", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          digits: Integer,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def StreamBigNumbers(
+          *varargs,
+          digits:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("StreamBigNumbers may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "StreamBigNumbers", args: {
+              digits: digits,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          theme: String,length: Integer,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def StreamFailingAssertion(
+          *varargs,
+          theme:,length:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("StreamFailingAssertion may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "StreamFailingAssertion", args: {
+              theme: theme,length: length,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          theme: String,length: Integer,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def StreamFailingCheck(
+          *varargs,
+          theme:,length:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("StreamFailingCheck may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "StreamFailingCheck", args: {
+              theme: theme,length: length,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          digits: Integer,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def StreamOneBigNumber(
+          *varargs,
+          digits:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("StreamOneBigNumber may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "StreamOneBigNumber", args: {
+              digits: digits,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          digits: Integer,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def StreamUnionIntegers(
+          *varargs,
+          digits:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("StreamUnionIntegers may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "StreamUnionIntegers", args: {
+              digits: digits,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          digits: Integer,yapping: T::Boolean,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def StreamingCompoundNumbers(
+          *varargs,
+          digits:,yapping:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("StreamingCompoundNumbers may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "StreamingCompoundNumbers", args: {
+              digits: digits,yapping: yapping,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          document_txt: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def StructureDocument1559(
+          *varargs,
+          document_txt:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("StructureDocument1559 may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "StructureDocument1559", args: {
+              document_txt: document_txt,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: BamlClient::Types::RecursiveAliasDependency,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TakeRecAliasDep(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TakeRecAliasDep may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TakeRecAliasDep", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          story: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TellStory(
+          *varargs,
+          story:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TellStory may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TellStory", args: {
+              story: story,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TemplateStringTestEcho(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TemplateStringTestEcho may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TemplateStringTestEcho", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestAbortFallbackChain(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestAbortFallbackChain may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestAbortFallbackChain", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestAnthropic(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestAnthropic may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestAnthropic", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestAnthropicShorthand(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestAnthropicShorthand may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestAnthropicShorthand", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestAws(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestAws may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestAws", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestAwsClaude37(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestAwsClaude37 may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestAwsClaude37", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestAwsInferenceProfile(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestAwsInferenceProfile may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestAwsInferenceProfile", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestAwsInvalidAccessKey(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestAwsInvalidAccessKey may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestAwsInvalidAccessKey", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestAwsInvalidEndpoint(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestAwsInvalidEndpoint may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestAwsInvalidEndpoint", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestAwsInvalidProfile(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestAwsInvalidProfile may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestAwsInvalidProfile", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestAwsInvalidRegion(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestAwsInvalidRegion may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestAwsInvalidRegion", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestAwsInvalidSessionToken(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestAwsInvalidSessionToken may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestAwsInvalidSessionToken", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          video_input: Baml::Video,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestAwsVideoDescribe(
+          *varargs,
+          video_input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestAwsVideoDescribe may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestAwsVideoDescribe", args: {
+              video_input: video_input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestAzure(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestAzure may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestAzure", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestAzureFailure(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestAzureFailure may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestAzureFailure", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestAzureO1NoMaxTokens(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestAzureO1NoMaxTokens may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestAzureO1NoMaxTokens", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestAzureO1WithMaxCompletionTokens(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestAzureO1WithMaxCompletionTokens may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestAzureO1WithMaxCompletionTokens", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestAzureO1WithMaxTokens(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestAzureO1WithMaxTokens may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestAzureO1WithMaxTokens", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestAzureO3NoMaxTokens(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestAzureO3NoMaxTokens may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestAzureO3NoMaxTokens", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestAzureO3WithMaxCompletionTokens(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestAzureO3WithMaxCompletionTokens may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestAzureO3WithMaxCompletionTokens", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestAzureWithMaxTokens(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestAzureWithMaxTokens may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestAzureWithMaxTokens", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,not_cached: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestCaching(
+          *varargs,
+          input:,not_cached:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestCaching may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestCaching", args: {
+              input: input,not_cached: not_cached,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestDefaultStreamingTimeout(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestDefaultStreamingTimeout may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestDefaultStreamingTimeout", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestFallbackClient(
+          *varargs,
+
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestFallbackClient may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestFallbackClient", args: {
+
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestFallbackStrategy(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestFallbackStrategy may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestFallbackStrategy", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestFallbackToShorthand(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestFallbackToShorthand may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestFallbackToShorthand", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          myBool: T::Boolean,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestFnNamedArgsSingleBool(
+          *varargs,
+          myBool:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestFnNamedArgsSingleBool may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestFnNamedArgsSingleBool", args: {
+              myBool: myBool,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          myArg: BamlClient::Types::NamedArgsSingleClass,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestFnNamedArgsSingleClass(
+          *varargs,
+          myArg:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestFnNamedArgsSingleClass may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestFnNamedArgsSingleClass", args: {
+              myArg: myArg,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          myArg: T::Array[BamlClient::Types::NamedArgsSingleEnumList],
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestFnNamedArgsSingleEnumList(
+          *varargs,
+          myArg:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestFnNamedArgsSingleEnumList may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestFnNamedArgsSingleEnumList", args: {
+              myArg: myArg,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          myFloat: Float,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestFnNamedArgsSingleFloat(
+          *varargs,
+          myFloat:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestFnNamedArgsSingleFloat may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestFnNamedArgsSingleFloat", args: {
+              myFloat: myFloat,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          myInt: Integer,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestFnNamedArgsSingleInt(
+          *varargs,
+          myInt:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestFnNamedArgsSingleInt may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestFnNamedArgsSingleInt", args: {
+              myInt: myInt,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          myMap: T::Hash[String, BamlClient::Types::StringToClassEntry],
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestFnNamedArgsSingleMapStringToClass(
+          *varargs,
+          myMap:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestFnNamedArgsSingleMapStringToClass may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestFnNamedArgsSingleMapStringToClass", args: {
+              myMap: myMap,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          myMap: T::Hash[String, T::Hash[String, String]],
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestFnNamedArgsSingleMapStringToMap(
+          *varargs,
+          myMap:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestFnNamedArgsSingleMapStringToMap may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestFnNamedArgsSingleMapStringToMap", args: {
+              myMap: myMap,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          myMap: T::Hash[String, String],
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestFnNamedArgsSingleMapStringToString(
+          *varargs,
+          myMap:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestFnNamedArgsSingleMapStringToString may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestFnNamedArgsSingleMapStringToString", args: {
+              myMap: myMap,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          myString: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestFnNamedArgsSingleString(
+          *varargs,
+          myString:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestFnNamedArgsSingleString may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestFnNamedArgsSingleString", args: {
+              myString: myString,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          myStringArray: T::Array[String],
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestFnNamedArgsSingleStringArray(
+          *varargs,
+          myStringArray:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestFnNamedArgsSingleStringArray may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestFnNamedArgsSingleStringArray", args: {
+              myStringArray: myStringArray,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          myArg: T::Array[String],
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestFnNamedArgsSingleStringList(
+          *varargs,
+          myArg:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestFnNamedArgsSingleStringList may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestFnNamedArgsSingleStringList", args: {
+              myArg: myArg,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestGemini(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestGemini may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestGemini", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestGeminiOpenAiGeneric(
+          *varargs,
+
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestGeminiOpenAiGeneric may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestGeminiOpenAiGeneric", args: {
+
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestGeminiSystem(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestGeminiSystem may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestGeminiSystem", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestGeminiSystemAsChat(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestGeminiSystemAsChat may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestGeminiSystemAsChat", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestGeminiThinking(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestGeminiThinking may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestGeminiThinking", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestGroq(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestGroq may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestGroq", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          img: Baml::Image,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestImageInput(
+          *varargs,
+          img:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestImageInput may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestImageInput", args: {
+              img: img,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          img: Baml::Image,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestImageInputAnthropic(
+          *varargs,
+          img:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestImageInputAnthropic may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestImageInputAnthropic", args: {
+              img: img,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          imgs: T::Array[Baml::Image],
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestImageListInput(
+          *varargs,
+          imgs:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestImageListInput may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestImageListInput", args: {
+              imgs: imgs,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestMemory(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestMemory may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestMemory", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          myArg: BamlClient::Types::NamedArgsSingleClass,myArg2: BamlClient::Types::NamedArgsSingleClass,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestMulticlassNamedArgs(
+          *varargs,
+          myArg:,myArg2:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestMulticlassNamedArgs may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestMulticlassNamedArgs", args: {
+              myArg: myArg,myArg2: myArg2,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          myBool: T::Boolean,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestNamedArgsLiteralBool(
+          *varargs,
+          myBool:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestNamedArgsLiteralBool may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestNamedArgsLiteralBool", args: {
+              myBool: myBool,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          myInt: Integer,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestNamedArgsLiteralInt(
+          *varargs,
+          myInt:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestNamedArgsLiteralInt may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestNamedArgsLiteralInt", args: {
+              myInt: myInt,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          myString: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestNamedArgsLiteralString(
+          *varargs,
+          myString:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestNamedArgsLiteralString may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestNamedArgsLiteralString", args: {
+              myString: myString,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestOllama(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOllama may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestOllama", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestOllamaHaiku(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOllamaHaiku may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestOllamaHaiku", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestOpenAI(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOpenAI may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestOpenAI", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestOpenAIDummyClient(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOpenAIDummyClient may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestOpenAIDummyClient", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestOpenAIGPT4oMini(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOpenAIGPT4oMini may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestOpenAIGPT4oMini", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestOpenAIGPT4oMini2(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOpenAIGPT4oMini2 may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestOpenAIGPT4oMini2", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestOpenAIGPT4oMini3(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOpenAIGPT4oMini3 may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestOpenAIGPT4oMini3", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestOpenAILegacyProvider(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOpenAILegacyProvider may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestOpenAILegacyProvider", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestOpenAIO1NoMaxTokens(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOpenAIO1NoMaxTokens may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestOpenAIO1NoMaxTokens", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestOpenAIO1WithMaxCompletionTokens(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOpenAIO1WithMaxCompletionTokens may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestOpenAIO1WithMaxCompletionTokens", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestOpenAIO1WithMaxTokens(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOpenAIO1WithMaxTokens may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestOpenAIO1WithMaxTokens", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestOpenAIProviderWithResponsesType(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOpenAIProviderWithResponsesType may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestOpenAIProviderWithResponsesType", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestOpenAIResponses(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOpenAIResponses may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestOpenAIResponses", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          problem: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestOpenAIResponsesAllRoles(
+          *varargs,
+          problem:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOpenAIResponsesAllRoles may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestOpenAIResponsesAllRoles", args: {
+              problem: problem,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestOpenAIResponsesAutoType(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOpenAIResponsesAutoType may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestOpenAIResponsesAutoType", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          topic: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestOpenAIResponsesConversation(
+          *varargs,
+          topic:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOpenAIResponsesConversation may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestOpenAIResponsesConversation", args: {
+              topic: topic,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestOpenAIResponsesCustomURL(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOpenAIResponsesCustomURL may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestOpenAIResponsesCustomURL", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestOpenAIResponsesDifferentModel(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOpenAIResponsesDifferentModel may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestOpenAIResponsesDifferentModel", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestOpenAIResponsesEndpoint(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOpenAIResponsesEndpoint may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestOpenAIResponsesEndpoint", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestOpenAIResponsesExplicit(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOpenAIResponsesExplicit may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestOpenAIResponsesExplicit", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          query: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestOpenAIResponsesFunctionCall(
+          *varargs,
+          query:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOpenAIResponsesFunctionCall may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestOpenAIResponsesFunctionCall", args: {
+              query: query,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          image: T.any(Baml::Image, String, Baml::Pdf, Baml::Audio),
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestOpenAIResponsesImageInput(
+          *varargs,
+          image:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOpenAIResponsesImageInput may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestOpenAIResponsesImageInput", args: {
+              image: image,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          problem: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestOpenAIResponsesReasoning(
+          *varargs,
+          problem:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOpenAIResponsesReasoning may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestOpenAIResponsesReasoning", args: {
+              problem: problem,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestOpenAIResponsesShorthand(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOpenAIResponsesShorthand may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestOpenAIResponsesShorthand", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          query: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestOpenAIResponsesWebSearch(
+          *varargs,
+          query:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOpenAIResponsesWebSearch may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestOpenAIResponsesWebSearch", args: {
+              query: query,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestOpenAIResponsesWithOpenAIResponseType(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOpenAIResponsesWithOpenAIResponseType may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestOpenAIResponsesWithOpenAIResponseType", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestOpenAIShorthand(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOpenAIShorthand may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestOpenAIShorthand", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestOpenAIWithFinishReasonError(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOpenAIWithFinishReasonError may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestOpenAIWithFinishReasonError", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestOpenAIWithMaxTokens(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOpenAIWithMaxTokens may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestOpenAIWithMaxTokens", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestOpenAIWithNullMaxTokens(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOpenAIWithNullMaxTokens may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestOpenAIWithNullMaxTokens", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestOpenRouterMistralSmall3_1_24b(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOpenRouterMistralSmall3_1_24b may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestOpenRouterMistralSmall3_1_24b", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          pdf: Baml::Pdf,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestOpenaiResponsesPdfs(
+          *varargs,
+          pdf:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOpenaiResponsesPdfs may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestOpenaiResponsesPdfs", args: {
+              pdf: pdf,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestRequestTimeout(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestRequestTimeout may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestRequestTimeout", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestRetryConstant(
+          *varargs,
+
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestRetryConstant may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestRetryConstant", args: {
+
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestRetryExponential(
+          *varargs,
+
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestRetryExponential may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestRetryExponential", args: {
+
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestRoundRobinStrategy(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestRoundRobinStrategy may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestRoundRobinStrategy", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestSingleFallbackClient(
+          *varargs,
+
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestSingleFallbackClient may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestSingleFallbackClient", args: {
+
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestSkipDynamic(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestSkipDynamic may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestSkipDynamic", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestSkipNonDynamic(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestSkipNonDynamic may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestSkipNonDynamic", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestStreamingTimeout(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestStreamingTimeout may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestStreamingTimeout", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestThinking(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestThinking may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestThinking", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestTimeoutError(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestTimeoutError may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestTimeoutError", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestTimeoutFallback(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestTimeoutFallback may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestTimeoutFallback", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          question: BamlClient::Types::UniverseQuestionInput,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestUniverseQuestion(
+          *varargs,
+          question:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestUniverseQuestion may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestUniverseQuestion", args: {
+              question: question,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestVertex(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestVertex may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestVertex", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestVertexClaude(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestVertexClaude may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestVertexClaude", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestVertexWithSystemInstructions(
+          *varargs,
+
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestVertexWithSystemInstructions may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestVertexWithSystemInstructions", args: {
+
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def TestZeroTimeout(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestZeroTimeout may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "TestZeroTimeout", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: T.any(String, T::Boolean),
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def UnionTest_Function(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("UnionTest_Function may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "UnionTest_Function", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          inp: BamlClient::Types::BlockConstraintForParam,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def UseBlockConstraint(
+          *varargs,
+          inp:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("UseBlockConstraint may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "UseBlockConstraint", args: {
+              inp: inp,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: BamlClient::Types::MaintainFieldOrder,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def UseMaintainFieldOrder(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("UseMaintainFieldOrder may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "UseMaintainFieldOrder", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          a: BamlClient::Types::MalformedConstraints2,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def UseMalformedConstraints(
+          *varargs,
+          a:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("UseMalformedConstraints may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "UseMalformedConstraints", args: {
+              a: a,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          inp: BamlClient::Types::NestedBlockConstraintForParam,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def UseNestedBlockConstraint(
+          *varargs,
+          inp:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("UseNestedBlockConstraint may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "UseNestedBlockConstraint", args: {
+              inp: inp,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def ValidateBasicResponses(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("ValidateBasicResponses may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "ValidateBasicResponses", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          input: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def ValidateResponseTypes(
+          *varargs,
+          input:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("ValidateResponseTypes may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "ValidateResponseTypes", args: {
+              input: input,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          vid: Baml::Video,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def VideoInputGemini(
+          *varargs,
+          vid:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("VideoInputGemini may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "VideoInputGemini", args: {
+              vid: vid,
+          }, stream: true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          vid: Baml::Video,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Baml::Ffi::HTTPRequest)}
+      def VideoInputVertex(
+          *varargs,
+          vid:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("VideoInputVertex may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __options__.build_request_sync(function_name: "VideoInputVertex", args: {
+              vid: vid,
+          }, stream: true)
+      end
+
+  end
+
+  class BamlParseClient
+      extend T::Sig
+
+      sig {params(options: BamlClient::Internal::DoNotUseDirectlyCallManager).void}
+      def initialize(options)
+          @options = options
+      end
+
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(BamlClient::Types::Recipe)}
+      def AaaSamOutputFormat(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("AaaSamOutputFormat may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "AaaSamOutputFormat", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(BamlClient::Types::LinkedListAliasNode)}
+      def AliasThatPointsToRecursiveType(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("AliasThatPointsToRecursiveType may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "AliasThatPointsToRecursiveType", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(BamlClient::Types::Checked[Integer])}
+      def AliasWithMultipleAttrs(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("AliasWithMultipleAttrs may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "AliasWithMultipleAttrs", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def AliasedInputClass(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("AliasedInputClass may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "AliasedInputClass", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def AliasedInputClass2(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("AliasedInputClass2 may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "AliasedInputClass2", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def AliasedInputClassNested(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("AliasedInputClassNested may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "AliasedInputClassNested", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def AliasedInputEnum(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("AliasedInputEnum may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "AliasedInputEnum", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def AliasedInputList(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("AliasedInputList may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "AliasedInputList", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(BamlClient::Types::OptionalListAndMap)}
+      def AllowedOptionals(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("AllowedOptionals may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "AllowedOptionals", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Integer)}
+      def AssertFn(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("AssertFn may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "AssertFn", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def AudioInput(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("AudioInput may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "AudioInput", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def AudioInputOpenai(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("AudioInputOpenai may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "AudioInputOpenai", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(BamlClient::Types::LinkedList)}
+      def BuildLinkedList(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("BuildLinkedList may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "BuildLinkedList", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(BamlClient::Types::Tree)}
+      def BuildTree(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("BuildTree may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "BuildTree", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(T::Boolean)}
+      def CheckWordEquality(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("CheckWordEquality may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "CheckWordEquality", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(T::Array[T.any(BamlClient::Types::AddTodoItem, BamlClient::Types::TodoMessageToUser)])}
+      def ChooseTodoTools(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("ChooseTodoTools may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "ChooseTodoTools", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(BamlClient::Types::ClassToRecAlias)}
+      def ClassThatPointsToRecursiveClassThroughAlias(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("ClassThatPointsToRecursiveClassThroughAlias may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "ClassThatPointsToRecursiveClassThroughAlias", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(T.any(BamlClient::Types::DynEnumTwo, String))}
+      def ClassifyDynEnumTwo(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("ClassifyDynEnumTwo may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "ClassifyDynEnumTwo", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(T.any(BamlClient::Types::DynEnumOne, String))}
+      def ClassifyDynamicStatus(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("ClassifyDynamicStatus may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "ClassifyDynamicStatus", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(BamlClient::Types::Category)}
+      def ClassifyMessage(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("ClassifyMessage may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "ClassifyMessage", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(BamlClient::Types::Category)}
+      def ClassifyMessage2(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("ClassifyMessage2 may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "ClassifyMessage2", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(BamlClient::Types::Category)}
+      def ClassifyMessage3(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("ClassifyMessage3 may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "ClassifyMessage3", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def Completion(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("Completion may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "Completion", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(T.any(BamlClient::Types::BookOrder, BamlClient::Types::FlightConfirmation, BamlClient::Types::GroceryReceipt))}
+      def CustomTask(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("CustomTask may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "CustomTask", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def DescribeAudio(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("DescribeAudio may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "DescribeAudio", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def DescribeAudio2(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("DescribeAudio2 may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "DescribeAudio2", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def DescribeImage(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("DescribeImage may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "DescribeImage", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def DescribeImage2(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("DescribeImage2 may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "DescribeImage2", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def DescribeImage3(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("DescribeImage3 may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "DescribeImage3", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def DescribeImage4(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("DescribeImage4 may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "DescribeImage4", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def DescribeMedia1599(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("DescribeMedia1599 may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "DescribeMedia1599", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(T.any(BamlClient::Types::OriginalA, BamlClient::Types::OriginalB))}
+      def DifferentiateUnions(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("DifferentiateUnions may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "DifferentiateUnions", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(BamlClient::Types::DummyOutput)}
+      def DummyOutputFunction(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("DummyOutputFunction may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "DummyOutputFunction", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(BamlClient::Types::DynamicClassTwo)}
+      def DynamicFunc(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("DynamicFunc may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "DynamicFunc", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(BamlClient::Types::DynInputOutput)}
+      def DynamicInputOutput(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("DynamicInputOutput may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "DynamicInputOutput", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(T::Array[BamlClient::Types::DynInputOutput])}
+      def DynamicListInputOutput(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("DynamicListInputOutput may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "DynamicListInputOutput", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def ExpectFailure(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("ExpectFailure may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "ExpectFailure", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(BamlClient::Types::ContactInfo)}
+      def ExtractContactInfo(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("ExtractContactInfo may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "ExtractContactInfo", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(T::Array[T.any(BamlClient::Types::DynEnumTwo, String)])}
+      def ExtractDynamicCategories(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("ExtractDynamicCategories may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "ExtractDynamicCategories", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(BamlClient::Types::DynamicSchema)}
+      def ExtractEntities(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("ExtractEntities may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "ExtractEntities", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(T::Array[T.any(BamlClient::Types::Hobby, String)])}
+      def ExtractHobby(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("ExtractHobby may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "ExtractHobby", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def ExtractName(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("ExtractName may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "ExtractName", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(T::Array[String])}
+      def ExtractNames(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("ExtractNames may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "ExtractNames", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(T::Array[BamlClient::Types::Person])}
+      def ExtractPeople(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("ExtractPeople may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "ExtractPeople", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(BamlClient::Types::PersonWithMeta)}
+      def ExtractPersonWithMeta(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("ExtractPersonWithMeta may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "ExtractPersonWithMeta", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(BamlClient::Types::ReceiptInfo)}
+      def ExtractReceiptInfo(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("ExtractReceiptInfo may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "ExtractReceiptInfo", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(BamlClient::Types::Resume)}
+      def ExtractResume(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("ExtractResume may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "ExtractResume", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(BamlClient::Types::Resume)}
+      def ExtractResume2(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("ExtractResume2 may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "ExtractResume2", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def FnAlwaysFails(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("FnAlwaysFails may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "FnAlwaysFails", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(T.nilable(BamlClient::Types::ClassOptionalOutput))}
+      def FnClassOptionalOutput(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("FnClassOptionalOutput may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "FnClassOptionalOutput", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(T.nilable(BamlClient::Types::ClassOptionalOutput2))}
+      def FnClassOptionalOutput2(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("FnClassOptionalOutput2 may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "FnClassOptionalOutput2", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(T::Array[BamlClient::Types::EnumOutput])}
+      def FnEnumListOutput(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("FnEnumListOutput may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "FnEnumListOutput", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(BamlClient::Types::EnumOutput)}
+      def FnEnumOutput(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("FnEnumOutput may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "FnEnumOutput", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def FnFailRetryConstantDelay(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("FnFailRetryConstantDelay may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "FnFailRetryConstantDelay", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def FnFailRetryExponentialDelay(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("FnFailRetryExponentialDelay may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "FnFailRetryExponentialDelay", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def FnFallbackAlwaysFails(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("FnFallbackAlwaysFails may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "FnFallbackAlwaysFails", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(BamlClient::Types::LiteralClassHello)}
+      def FnLiteralClassInputOutput(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("FnLiteralClassInputOutput may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "FnLiteralClassInputOutput", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(T.any(BamlClient::Types::LiteralClassOne, BamlClient::Types::LiteralClassTwo))}
+      def FnLiteralUnionClassInputOutput(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("FnLiteralUnionClassInputOutput may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "FnLiteralUnionClassInputOutput", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def FnNamedArgsSingleStringOptional(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("FnNamedArgsSingleStringOptional may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "FnNamedArgsSingleStringOptional", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(T::Boolean)}
+      def FnOutputBool(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("FnOutputBool may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "FnOutputBool", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(BamlClient::Types::TestOutputClass)}
+      def FnOutputClass(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("FnOutputClass may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "FnOutputClass", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(T::Array[BamlClient::Types::TestOutputClass])}
+      def FnOutputClassList(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("FnOutputClassList may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "FnOutputClassList", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(BamlClient::Types::TestClassNested)}
+      def FnOutputClassNested(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("FnOutputClassNested may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "FnOutputClassNested", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(BamlClient::Types::TestClassWithEnum)}
+      def FnOutputClassWithEnum(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("FnOutputClassWithEnum may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "FnOutputClassWithEnum", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Integer)}
+      def FnOutputInt(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("FnOutputInt may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "FnOutputInt", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(T::Boolean)}
+      def FnOutputLiteralBool(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("FnOutputLiteralBool may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "FnOutputLiteralBool", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Integer)}
+      def FnOutputLiteralInt(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("FnOutputLiteralInt may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "FnOutputLiteralInt", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def FnOutputLiteralString(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("FnOutputLiteralString may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "FnOutputLiteralString", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(T::Array[String])}
+      def FnOutputStringList(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("FnOutputStringList may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "FnOutputStringList", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(BamlClient::Types::TestEnum)}
+      def FnTestAliasedEnumOutput(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("FnTestAliasedEnumOutput may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "FnTestAliasedEnumOutput", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(BamlClient::Types::TestClassAlias)}
+      def FnTestClassAlias(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("FnTestClassAlias may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "FnTestClassAlias", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def FnTestNamedArgsSingleEnum(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("FnTestNamedArgsSingleEnum may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "FnTestNamedArgsSingleEnum", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(BamlClient::Types::RaysData)}
+      def GetDataType(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("GetDataType may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "GetDataType", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(BamlClient::Types::OrderInfo)}
+      def GetOrderInfo(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("GetOrderInfo may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "GetOrderInfo", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(BamlClient::Types::SearchParams)}
+      def GetQuery(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("GetQuery may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "GetQuery", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(T::Hash[BamlClient::Types::MapKey, String])}
+      def InOutEnumMapKey(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("InOutEnumMapKey may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "InOutEnumMapKey", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(T::Hash[T.any(String, String, String, String), String])}
+      def InOutLiteralStringUnionMapKey(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("InOutLiteralStringUnionMapKey may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "InOutLiteralStringUnionMapKey", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(T::Hash[String, String])}
+      def InOutSingleLiteralStringMapKey(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("InOutSingleLiteralStringMapKey may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "InOutSingleLiteralStringMapKey", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(BamlClient::Types::JsonValue)}
+      def JsonTypeAliasCycle(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("JsonTypeAliasCycle may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "JsonTypeAliasCycle", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def LLMEcho(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("LLMEcho may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "LLMEcho", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(T.any(Integer, T::Boolean, String))}
+      def LiteralUnionsTest(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("LiteralUnionsTest may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "LiteralUnionsTest", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Integer)}
+      def LlmReturnNumber(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("LlmReturnNumber may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "LlmReturnNumber", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(BamlClient::Types::Checked[BamlClient::Types::BlockConstraint])}
+      def MakeBlockConstraint(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("MakeBlockConstraint may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "MakeBlockConstraint", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(BamlClient::Types::ClassWithBlockDone)}
+      def MakeClassWithBlockDone(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("MakeClassWithBlockDone may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "MakeClassWithBlockDone", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(BamlClient::Types::ClassWithoutDone)}
+      def MakeClassWithExternalDone(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("MakeClassWithExternalDone may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "MakeClassWithExternalDone", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(BamlClient::Types::NestedBlockConstraint)}
+      def MakeNestedBlockConstraint(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("MakeNestedBlockConstraint may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "MakeNestedBlockConstraint", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(BamlClient::Types::SemanticContainer)}
+      def MakeSemanticContainer(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("MakeSemanticContainer may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "MakeSemanticContainer", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(T::Hash[String, T::Array[String]])}
+      def MapAlias(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("MapAlias may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "MapAlias", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(BamlClient::Types::MergeAttrs)}
+      def MergeAliasAttributes(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("MergeAliasAttributes may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "MergeAliasAttributes", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(BamlClient::Types::DynamicOutput)}
+      def MyFunc(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("MyFunc may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "MyFunc", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(T.any(Integer, String, T::Boolean, Float, T::Array[String], T::Hash[String, T::Array[String]]))}
+      def NestedAlias(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("NestedAlias may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "NestedAlias", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(BamlClient::Types::ClassForNullLiteral)}
+      def NullLiteralClassHello(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("NullLiteralClassHello may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "NullLiteralClassHello", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def OpenAIGPT4oMissingBaseUrlEnvVar(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("OpenAIGPT4oMissingBaseUrlEnvVar may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "OpenAIGPT4oMissingBaseUrlEnvVar", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def OpenAIWithAnthropicResponseHello(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("OpenAIWithAnthropicResponseHello may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "OpenAIWithAnthropicResponseHello", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(T::Array[T.nilable(BamlClient::Types::OptionalTest_ReturnType)])}
+      def OptionalTest_Function(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("OptionalTest_Function may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "OptionalTest_Function", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def PdfInput(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("PdfInput may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "PdfInput", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def PdfInputAnthropic(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("PdfInputAnthropic may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "PdfInputAnthropic", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def PdfInputOpenai(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("PdfInputOpenai may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "PdfInputOpenai", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def PdfInputVertex(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("PdfInputVertex may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "PdfInputVertex", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(BamlClient::Types::FooAny)}
+      def PredictAge(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("PredictAge may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "PredictAge", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(BamlClient::Types::Checked[Integer])}
+      def PredictAgeBare(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("PredictAgeBare may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "PredictAgeBare", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(T.any(Integer, String, T::Boolean, Float))}
+      def PrimitiveAlias(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("PrimitiveAlias may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "PrimitiveAlias", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def PromptTestClaude(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("PromptTestClaude may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "PromptTestClaude", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def PromptTestClaudeChat(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("PromptTestClaudeChat may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "PromptTestClaudeChat", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def PromptTestClaudeChatNoSystem(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("PromptTestClaudeChatNoSystem may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "PromptTestClaudeChatNoSystem", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def PromptTestOpenAI(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("PromptTestOpenAI may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "PromptTestOpenAI", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def PromptTestOpenAIChat(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("PromptTestOpenAIChat may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "PromptTestOpenAIChat", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def PromptTestOpenAIChatNoSystem(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("PromptTestOpenAIChatNoSystem may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "PromptTestOpenAIChatNoSystem", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def PromptTestStreaming(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("PromptTestStreaming may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "PromptTestStreaming", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(BamlClient::Types::RecAliasOne)}
+      def RecursiveAliasCycle(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("RecursiveAliasCycle may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "RecursiveAliasCycle", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(BamlClient::Types::NodeWithAliasIndirection)}
+      def RecursiveClassWithAliasIndirection(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("RecursiveClassWithAliasIndirection may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "RecursiveClassWithAliasIndirection", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(BamlClient::Types::RecursiveUnion)}
+      def RecursiveUnionTest(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("RecursiveUnionTest may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "RecursiveUnionTest", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def RenderDynamicClass(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("RenderDynamicClass may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "RenderDynamicClass", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def RenderDynamicEnum(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("RenderDynamicEnum may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "RenderDynamicEnum", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(BamlClient::Types::Checked[Integer])}
+      def ReturnAliasWithMergedAttributes(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("ReturnAliasWithMergedAttributes may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "ReturnAliasWithMergedAttributes", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Integer)}
+      def ReturnFailingAssert(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("ReturnFailingAssert may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "ReturnFailingAssert", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(BamlClient::Types::JsonTemplate)}
+      def ReturnJsonEntry(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("ReturnJsonEntry may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "ReturnJsonEntry", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(BamlClient::Types::MalformedConstraints)}
+      def ReturnMalformedConstraints(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("ReturnMalformedConstraints may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "ReturnMalformedConstraints", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(BamlClient::Types::Schema)}
+      def SchemaDescriptions(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("SchemaDescriptions may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "SchemaDescriptions", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(BamlClient::Types::RecursiveListAlias)}
+      def SimpleRecursiveListAlias(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("SimpleRecursiveListAlias may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "SimpleRecursiveListAlias", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(BamlClient::Types::RecursiveMapAlias)}
+      def SimpleRecursiveMapAlias(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("SimpleRecursiveMapAlias may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "SimpleRecursiveMapAlias", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(BamlClient::Types::BigNumbers)}
+      def StreamBigNumbers(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("StreamBigNumbers may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "StreamBigNumbers", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(BamlClient::Types::TwoStoriesOneTitle)}
+      def StreamFailingAssertion(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("StreamFailingAssertion may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "StreamFailingAssertion", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(BamlClient::Types::TwoStoriesOneTitleCheck)}
+      def StreamFailingCheck(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("StreamFailingCheck may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "StreamFailingCheck", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Integer)}
+      def StreamOneBigNumber(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("StreamOneBigNumber may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "StreamOneBigNumber", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(T::Array[T.any(Integer, String)])}
+      def StreamUnionIntegers(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("StreamUnionIntegers may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "StreamUnionIntegers", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(BamlClient::Types::CompoundBigNumbers)}
+      def StreamingCompoundNumbers(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("StreamingCompoundNumbers may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "StreamingCompoundNumbers", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(BamlClient::Types::Document1559)}
+      def StructureDocument1559(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("StructureDocument1559 may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "StructureDocument1559", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(BamlClient::Types::RecursiveAliasDependency)}
+      def TakeRecAliasDep(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TakeRecAliasDep may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TakeRecAliasDep", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TellStory(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TellStory may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TellStory", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TemplateStringTestEcho(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TemplateStringTestEcho may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TemplateStringTestEcho", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestAbortFallbackChain(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestAbortFallbackChain may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestAbortFallbackChain", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestAnthropic(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestAnthropic may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestAnthropic", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestAnthropicShorthand(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestAnthropicShorthand may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestAnthropicShorthand", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestAws(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestAws may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestAws", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestAwsClaude37(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestAwsClaude37 may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestAwsClaude37", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestAwsInferenceProfile(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestAwsInferenceProfile may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestAwsInferenceProfile", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestAwsInvalidAccessKey(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestAwsInvalidAccessKey may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestAwsInvalidAccessKey", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestAwsInvalidEndpoint(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestAwsInvalidEndpoint may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestAwsInvalidEndpoint", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestAwsInvalidProfile(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestAwsInvalidProfile may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestAwsInvalidProfile", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestAwsInvalidRegion(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestAwsInvalidRegion may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestAwsInvalidRegion", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestAwsInvalidSessionToken(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestAwsInvalidSessionToken may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestAwsInvalidSessionToken", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestAwsVideoDescribe(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestAwsVideoDescribe may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestAwsVideoDescribe", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestAzure(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestAzure may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestAzure", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestAzureFailure(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestAzureFailure may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestAzureFailure", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestAzureO1NoMaxTokens(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestAzureO1NoMaxTokens may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestAzureO1NoMaxTokens", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestAzureO1WithMaxCompletionTokens(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestAzureO1WithMaxCompletionTokens may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestAzureO1WithMaxCompletionTokens", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestAzureO1WithMaxTokens(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestAzureO1WithMaxTokens may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestAzureO1WithMaxTokens", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestAzureO3NoMaxTokens(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestAzureO3NoMaxTokens may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestAzureO3NoMaxTokens", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestAzureO3WithMaxCompletionTokens(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestAzureO3WithMaxCompletionTokens may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestAzureO3WithMaxCompletionTokens", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestAzureWithMaxTokens(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestAzureWithMaxTokens may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestAzureWithMaxTokens", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestCaching(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestCaching may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestCaching", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestDefaultStreamingTimeout(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestDefaultStreamingTimeout may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestDefaultStreamingTimeout", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestFallbackClient(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestFallbackClient may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestFallbackClient", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestFallbackStrategy(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestFallbackStrategy may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestFallbackStrategy", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestFallbackToShorthand(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestFallbackToShorthand may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestFallbackToShorthand", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestFnNamedArgsSingleBool(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestFnNamedArgsSingleBool may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestFnNamedArgsSingleBool", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestFnNamedArgsSingleClass(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestFnNamedArgsSingleClass may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestFnNamedArgsSingleClass", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestFnNamedArgsSingleEnumList(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestFnNamedArgsSingleEnumList may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestFnNamedArgsSingleEnumList", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestFnNamedArgsSingleFloat(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestFnNamedArgsSingleFloat may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestFnNamedArgsSingleFloat", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestFnNamedArgsSingleInt(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestFnNamedArgsSingleInt may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestFnNamedArgsSingleInt", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(T::Hash[String, BamlClient::Types::StringToClassEntry])}
+      def TestFnNamedArgsSingleMapStringToClass(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestFnNamedArgsSingleMapStringToClass may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestFnNamedArgsSingleMapStringToClass", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(T::Hash[String, T::Hash[String, String]])}
+      def TestFnNamedArgsSingleMapStringToMap(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestFnNamedArgsSingleMapStringToMap may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestFnNamedArgsSingleMapStringToMap", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(T::Hash[String, String])}
+      def TestFnNamedArgsSingleMapStringToString(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestFnNamedArgsSingleMapStringToString may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestFnNamedArgsSingleMapStringToString", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestFnNamedArgsSingleString(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestFnNamedArgsSingleString may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestFnNamedArgsSingleString", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestFnNamedArgsSingleStringArray(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestFnNamedArgsSingleStringArray may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestFnNamedArgsSingleStringArray", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(T::Array[String])}
+      def TestFnNamedArgsSingleStringList(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestFnNamedArgsSingleStringList may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestFnNamedArgsSingleStringList", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestGemini(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestGemini may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestGemini", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestGeminiOpenAiGeneric(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestGeminiOpenAiGeneric may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestGeminiOpenAiGeneric", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestGeminiSystem(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestGeminiSystem may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestGeminiSystem", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestGeminiSystemAsChat(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestGeminiSystemAsChat may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestGeminiSystemAsChat", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestGeminiThinking(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestGeminiThinking may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestGeminiThinking", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestGroq(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestGroq may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestGroq", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestImageInput(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestImageInput may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestImageInput", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestImageInputAnthropic(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestImageInputAnthropic may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestImageInputAnthropic", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestImageListInput(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestImageListInput may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestImageListInput", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(BamlClient::Types::TestMemoryOutput)}
+      def TestMemory(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestMemory may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestMemory", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestMulticlassNamedArgs(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestMulticlassNamedArgs may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestMulticlassNamedArgs", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestNamedArgsLiteralBool(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestNamedArgsLiteralBool may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestNamedArgsLiteralBool", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestNamedArgsLiteralInt(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestNamedArgsLiteralInt may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestNamedArgsLiteralInt", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestNamedArgsLiteralString(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestNamedArgsLiteralString may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestNamedArgsLiteralString", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(T.nilable(String))}
+      def TestOllama(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOllama may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestOllama", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(BamlClient::Types::Haiku)}
+      def TestOllamaHaiku(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOllamaHaiku may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestOllamaHaiku", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestOpenAI(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOpenAI may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestOpenAI", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestOpenAIDummyClient(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOpenAIDummyClient may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestOpenAIDummyClient", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestOpenAIGPT4oMini(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOpenAIGPT4oMini may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestOpenAIGPT4oMini", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestOpenAIGPT4oMini2(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOpenAIGPT4oMini2 may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestOpenAIGPT4oMini2", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestOpenAIGPT4oMini3(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOpenAIGPT4oMini3 may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestOpenAIGPT4oMini3", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestOpenAILegacyProvider(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOpenAILegacyProvider may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestOpenAILegacyProvider", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestOpenAIO1NoMaxTokens(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOpenAIO1NoMaxTokens may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestOpenAIO1NoMaxTokens", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestOpenAIO1WithMaxCompletionTokens(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOpenAIO1WithMaxCompletionTokens may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestOpenAIO1WithMaxCompletionTokens", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestOpenAIO1WithMaxTokens(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOpenAIO1WithMaxTokens may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestOpenAIO1WithMaxTokens", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestOpenAIProviderWithResponsesType(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOpenAIProviderWithResponsesType may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestOpenAIProviderWithResponsesType", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestOpenAIResponses(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOpenAIResponses may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestOpenAIResponses", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestOpenAIResponsesAllRoles(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOpenAIResponsesAllRoles may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestOpenAIResponsesAllRoles", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestOpenAIResponsesAutoType(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOpenAIResponsesAutoType may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestOpenAIResponsesAutoType", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestOpenAIResponsesConversation(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOpenAIResponsesConversation may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestOpenAIResponsesConversation", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestOpenAIResponsesCustomURL(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOpenAIResponsesCustomURL may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestOpenAIResponsesCustomURL", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestOpenAIResponsesDifferentModel(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOpenAIResponsesDifferentModel may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestOpenAIResponsesDifferentModel", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestOpenAIResponsesEndpoint(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOpenAIResponsesEndpoint may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestOpenAIResponsesEndpoint", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestOpenAIResponsesExplicit(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOpenAIResponsesExplicit may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestOpenAIResponsesExplicit", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestOpenAIResponsesFunctionCall(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOpenAIResponsesFunctionCall may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestOpenAIResponsesFunctionCall", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestOpenAIResponsesImageInput(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOpenAIResponsesImageInput may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestOpenAIResponsesImageInput", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestOpenAIResponsesReasoning(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOpenAIResponsesReasoning may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestOpenAIResponsesReasoning", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestOpenAIResponsesShorthand(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOpenAIResponsesShorthand may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestOpenAIResponsesShorthand", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestOpenAIResponsesWebSearch(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOpenAIResponsesWebSearch may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestOpenAIResponsesWebSearch", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestOpenAIResponsesWithOpenAIResponseType(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOpenAIResponsesWithOpenAIResponseType may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestOpenAIResponsesWithOpenAIResponseType", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestOpenAIShorthand(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOpenAIShorthand may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestOpenAIShorthand", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestOpenAIWithFinishReasonError(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOpenAIWithFinishReasonError may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestOpenAIWithFinishReasonError", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestOpenAIWithMaxTokens(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOpenAIWithMaxTokens may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestOpenAIWithMaxTokens", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestOpenAIWithNullMaxTokens(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOpenAIWithNullMaxTokens may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestOpenAIWithNullMaxTokens", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestOpenRouterMistralSmall3_1_24b(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOpenRouterMistralSmall3_1_24b may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestOpenRouterMistralSmall3_1_24b", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestOpenaiResponsesPdfs(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOpenaiResponsesPdfs may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestOpenaiResponsesPdfs", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestRequestTimeout(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestRequestTimeout may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestRequestTimeout", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestRetryConstant(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestRetryConstant may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestRetryConstant", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestRetryExponential(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestRetryExponential may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestRetryExponential", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestRoundRobinStrategy(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestRoundRobinStrategy may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestRoundRobinStrategy", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestSingleFallbackClient(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestSingleFallbackClient may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestSingleFallbackClient", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(BamlClient::Types::SkipDynamicClass)}
+      def TestSkipDynamic(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestSkipDynamic may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestSkipDynamic", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(BamlClient::Types::SkipNonDynamicClass)}
+      def TestSkipNonDynamic(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestSkipNonDynamic may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestSkipNonDynamic", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestStreamingTimeout(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestStreamingTimeout may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestStreamingTimeout", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(BamlClient::Types::CustomStory)}
+      def TestThinking(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestThinking may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestThinking", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestTimeoutError(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestTimeoutError may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestTimeoutError", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestTimeoutFallback(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestTimeoutFallback may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestTimeoutFallback", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(BamlClient::Types::UniverseQuestion)}
+      def TestUniverseQuestion(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestUniverseQuestion may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestUniverseQuestion", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestVertex(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestVertex may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestVertex", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestVertexClaude(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestVertexClaude may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestVertexClaude", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestVertexWithSystemInstructions(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestVertexWithSystemInstructions may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestVertexWithSystemInstructions", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestZeroTimeout(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestZeroTimeout may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestZeroTimeout", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(BamlClient::Types::UnionTest_ReturnType)}
+      def UnionTest_Function(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("UnionTest_Function may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "UnionTest_Function", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Integer)}
+      def UseBlockConstraint(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("UseBlockConstraint may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "UseBlockConstraint", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(BamlClient::Types::MaintainFieldOrder)}
+      def UseMaintainFieldOrder(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("UseMaintainFieldOrder may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "UseMaintainFieldOrder", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Integer)}
+      def UseMalformedConstraints(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("UseMalformedConstraints may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "UseMalformedConstraints", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Integer)}
+      def UseNestedBlockConstraint(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("UseNestedBlockConstraint may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "UseNestedBlockConstraint", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def ValidateBasicResponses(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("ValidateBasicResponses may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "ValidateBasicResponses", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def ValidateResponseTypes(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("ValidateResponseTypes may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "ValidateResponseTypes", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def VideoInputGemini(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("VideoInputGemini may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "VideoInputGemini", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def VideoInputVertex(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("VideoInputVertex may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "VideoInputVertex", llm_response: llm_response)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, false)
+      end
+
+  end
+
+  class BamlParseStreamClient
+      extend T::Sig
+
+      sig {params(options: BamlClient::Internal::DoNotUseDirectlyCallManager).void}
+      def initialize(options)
+          @options = options
+      end
+
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(BamlClient::StreamTypes::Recipe)}
+      def AaaSamOutputFormat(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("AaaSamOutputFormat may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "AaaSamOutputFormat", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(BamlClient::StreamTypes::LinkedListAliasNode)}
+      def AliasThatPointsToRecursiveType(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("AliasThatPointsToRecursiveType may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "AliasThatPointsToRecursiveType", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(BamlClient::Types::Checked[Integer])}
+      def AliasWithMultipleAttrs(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("AliasWithMultipleAttrs may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "AliasWithMultipleAttrs", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def AliasedInputClass(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("AliasedInputClass may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "AliasedInputClass", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def AliasedInputClass2(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("AliasedInputClass2 may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "AliasedInputClass2", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def AliasedInputClassNested(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("AliasedInputClassNested may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "AliasedInputClassNested", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def AliasedInputEnum(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("AliasedInputEnum may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "AliasedInputEnum", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def AliasedInputList(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("AliasedInputList may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "AliasedInputList", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(BamlClient::StreamTypes::OptionalListAndMap)}
+      def AllowedOptionals(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("AllowedOptionals may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "AllowedOptionals", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Integer)}
+      def AssertFn(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("AssertFn may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "AssertFn", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def AudioInput(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("AudioInput may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "AudioInput", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def AudioInputOpenai(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("AudioInputOpenai may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "AudioInputOpenai", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(BamlClient::StreamTypes::LinkedList)}
+      def BuildLinkedList(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("BuildLinkedList may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "BuildLinkedList", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(BamlClient::StreamTypes::Tree)}
+      def BuildTree(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("BuildTree may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "BuildTree", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(T::Boolean)}
+      def CheckWordEquality(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("CheckWordEquality may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "CheckWordEquality", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(T::Array[T.any(BamlClient::Types::AddTodoItem, BamlClient::StreamTypes::TodoMessageToUser)])}
+      def ChooseTodoTools(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("ChooseTodoTools may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "ChooseTodoTools", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(BamlClient::StreamTypes::ClassToRecAlias)}
+      def ClassThatPointsToRecursiveClassThroughAlias(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("ClassThatPointsToRecursiveClassThroughAlias may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "ClassThatPointsToRecursiveClassThroughAlias", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(T.any(BamlClient::Types::DynEnumTwo, String))}
+      def ClassifyDynEnumTwo(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("ClassifyDynEnumTwo may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "ClassifyDynEnumTwo", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(T.any(BamlClient::Types::DynEnumOne, String))}
+      def ClassifyDynamicStatus(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("ClassifyDynamicStatus may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "ClassifyDynamicStatus", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(BamlClient::Types::Category)}
+      def ClassifyMessage(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("ClassifyMessage may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "ClassifyMessage", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(BamlClient::Types::Category)}
+      def ClassifyMessage2(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("ClassifyMessage2 may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "ClassifyMessage2", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(BamlClient::Types::Category)}
+      def ClassifyMessage3(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("ClassifyMessage3 may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "ClassifyMessage3", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def Completion(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("Completion may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "Completion", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(T.any(BamlClient::StreamTypes::BookOrder, BamlClient::StreamTypes::FlightConfirmation, BamlClient::StreamTypes::GroceryReceipt))}
+      def CustomTask(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("CustomTask may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "CustomTask", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def DescribeAudio(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("DescribeAudio may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "DescribeAudio", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def DescribeAudio2(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("DescribeAudio2 may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "DescribeAudio2", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def DescribeImage(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("DescribeImage may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "DescribeImage", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def DescribeImage2(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("DescribeImage2 may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "DescribeImage2", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def DescribeImage3(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("DescribeImage3 may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "DescribeImage3", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def DescribeImage4(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("DescribeImage4 may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "DescribeImage4", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def DescribeMedia1599(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("DescribeMedia1599 may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "DescribeMedia1599", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(T.any(BamlClient::StreamTypes::OriginalA, BamlClient::StreamTypes::OriginalB))}
+      def DifferentiateUnions(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("DifferentiateUnions may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "DifferentiateUnions", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(BamlClient::StreamTypes::DummyOutput)}
+      def DummyOutputFunction(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("DummyOutputFunction may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "DummyOutputFunction", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(BamlClient::StreamTypes::DynamicClassTwo)}
+      def DynamicFunc(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("DynamicFunc may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "DynamicFunc", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(BamlClient::StreamTypes::DynInputOutput)}
+      def DynamicInputOutput(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("DynamicInputOutput may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "DynamicInputOutput", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(T::Array[BamlClient::StreamTypes::DynInputOutput])}
+      def DynamicListInputOutput(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("DynamicListInputOutput may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "DynamicListInputOutput", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def ExpectFailure(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("ExpectFailure may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "ExpectFailure", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(BamlClient::StreamTypes::ContactInfo)}
+      def ExtractContactInfo(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("ExtractContactInfo may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "ExtractContactInfo", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(T::Array[T.any(BamlClient::Types::DynEnumTwo, String)])}
+      def ExtractDynamicCategories(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("ExtractDynamicCategories may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "ExtractDynamicCategories", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(BamlClient::StreamTypes::DynamicSchema)}
+      def ExtractEntities(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("ExtractEntities may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "ExtractEntities", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(T::Array[T.any(BamlClient::Types::Hobby, String)])}
+      def ExtractHobby(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("ExtractHobby may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "ExtractHobby", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def ExtractName(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("ExtractName may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "ExtractName", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(T::Array[String])}
+      def ExtractNames(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("ExtractNames may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "ExtractNames", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(T::Array[BamlClient::StreamTypes::Person])}
+      def ExtractPeople(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("ExtractPeople may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "ExtractPeople", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(BamlClient::StreamTypes::PersonWithMeta)}
+      def ExtractPersonWithMeta(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("ExtractPersonWithMeta may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "ExtractPersonWithMeta", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(BamlClient::StreamTypes::ReceiptInfo)}
+      def ExtractReceiptInfo(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("ExtractReceiptInfo may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "ExtractReceiptInfo", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(BamlClient::StreamTypes::Resume)}
+      def ExtractResume(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("ExtractResume may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "ExtractResume", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(BamlClient::StreamTypes::Resume)}
+      def ExtractResume2(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("ExtractResume2 may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "ExtractResume2", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def FnAlwaysFails(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("FnAlwaysFails may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "FnAlwaysFails", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(T.nilable(BamlClient::StreamTypes::ClassOptionalOutput))}
+      def FnClassOptionalOutput(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("FnClassOptionalOutput may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "FnClassOptionalOutput", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(T.nilable(BamlClient::StreamTypes::ClassOptionalOutput2))}
+      def FnClassOptionalOutput2(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("FnClassOptionalOutput2 may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "FnClassOptionalOutput2", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(T::Array[BamlClient::Types::EnumOutput])}
+      def FnEnumListOutput(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("FnEnumListOutput may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "FnEnumListOutput", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(BamlClient::Types::EnumOutput)}
+      def FnEnumOutput(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("FnEnumOutput may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "FnEnumOutput", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def FnFailRetryConstantDelay(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("FnFailRetryConstantDelay may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "FnFailRetryConstantDelay", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def FnFailRetryExponentialDelay(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("FnFailRetryExponentialDelay may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "FnFailRetryExponentialDelay", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def FnFallbackAlwaysFails(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("FnFallbackAlwaysFails may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "FnFallbackAlwaysFails", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(BamlClient::StreamTypes::LiteralClassHello)}
+      def FnLiteralClassInputOutput(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("FnLiteralClassInputOutput may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "FnLiteralClassInputOutput", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(T.any(BamlClient::StreamTypes::LiteralClassOne, BamlClient::StreamTypes::LiteralClassTwo))}
+      def FnLiteralUnionClassInputOutput(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("FnLiteralUnionClassInputOutput may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "FnLiteralUnionClassInputOutput", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def FnNamedArgsSingleStringOptional(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("FnNamedArgsSingleStringOptional may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "FnNamedArgsSingleStringOptional", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(T::Boolean)}
+      def FnOutputBool(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("FnOutputBool may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "FnOutputBool", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(BamlClient::StreamTypes::TestOutputClass)}
+      def FnOutputClass(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("FnOutputClass may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "FnOutputClass", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(T::Array[BamlClient::StreamTypes::TestOutputClass])}
+      def FnOutputClassList(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("FnOutputClassList may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "FnOutputClassList", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(BamlClient::StreamTypes::TestClassNested)}
+      def FnOutputClassNested(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("FnOutputClassNested may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "FnOutputClassNested", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(BamlClient::StreamTypes::TestClassWithEnum)}
+      def FnOutputClassWithEnum(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("FnOutputClassWithEnum may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "FnOutputClassWithEnum", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Integer)}
+      def FnOutputInt(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("FnOutputInt may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "FnOutputInt", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(T::Boolean)}
+      def FnOutputLiteralBool(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("FnOutputLiteralBool may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "FnOutputLiteralBool", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Integer)}
+      def FnOutputLiteralInt(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("FnOutputLiteralInt may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "FnOutputLiteralInt", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def FnOutputLiteralString(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("FnOutputLiteralString may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "FnOutputLiteralString", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(T::Array[String])}
+      def FnOutputStringList(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("FnOutputStringList may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "FnOutputStringList", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(BamlClient::Types::TestEnum)}
+      def FnTestAliasedEnumOutput(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("FnTestAliasedEnumOutput may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "FnTestAliasedEnumOutput", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(BamlClient::StreamTypes::TestClassAlias)}
+      def FnTestClassAlias(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("FnTestClassAlias may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "FnTestClassAlias", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def FnTestNamedArgsSingleEnum(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("FnTestNamedArgsSingleEnum may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "FnTestNamedArgsSingleEnum", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(BamlClient::StreamTypes::RaysData)}
+      def GetDataType(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("GetDataType may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "GetDataType", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(BamlClient::StreamTypes::OrderInfo)}
+      def GetOrderInfo(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("GetOrderInfo may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "GetOrderInfo", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(BamlClient::StreamTypes::SearchParams)}
+      def GetQuery(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("GetQuery may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "GetQuery", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(T::Hash[BamlClient::Types::MapKey, String])}
+      def InOutEnumMapKey(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("InOutEnumMapKey may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "InOutEnumMapKey", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(T::Hash[T.any(String, String, String, String), String])}
+      def InOutLiteralStringUnionMapKey(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("InOutLiteralStringUnionMapKey may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "InOutLiteralStringUnionMapKey", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(T::Hash[String, String])}
+      def InOutSingleLiteralStringMapKey(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("InOutSingleLiteralStringMapKey may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "InOutSingleLiteralStringMapKey", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(BamlClient::StreamTypes::JsonValue)}
+      def JsonTypeAliasCycle(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("JsonTypeAliasCycle may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "JsonTypeAliasCycle", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def LLMEcho(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("LLMEcho may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "LLMEcho", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(T.any(Integer, T::Boolean, String))}
+      def LiteralUnionsTest(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("LiteralUnionsTest may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "LiteralUnionsTest", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Integer)}
+      def LlmReturnNumber(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("LlmReturnNumber may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "LlmReturnNumber", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(BamlClient::Types::Checked[BamlClient::StreamTypes::BlockConstraint])}
+      def MakeBlockConstraint(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("MakeBlockConstraint may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "MakeBlockConstraint", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(BamlClient::Types::ClassWithBlockDone)}
+      def MakeClassWithBlockDone(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("MakeClassWithBlockDone may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "MakeClassWithBlockDone", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(BamlClient::Types::ClassWithoutDone)}
+      def MakeClassWithExternalDone(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("MakeClassWithExternalDone may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "MakeClassWithExternalDone", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(BamlClient::StreamTypes::NestedBlockConstraint)}
+      def MakeNestedBlockConstraint(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("MakeNestedBlockConstraint may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "MakeNestedBlockConstraint", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(BamlClient::StreamTypes::SemanticContainer)}
+      def MakeSemanticContainer(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("MakeSemanticContainer may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "MakeSemanticContainer", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(T::Hash[String, T::Array[String]])}
+      def MapAlias(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("MapAlias may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "MapAlias", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(BamlClient::StreamTypes::MergeAttrs)}
+      def MergeAliasAttributes(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("MergeAliasAttributes may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "MergeAliasAttributes", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(BamlClient::StreamTypes::DynamicOutput)}
+      def MyFunc(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("MyFunc may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "MyFunc", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(T.any(Integer, String, T::Boolean, Float, T::Array[String], T::Hash[String, T::Array[String]]))}
+      def NestedAlias(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("NestedAlias may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "NestedAlias", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(BamlClient::StreamTypes::ClassForNullLiteral)}
+      def NullLiteralClassHello(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("NullLiteralClassHello may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "NullLiteralClassHello", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def OpenAIGPT4oMissingBaseUrlEnvVar(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("OpenAIGPT4oMissingBaseUrlEnvVar may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "OpenAIGPT4oMissingBaseUrlEnvVar", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def OpenAIWithAnthropicResponseHello(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("OpenAIWithAnthropicResponseHello may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "OpenAIWithAnthropicResponseHello", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(T::Array[T.nilable(BamlClient::StreamTypes::OptionalTest_ReturnType)])}
+      def OptionalTest_Function(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("OptionalTest_Function may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "OptionalTest_Function", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def PdfInput(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("PdfInput may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "PdfInput", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def PdfInputAnthropic(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("PdfInputAnthropic may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "PdfInputAnthropic", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def PdfInputOpenai(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("PdfInputOpenai may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "PdfInputOpenai", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def PdfInputVertex(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("PdfInputVertex may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "PdfInputVertex", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(BamlClient::StreamTypes::FooAny)}
+      def PredictAge(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("PredictAge may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "PredictAge", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(BamlClient::Types::Checked[Integer])}
+      def PredictAgeBare(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("PredictAgeBare may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "PredictAgeBare", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(T.any(Integer, String, T::Boolean, Float))}
+      def PrimitiveAlias(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("PrimitiveAlias may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "PrimitiveAlias", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def PromptTestClaude(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("PromptTestClaude may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "PromptTestClaude", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def PromptTestClaudeChat(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("PromptTestClaudeChat may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "PromptTestClaudeChat", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def PromptTestClaudeChatNoSystem(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("PromptTestClaudeChatNoSystem may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "PromptTestClaudeChatNoSystem", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def PromptTestOpenAI(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("PromptTestOpenAI may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "PromptTestOpenAI", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def PromptTestOpenAIChat(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("PromptTestOpenAIChat may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "PromptTestOpenAIChat", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def PromptTestOpenAIChatNoSystem(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("PromptTestOpenAIChatNoSystem may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "PromptTestOpenAIChatNoSystem", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def PromptTestStreaming(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("PromptTestStreaming may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "PromptTestStreaming", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(BamlClient::StreamTypes::RecAliasOne)}
+      def RecursiveAliasCycle(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("RecursiveAliasCycle may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "RecursiveAliasCycle", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(BamlClient::StreamTypes::NodeWithAliasIndirection)}
+      def RecursiveClassWithAliasIndirection(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("RecursiveClassWithAliasIndirection may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "RecursiveClassWithAliasIndirection", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(BamlClient::StreamTypes::RecursiveUnion)}
+      def RecursiveUnionTest(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("RecursiveUnionTest may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "RecursiveUnionTest", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def RenderDynamicClass(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("RenderDynamicClass may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "RenderDynamicClass", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def RenderDynamicEnum(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("RenderDynamicEnum may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "RenderDynamicEnum", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(BamlClient::Types::Checked[Integer])}
+      def ReturnAliasWithMergedAttributes(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("ReturnAliasWithMergedAttributes may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "ReturnAliasWithMergedAttributes", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Integer)}
+      def ReturnFailingAssert(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("ReturnFailingAssert may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "ReturnFailingAssert", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(BamlClient::StreamTypes::JsonTemplate)}
+      def ReturnJsonEntry(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("ReturnJsonEntry may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "ReturnJsonEntry", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(BamlClient::StreamTypes::MalformedConstraints)}
+      def ReturnMalformedConstraints(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("ReturnMalformedConstraints may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "ReturnMalformedConstraints", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(BamlClient::StreamTypes::Schema)}
+      def SchemaDescriptions(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("SchemaDescriptions may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "SchemaDescriptions", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(BamlClient::StreamTypes::RecursiveListAlias)}
+      def SimpleRecursiveListAlias(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("SimpleRecursiveListAlias may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "SimpleRecursiveListAlias", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(BamlClient::StreamTypes::RecursiveMapAlias)}
+      def SimpleRecursiveMapAlias(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("SimpleRecursiveMapAlias may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "SimpleRecursiveMapAlias", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(BamlClient::StreamTypes::BigNumbers)}
+      def StreamBigNumbers(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("StreamBigNumbers may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "StreamBigNumbers", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(BamlClient::StreamTypes::TwoStoriesOneTitle)}
+      def StreamFailingAssertion(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("StreamFailingAssertion may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "StreamFailingAssertion", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(BamlClient::StreamTypes::TwoStoriesOneTitleCheck)}
+      def StreamFailingCheck(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("StreamFailingCheck may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "StreamFailingCheck", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Integer)}
+      def StreamOneBigNumber(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("StreamOneBigNumber may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "StreamOneBigNumber", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(T::Array[T.any(Integer, String)])}
+      def StreamUnionIntegers(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("StreamUnionIntegers may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "StreamUnionIntegers", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(BamlClient::StreamTypes::CompoundBigNumbers)}
+      def StreamingCompoundNumbers(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("StreamingCompoundNumbers may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "StreamingCompoundNumbers", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(BamlClient::StreamTypes::Document1559)}
+      def StructureDocument1559(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("StructureDocument1559 may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "StructureDocument1559", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(BamlClient::StreamTypes::RecursiveAliasDependency)}
+      def TakeRecAliasDep(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TakeRecAliasDep may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TakeRecAliasDep", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TellStory(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TellStory may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TellStory", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TemplateStringTestEcho(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TemplateStringTestEcho may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TemplateStringTestEcho", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestAbortFallbackChain(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestAbortFallbackChain may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestAbortFallbackChain", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestAnthropic(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestAnthropic may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestAnthropic", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestAnthropicShorthand(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestAnthropicShorthand may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestAnthropicShorthand", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestAws(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestAws may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestAws", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestAwsClaude37(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestAwsClaude37 may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestAwsClaude37", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestAwsInferenceProfile(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestAwsInferenceProfile may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestAwsInferenceProfile", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestAwsInvalidAccessKey(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestAwsInvalidAccessKey may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestAwsInvalidAccessKey", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestAwsInvalidEndpoint(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestAwsInvalidEndpoint may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestAwsInvalidEndpoint", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestAwsInvalidProfile(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestAwsInvalidProfile may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestAwsInvalidProfile", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestAwsInvalidRegion(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestAwsInvalidRegion may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestAwsInvalidRegion", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestAwsInvalidSessionToken(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestAwsInvalidSessionToken may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestAwsInvalidSessionToken", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestAwsVideoDescribe(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestAwsVideoDescribe may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestAwsVideoDescribe", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestAzure(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestAzure may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestAzure", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestAzureFailure(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestAzureFailure may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestAzureFailure", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestAzureO1NoMaxTokens(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestAzureO1NoMaxTokens may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestAzureO1NoMaxTokens", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestAzureO1WithMaxCompletionTokens(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestAzureO1WithMaxCompletionTokens may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestAzureO1WithMaxCompletionTokens", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestAzureO1WithMaxTokens(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestAzureO1WithMaxTokens may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestAzureO1WithMaxTokens", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestAzureO3NoMaxTokens(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestAzureO3NoMaxTokens may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestAzureO3NoMaxTokens", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestAzureO3WithMaxCompletionTokens(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestAzureO3WithMaxCompletionTokens may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestAzureO3WithMaxCompletionTokens", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestAzureWithMaxTokens(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestAzureWithMaxTokens may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestAzureWithMaxTokens", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestCaching(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestCaching may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestCaching", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestDefaultStreamingTimeout(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestDefaultStreamingTimeout may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestDefaultStreamingTimeout", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestFallbackClient(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestFallbackClient may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestFallbackClient", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestFallbackStrategy(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestFallbackStrategy may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestFallbackStrategy", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestFallbackToShorthand(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestFallbackToShorthand may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestFallbackToShorthand", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestFnNamedArgsSingleBool(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestFnNamedArgsSingleBool may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestFnNamedArgsSingleBool", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestFnNamedArgsSingleClass(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestFnNamedArgsSingleClass may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestFnNamedArgsSingleClass", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestFnNamedArgsSingleEnumList(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestFnNamedArgsSingleEnumList may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestFnNamedArgsSingleEnumList", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestFnNamedArgsSingleFloat(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestFnNamedArgsSingleFloat may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestFnNamedArgsSingleFloat", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestFnNamedArgsSingleInt(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestFnNamedArgsSingleInt may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestFnNamedArgsSingleInt", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(T::Hash[String, BamlClient::StreamTypes::StringToClassEntry])}
+      def TestFnNamedArgsSingleMapStringToClass(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestFnNamedArgsSingleMapStringToClass may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestFnNamedArgsSingleMapStringToClass", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(T::Hash[String, T::Hash[String, String]])}
+      def TestFnNamedArgsSingleMapStringToMap(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestFnNamedArgsSingleMapStringToMap may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestFnNamedArgsSingleMapStringToMap", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(T::Hash[String, String])}
+      def TestFnNamedArgsSingleMapStringToString(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestFnNamedArgsSingleMapStringToString may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestFnNamedArgsSingleMapStringToString", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestFnNamedArgsSingleString(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestFnNamedArgsSingleString may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestFnNamedArgsSingleString", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestFnNamedArgsSingleStringArray(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestFnNamedArgsSingleStringArray may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestFnNamedArgsSingleStringArray", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(T::Array[String])}
+      def TestFnNamedArgsSingleStringList(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestFnNamedArgsSingleStringList may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestFnNamedArgsSingleStringList", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestGemini(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestGemini may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestGemini", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestGeminiOpenAiGeneric(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestGeminiOpenAiGeneric may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestGeminiOpenAiGeneric", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestGeminiSystem(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestGeminiSystem may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestGeminiSystem", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestGeminiSystemAsChat(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestGeminiSystemAsChat may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestGeminiSystemAsChat", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestGeminiThinking(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestGeminiThinking may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestGeminiThinking", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestGroq(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestGroq may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestGroq", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestImageInput(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestImageInput may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestImageInput", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestImageInputAnthropic(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestImageInputAnthropic may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestImageInputAnthropic", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestImageListInput(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestImageListInput may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestImageListInput", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(BamlClient::StreamTypes::TestMemoryOutput)}
+      def TestMemory(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestMemory may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestMemory", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestMulticlassNamedArgs(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestMulticlassNamedArgs may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestMulticlassNamedArgs", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestNamedArgsLiteralBool(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestNamedArgsLiteralBool may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestNamedArgsLiteralBool", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestNamedArgsLiteralInt(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestNamedArgsLiteralInt may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestNamedArgsLiteralInt", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestNamedArgsLiteralString(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestNamedArgsLiteralString may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestNamedArgsLiteralString", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(T.nilable(String))}
+      def TestOllama(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOllama may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestOllama", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(BamlClient::StreamTypes::Haiku)}
+      def TestOllamaHaiku(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOllamaHaiku may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestOllamaHaiku", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestOpenAI(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOpenAI may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestOpenAI", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestOpenAIDummyClient(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOpenAIDummyClient may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestOpenAIDummyClient", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestOpenAIGPT4oMini(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOpenAIGPT4oMini may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestOpenAIGPT4oMini", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestOpenAIGPT4oMini2(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOpenAIGPT4oMini2 may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestOpenAIGPT4oMini2", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestOpenAIGPT4oMini3(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOpenAIGPT4oMini3 may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestOpenAIGPT4oMini3", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestOpenAILegacyProvider(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOpenAILegacyProvider may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestOpenAILegacyProvider", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestOpenAIO1NoMaxTokens(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOpenAIO1NoMaxTokens may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestOpenAIO1NoMaxTokens", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestOpenAIO1WithMaxCompletionTokens(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOpenAIO1WithMaxCompletionTokens may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestOpenAIO1WithMaxCompletionTokens", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestOpenAIO1WithMaxTokens(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOpenAIO1WithMaxTokens may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestOpenAIO1WithMaxTokens", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestOpenAIProviderWithResponsesType(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOpenAIProviderWithResponsesType may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestOpenAIProviderWithResponsesType", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestOpenAIResponses(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOpenAIResponses may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestOpenAIResponses", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestOpenAIResponsesAllRoles(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOpenAIResponsesAllRoles may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestOpenAIResponsesAllRoles", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestOpenAIResponsesAutoType(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOpenAIResponsesAutoType may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestOpenAIResponsesAutoType", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestOpenAIResponsesConversation(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOpenAIResponsesConversation may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestOpenAIResponsesConversation", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestOpenAIResponsesCustomURL(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOpenAIResponsesCustomURL may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestOpenAIResponsesCustomURL", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestOpenAIResponsesDifferentModel(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOpenAIResponsesDifferentModel may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestOpenAIResponsesDifferentModel", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestOpenAIResponsesEndpoint(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOpenAIResponsesEndpoint may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestOpenAIResponsesEndpoint", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestOpenAIResponsesExplicit(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOpenAIResponsesExplicit may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestOpenAIResponsesExplicit", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestOpenAIResponsesFunctionCall(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOpenAIResponsesFunctionCall may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestOpenAIResponsesFunctionCall", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestOpenAIResponsesImageInput(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOpenAIResponsesImageInput may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestOpenAIResponsesImageInput", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestOpenAIResponsesReasoning(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOpenAIResponsesReasoning may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestOpenAIResponsesReasoning", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestOpenAIResponsesShorthand(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOpenAIResponsesShorthand may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestOpenAIResponsesShorthand", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestOpenAIResponsesWebSearch(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOpenAIResponsesWebSearch may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestOpenAIResponsesWebSearch", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestOpenAIResponsesWithOpenAIResponseType(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOpenAIResponsesWithOpenAIResponseType may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestOpenAIResponsesWithOpenAIResponseType", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestOpenAIShorthand(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOpenAIShorthand may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestOpenAIShorthand", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestOpenAIWithFinishReasonError(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOpenAIWithFinishReasonError may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestOpenAIWithFinishReasonError", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestOpenAIWithMaxTokens(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOpenAIWithMaxTokens may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestOpenAIWithMaxTokens", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestOpenAIWithNullMaxTokens(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOpenAIWithNullMaxTokens may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestOpenAIWithNullMaxTokens", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestOpenRouterMistralSmall3_1_24b(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOpenRouterMistralSmall3_1_24b may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestOpenRouterMistralSmall3_1_24b", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestOpenaiResponsesPdfs(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestOpenaiResponsesPdfs may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestOpenaiResponsesPdfs", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestRequestTimeout(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestRequestTimeout may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestRequestTimeout", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestRetryConstant(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestRetryConstant may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestRetryConstant", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestRetryExponential(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestRetryExponential may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestRetryExponential", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestRoundRobinStrategy(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestRoundRobinStrategy may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestRoundRobinStrategy", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestSingleFallbackClient(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestSingleFallbackClient may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestSingleFallbackClient", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(BamlClient::StreamTypes::SkipDynamicClass)}
+      def TestSkipDynamic(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestSkipDynamic may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestSkipDynamic", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(BamlClient::StreamTypes::SkipNonDynamicClass)}
+      def TestSkipNonDynamic(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestSkipNonDynamic may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestSkipNonDynamic", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestStreamingTimeout(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestStreamingTimeout may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestStreamingTimeout", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(BamlClient::StreamTypes::CustomStory)}
+      def TestThinking(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestThinking may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestThinking", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestTimeoutError(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestTimeoutError may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestTimeoutError", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestTimeoutFallback(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestTimeoutFallback may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestTimeoutFallback", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(BamlClient::StreamTypes::UniverseQuestion)}
+      def TestUniverseQuestion(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestUniverseQuestion may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestUniverseQuestion", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestVertex(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestVertex may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestVertex", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestVertexClaude(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestVertexClaude may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestVertexClaude", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestVertexWithSystemInstructions(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestVertexWithSystemInstructions may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestVertexWithSystemInstructions", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def TestZeroTimeout(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("TestZeroTimeout may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "TestZeroTimeout", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(BamlClient::StreamTypes::UnionTest_ReturnType)}
+      def UnionTest_Function(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("UnionTest_Function may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "UnionTest_Function", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Integer)}
+      def UseBlockConstraint(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("UseBlockConstraint may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "UseBlockConstraint", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(BamlClient::StreamTypes::MaintainFieldOrder)}
+      def UseMaintainFieldOrder(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("UseMaintainFieldOrder may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "UseMaintainFieldOrder", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Integer)}
+      def UseMalformedConstraints(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("UseMalformedConstraints may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "UseMalformedConstraints", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(Integer)}
+      def UseNestedBlockConstraint(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("UseNestedBlockConstraint may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "UseNestedBlockConstraint", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def ValidateBasicResponses(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("ValidateBasicResponses may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "ValidateBasicResponses", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def ValidateResponseTypes(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("ValidateResponseTypes may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "ValidateResponseTypes", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def VideoInputGemini(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("VideoInputGemini may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "VideoInputGemini", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
+      end
+      sig {params(
+          varargs: T.untyped,
+          llm_response: String,
+          baml_options: T::Hash[Symbol, T.any(BamlClient::TypeBuilder, Baml::ClientRegistry, T.any(Baml::Collector, T::Array[Baml::Collector]), T::Hash[Symbol, String], T::Hash[String, String])]
+      ).returns(String)}
+      def VideoInputVertex(
+          *varargs,
+          llm_response:,
+          baml_options: {}
+      )
+          if varargs.any?
+              raise ArgumentError.new("VideoInputVertex may only be called with keyword arguments")
+          end
+
+          __options__ = @options.merge_options(BamlCallOptions.new(**baml_options))
+
+          __result__ = __options__.parse_sync(function_name: "VideoInputVertex", llm_response: llm_response, allow_partials: true)
+
+          __result__.parsed_using_types(BamlClient::Types, BamlClient::PartialTypes, true)
       end
 
   end
