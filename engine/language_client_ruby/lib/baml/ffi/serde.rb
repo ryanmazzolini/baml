@@ -216,7 +216,9 @@ module Baml
         return value unless klass.is_a?(Class) && klass < T::Enum
 
         klass.deserialize(value)
-      rescue KeyError
+      rescue KeyError, RuntimeError
+        # KeyError: dynamic value not in enum's serialization map
+        # RuntimeError: empty T::Enum (no `enums do` block, e.g. dynamic-only enums)
         value
       end
 

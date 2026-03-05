@@ -7,7 +7,7 @@ require_relative "serde"
 
 module Baml
   module Ffi
-    class BamlError < StandardError; end
+    class BamlError < RuntimeError; end
     class BamlClientError < BamlError; end
     # TODO: parse Rust error strings into typed errors when Go does (ref: engine/language_client_go/pkg/callbacks.go:154)
 
