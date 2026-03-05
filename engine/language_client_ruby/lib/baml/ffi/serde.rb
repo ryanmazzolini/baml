@@ -83,7 +83,7 @@ module Baml
           end
           { "__baml_class__" => holder.class_value.name.name, **fields }
         when :enum_value
-          holder.enum_value.value
+          { "__baml_enum__" => holder.enum_value.name.name, "value" => holder.enum_value.value }
         when :union_variant_value
           decode_value(holder.union_variant_value.value)
         when :checked_value
@@ -99,7 +99,7 @@ module Baml
           { "__baml_class__" => "Checked", "value" => decode_value(cv.value), "checks" => checks }
         when :literal_value
           lit = holder.literal_value
-          case lit.value
+          case lit.literal
           when :string_literal then lit.string_literal.value
           when :int_literal    then lit.int_literal.value
           when :bool_literal   then lit.bool_literal.value
@@ -127,9 +127,10 @@ module Baml
       def coerce_to_struct(value, types_module)
         case value
         when Hash
-          class_name = value["__baml_class__"]
-          if class_name
+          if (class_name = value["__baml_class__"])
             coerce_class_hash(class_name, value, types_module)
+          elsif (enum_name = value["__baml_enum__"])
+            coerce_enum(enum_name, value["value"], types_module)
           else
             value.transform_values { |v| coerce_to_struct(v, types_module) }
           end
@@ -162,6 +163,16 @@ module Baml
         else
           Baml::DynamicStruct.new(**kwargs)
         end
+      end
+
+      def coerce_enum(enum_name, value, types_module)
+        klass = types_module&.const_defined?(enum_name, false) &&
+                types_module.const_get(enum_name, false)
+        return value unless klass.is_a?(Class) && klass < T::Enum
+
+        klass.deserialize(value)
+      rescue KeyError
+        value
       end
 
       # Decode spawn response. Returns nil on success, raises on error.
