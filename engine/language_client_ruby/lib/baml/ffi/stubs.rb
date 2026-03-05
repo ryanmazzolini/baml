@@ -34,17 +34,36 @@ module Baml
     # (Rust constructs its own context internally), so an empty class suffices.
     class RuntimeContextManager; end
 
-    # Passed through the generated resolve() helper as client_registry.
-    # The CFFI runtime receives it but does not use it for MVP.
-    # method_missing raises NotImplementedError for unimplemented methods
-    # (e.g. add_llm_client) per locked decision.
+    # Pure data class — collects LLM client configs and serializes them
+    # as a HostClientRegistry proto in encode_function_args.
     class ClientRegistry
-      def method_missing(method_name, *args, **kwargs, &block)
-        raise NotImplementedError, "#{self.class}##{method_name} is not yet implemented"
+      def initialize
+        @clients = {}
+        @primary = nil
       end
 
-      def respond_to_missing?(method_name, include_private = false)
-        true
+      def add_llm_client(name, provider, options = {})
+        @clients[name] = { provider: provider, options: options }
+      end
+
+      def set_primary(name)
+        @primary = name
+      end
+
+      # Encode into a HostClientRegistry proto message.
+      def encode_proto
+        client_protos = @clients.map do |name, client|
+          options = Baml::Ffi::Serde.encode_map_entries(client[:options])
+          Baml::Cffi::V1::HostClientProperty.new(
+            name: name,
+            provider: client[:provider],
+            options: options
+          )
+        end
+        Baml::Cffi::V1::HostClientRegistry.new(
+          clients: client_protos,
+          primary: @primary
+        )
       end
     end
 

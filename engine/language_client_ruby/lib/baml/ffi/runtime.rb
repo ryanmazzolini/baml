@@ -91,7 +91,10 @@ module Baml
         call_id = Callbacks.next_id
         queue = Callbacks.create(call_id)
 
-        encoded = Serde.encode_function_args(args, env_vars: env_vars || {}, type_builder: tb, collectors: collectors || [])
+        encoded = Serde.encode_function_args(
+          args, env_vars: env_vars || {}, type_builder: tb,
+          client_registry: client_registry, collectors: collectors || [], tags: tags || {}
+        )
         encoded_bytes = Baml::Cffi::V1::HostFunctionArguments.encode(encoded)
 
         args_ptr = FFI::MemoryPointer.new(:char, encoded_bytes.bytesize)
@@ -114,7 +117,10 @@ module Baml
         call_id = Callbacks.next_id
         queue = Callbacks.create(call_id)
 
-        encoded = Serde.encode_function_args(args, env_vars: env_vars || {}, type_builder: tb, collectors: collectors || [])
+        encoded = Serde.encode_function_args(
+          args, env_vars: env_vars || {}, type_builder: tb,
+          client_registry: client_registry, collectors: collectors || [], tags: tags || {}
+        )
         encoded_bytes = Baml::Cffi::V1::HostFunctionArguments.encode(encoded)
 
         args_ptr = FFI::MemoryPointer.new(:char, encoded_bytes.bytesize)
