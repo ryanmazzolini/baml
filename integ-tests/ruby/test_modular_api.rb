@@ -79,10 +79,13 @@ describe "Modular API Tests" do
 
     response = http.request(req)
 
-    # For openai-responses, the response structure is different
-    # It should have an output_text field instead of choices[0].message.content
+    # OpenAI Responses API: extract text from the message output item.
+    # The output array may contain reasoning items before the message.
     response_json = JSON.parse(response.body)
-    output_text = response_json["output_text"]
+    message_output = Array(response_json["output"]).find { |o| o["type"] == "message" }
+    output_text = message_output&.dig("content", 0, "text")
+
+    refute_nil output_text, "Could not extract output text from response: #{response_json.to_json}"
 
     parsed = b.parse.TestOpenAIResponses(llm_response: output_text)
 
