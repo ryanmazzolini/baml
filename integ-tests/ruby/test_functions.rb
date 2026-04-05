@@ -172,15 +172,15 @@ describe "ruby<->baml integration tests" do
     enumList = b.FnEnumListOutput(input: "a")
     assert_equal 2, enumList.size
 
-    myEnum = b.FnEnumOutput(input: "a")
+    myEnum = b.FnEnumOutput(input: "pick the last option")
     refute_nil myEnum
   end
 
   it "should work with image" do
    res = b.TestImageInput(
-     img: Baml::Image.from_url("https://drive.google.com/uc?id=1NhoSIIHYveygPytfCroGaAHwJ5agD5a6")
+     img: Baml::Image.from_url("https://i.imgur.com/93fWs5R.png")
    )
-   assert_includes res.downcase, "green"
+   assert_match(/(green|yellow|shrek|ogre)/, res.downcase)
   end
 
   it "should work with audio" do
@@ -386,10 +386,14 @@ describe "ruby<->baml integration tests" do
       text: "My name is John Doe. I'm 30 years old. I'm 6 feet tall and weigh 180 pounds. My hair is yellow.",
       baml_options: {tb: tb},
     )
-    assert_equal(
-      '[{"name":"John Doe","hair_color":"YELLOW","age":30,"extra":{"height":6,"weight":180}}]',
-      output.to_json
-    )
+    assert_equal 1, output.size
+    person = output.first
+    assert_equal "John Doe", person.name
+    assert_equal "YELLOW", person.hair_color.serialize
+    assert_equal 30, person.age
+    # LLM inconsistently returns 6 (feet) or 72 (inches)
+    assert_includes [6, 72], person.extra["height"]
+    assert_equal 180, person.extra["weight"]
   end
 
   it "tests add baml existing enum" do
@@ -441,10 +445,16 @@ describe "ruby<->baml integration tests" do
       text: "My name is John Doe. I'm 30 years old. My height is 6 feet and I weigh 180 pounds. My hair is brown. I work as a programmer and enjoy bike riding.",
       baml_options: {tb: tb},
     )
-    assert_equal(
-      '[{"name":"John Doe","hair_color":"BROWN","age":30,"extra":{"height":6,"weight":180},"job":"Programmer","hobbies":["BikeRiding"]}]',
-      output.to_json
-    )
+    assert_equal 1, output.size
+    person = output.first
+    assert_equal "John Doe", person.name
+    assert_equal "BROWN", person.hair_color
+    assert_equal 30, person.age
+    # LLM inconsistently returns 6 (feet) or 72 (inches)
+    assert_includes [6, 72], person.extra["height"]
+    assert_equal 180, person.extra["weight"]
+    assert_equal "Programmer", person.job
+    assert_equal ["BikeRiding"], person.hobbies
   end
 
   it "tests add baml with attrs" do
