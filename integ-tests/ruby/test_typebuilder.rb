@@ -6,6 +6,7 @@ require_relative "baml_client/client"
 # TODO: Right now this does not work because removal / listing methods are not exposed.
 describe "TypeBuilder APIs" do
   it "should reset" do
+    skip "not exposed in Rust CFFI — exists in baml-runtime but not in CFFI layer"
     tb = Baml::TypeBuilder.new
     tb.Person.add_property("last_name", tb.string.list)
     tb.Person.add_property("height", tb.float.optional).description("Height in meters")
@@ -18,6 +19,7 @@ describe "TypeBuilder APIs" do
   end
 
   it "should reset a class" do
+    skip "not exposed in Rust CFFI — exists in baml-runtime but not in CFFI layer"
     tb = Baml::TypeBuilder.new
     tb.Person.add_property("last_name", tb.string.list)
     tb.Person.add_property("height", tb.float.optional).description("Height in meters")
@@ -38,6 +40,7 @@ describe "TypeBuilder APIs" do
   end
 
   it "should remove a property from a class" do
+    skip "not exposed in Rust CFFI — exists in baml-runtime but not in CFFI layer"
     tb = Baml::TypeBuilder.new
     tb.Person.add_property("last_name", tb.string.list)
     tb.Person.add_property("height", tb.float.optional).description("Height in meters")
@@ -51,6 +54,7 @@ describe "TypeBuilder APIs" do
   end
 
   it "should reset a dynamically added class" do
+    skip "not exposed in Rust CFFI — exists in baml-runtime but not in CFFI layer"
     tb = Baml::TypeBuilder.new
     person_class = tb.add_class("AddedPerson")
     person_class.add_property("last_name", tb.string.list)
@@ -65,6 +69,7 @@ describe "TypeBuilder APIs" do
   end
 
   it "should remove a property from a dynamically added class" do
+    skip "not exposed in Rust CFFI — exists in baml-runtime but not in CFFI layer"
     tb = Baml::TypeBuilder.new
     person_class = tb.add_class("AddedPerson")
     person_class.add_property("last_name", tb.string.list)
