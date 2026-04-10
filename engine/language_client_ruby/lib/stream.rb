@@ -62,7 +62,10 @@ module Baml
       # Implementing this and include-ing Enumerable allows users to treat this as a Ruby
       # collection: https://ruby-doc.org/3.1.6/Enumerable.html#module-Enumerable-label-Usage
       if @final_response == nil
-        @final_response = @ffi_stream.done(@ctx_manager) do |event|
+        # Defer errors that occur after partials were delivered (e.g. final-parse
+        # failures). Pre-partial errors (auth, connection) still raise immediately.
+        # Deferred errors surface when get_final_response is called.
+        @final_response = @ffi_stream.done(@ctx_manager, defer_after_partials: true) do |event|
           block.call event.parsed_using_types(Baml::Types, Baml::PartialTypes, true)
         end
       end
