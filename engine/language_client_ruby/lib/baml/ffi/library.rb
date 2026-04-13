@@ -12,7 +12,7 @@ module Baml
     # Library discovery and platform detection.
     # Mirrors: language_client_go/baml_go/lib_common.go — findOrDownloadLibrary, getTargetLibFilename
     module Library
-      VERSION = "0.219.0"
+      VERSION = "0.220.0"
       GITHUB_REPO = "boundaryml/baml"
 
       module_function

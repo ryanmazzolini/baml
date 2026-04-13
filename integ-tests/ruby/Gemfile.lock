@@ -1,7 +1,7 @@
 PATH
   remote: ../../engine/language_client_ruby
   specs:
-    baml (0.219.0)
+    baml (0.220.0)
       ffi (~> 1.0)
       google-protobuf (~> 4.0)
 
