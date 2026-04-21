@@ -15,6 +15,10 @@ module Baml
 
       @mutex = Mutex.new
       @pending = {} # call_id => Queue
+      # Monotonic counter matches Go's atomic.Uint32 in language_client_go/pkg/callbacks.go
+      # and keeps log output ordered by call sequence.
+      @next_id = 0
+      CALL_ID_MODULO = 1 << 32
 
       def register!
         on_result = proc do |call_id, is_done, content_ptr, length|
@@ -49,9 +53,8 @@ module Baml
 
       def next_id
         @mutex.synchronize do
-          id = rand(1_000_000)
-          id = rand(1_000_000) while @pending.key?(id)
-          id
+          @next_id = (@next_id + 1) % CALL_ID_MODULO
+          @next_id
         end
       end
 
