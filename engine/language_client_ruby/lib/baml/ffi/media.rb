@@ -18,6 +18,7 @@ module Baml
         end
 
         # Canonical factory: construct via an explicit runtime pointer.
+        # Also the path the runtime helpers (BamlRuntime#new_image, etc.) use.
         def create(runtime_ptr, **kwargs)
           construct(object_type, runtime_ptr: runtime_ptr, kwargs: kwargs)
         end

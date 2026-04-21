@@ -44,6 +44,9 @@ module Baml
 
       # Class macro: generates methods that delegate to call_method.
       # Usage: cffi_method :usage, :name, :logs
+      # Each generated method takes @mutex and performs a full FFI round-trip
+      # (see call_method). Prefer one call per logical access rather than
+      # reading several attributes in a tight loop.
       def self.cffi_method(*names)
         names.each do |name|
           define_method(name) { call_method(name.to_s) }
@@ -168,7 +171,7 @@ module Baml
         end
       rescue => e
         # Swallow errors during finalization — can't raise from finalizer.
-        $stderr.puts "[BAML] finalizer error: #{e.message}" if $DEBUG
+        $stderr.puts "[BAML] finalizer error: #{e.message}"
       end
 
       # Decode an InvocationResponse into Ruby objects.
