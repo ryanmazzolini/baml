@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require "timeout"
 require_relative "callbacks"
 require_relative "serde"
 require_relative "function_result"
@@ -19,11 +20,15 @@ module Baml
       # partial was delivered are stored instead of raised — the caller can
       # retrieve them via the returned object. Errors before any partial still
       # raise immediately (connection failures, auth errors, etc.).
-      def done(_ctx, defer_after_partials: false, &on_partial)
+      #
+      # timeout: seconds to wait for the next callback (nil = no timeout).
+      # Per-chunk, not a total budget — long legitimate streams keep working
+      # as long as chunks keep arriving within the window.
+      def done(_ctx, timeout: nil, defer_after_partials: false, &on_partial)
         partials_delivered = false
 
         loop do
-          result = @queue.pop
+          result = pop_next(timeout)
 
           if result[:error]
             Callbacks.remove(@call_id)
@@ -48,6 +53,16 @@ module Baml
             end
           end
         end
+      end
+
+      private
+
+      def pop_next(timeout)
+        return @queue.pop if timeout.nil?
+        Timeout.timeout(timeout) { @queue.pop }
+      rescue Timeout::Error
+        Callbacks.remove(@call_id)
+        raise BamlError, "BAML stream timed out after #{timeout}s waiting for next chunk"
       end
     end
 

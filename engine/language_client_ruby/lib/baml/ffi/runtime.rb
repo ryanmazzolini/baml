@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "json"
+require "timeout"
 require_relative "bindings"
 require_relative "callbacks"
 require_relative "serde"
@@ -146,12 +147,23 @@ module Baml
       end
 
       # Spawn, wait for single result, raise on error.
-      def spawn_and_wait(function_name, args, **opts, &block)
+      # timeout: seconds to wait for the Rust callback (nil = no timeout).
+      # On expiry, the call is removed and BamlError is raised — useful when
+      # the Tokio task hangs or its future is dropped without ever firing back.
+      def spawn_and_wait(function_name, args, timeout: nil, **opts, &block)
         call_id, queue = spawn(function_name, args, **opts, &block)
-        result = queue.pop
+        result = pop_with_timeout(queue, timeout, call_id)
         Callbacks.remove(call_id)
         raise BamlError, result[:error] if result[:error]
         result
+      end
+
+      def pop_with_timeout(queue, timeout, call_id)
+        return queue.pop if timeout.nil?
+        Timeout.timeout(timeout) { queue.pop }
+      rescue Timeout::Error
+        Callbacks.remove(call_id)
+        raise BamlError, "BAML call timed out after #{timeout}s"
       end
     end
   end
