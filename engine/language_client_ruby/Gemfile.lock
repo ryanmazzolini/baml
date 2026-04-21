@@ -1,7 +1,9 @@
 PATH
   remote: .
   specs:
-    baml (0.214.0)
+    baml (0.220.0)
+      ffi (~> 1.0)
+      google-protobuf (~> 4.0)
 
 GEM
   remote: https://rubygems.org/
@@ -11,15 +13,24 @@ GEM
       console (~> 1.25, >= 1.25.2)
       fiber-annotation
       io-event (~> 1.6, >= 1.6.5)
+    bigdecimal (4.1.2)
     builder (3.3.0)
     console (1.27.0)
       fiber-annotation
       fiber-local (~> 1.1)
       json
+    ffi (1.17.4)
+    ffi (1.17.4-arm64-darwin)
     fiber-annotation (0.2.0)
     fiber-local (1.1.0)
       fiber-storage
     fiber-storage (0.1.2)
+    google-protobuf (4.33.6)
+      bigdecimal
+      rake (>= 13)
+    google-protobuf (4.33.6-arm64-darwin)
+      bigdecimal
+      rake (>= 13)
     io-event (1.6.5)
     json (2.7.2)
     minitest (5.24.1)
