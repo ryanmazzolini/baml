@@ -11,13 +11,17 @@ module Baml
       end
 
       # Convenience: Baml::Collector.new(name: "foo") uses the default runtime.
-      # Also handles internal 3-arg form from decode_handle(object_type, pointer, runtime_ptr).
-      def self.new(*args, name: "", **_)
-        if args.length == 3
-          super(*args)
-        else
-          create(Baml::Ffi.default_runtime_ptr!, name: name)
-        end
+      def self.new(name: "")
+        create(Baml::Ffi.default_runtime_ptr!, name: name)
+      end
+
+      # Internal: wrap an existing pointer returned from Rust. Called by
+      # RawObject.decode_handle, which prefers this over .new so .new can stay
+      # user-facing.
+      def self._from_raw(object_type, pointer, runtime_ptr)
+        obj = allocate
+        obj.send(:initialize, object_type, pointer, runtime_ptr)
+        obj
       end
 
       cffi_method :usage, :name, :logs, :last, :clear

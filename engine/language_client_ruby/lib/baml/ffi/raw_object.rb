@@ -197,13 +197,19 @@ module Baml
       end
 
       # Convert a BamlObjectHandle protobuf back into a RawObject (or subclass).
+      # Prefers `_from_raw` when the subclass defines one (so its `.new` can stay
+      # a user-facing kwarg constructor, e.g. Collector).
       def self.decode_handle(handle, runtime_ptr)
         field = handle.object  # oneof discriminator symbol
         ptr_msg = handle.send(field)
         object_type = HANDLE_FIELD.key(field)
         raise BamlError, "unknown handle field: #{field}" unless object_type
         klass = WRAPPER_CLASS.fetch(object_type, self)
-        klass.new(object_type, ptr_msg.pointer, runtime_ptr)
+        if klass.respond_to?(:_from_raw)
+          klass._from_raw(object_type, ptr_msg.pointer, runtime_ptr)
+        else
+          klass.new(object_type, ptr_msg.pointer, runtime_ptr)
+        end
       end
     end
 
