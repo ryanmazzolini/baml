@@ -77,7 +77,9 @@ struct DepGraphAnalysis {
 
 /// Condense strongly connected components and toposort the resulting DAG.
 ///
-/// Returns emission positions and cycle membership for each node. Used by both
+/// Returns emission positions and cycle membership for nodes in *multi-node* SCCs.
+/// Self-loops (a node referencing itself) are not reported here — those are handled
+/// at serialization time via `is_defining_alias` in `package.rs`. Used by both
 /// `toposort_classes` (for class forward-ref ordering) and `break_alias_cycles`
 /// (for type alias mutual recursion).
 fn analyze_dep_graph(graph: DiGraph<String, ()>) -> DepGraphAnalysis {
@@ -150,8 +152,9 @@ fn build_dep_graph<'a>(
 /// For mutual recursion (Tree → Forest → Tree), no ordering works — one class
 /// will always reference the other before it exists. We handle this by collapsing
 /// strongly connected components into single nodes via `petgraph::algo::condensation`,
-/// producing a DAG that can be toposorted. Back-edge references within cycles
-/// (classes not yet emitted at point of reference) are replaced with `T.anything`.
+/// producing a DAG that can be toposorted. Within each cycle, references from a
+/// class to peers that have not yet been emitted (i.e. forward references from
+/// Ruby's perspective) are replaced with `T.anything`.
 fn toposort_classes(classes: Vec<ClassRb<'_>>) -> Vec<ClassRb<'_>> {
     let graph = build_dep_graph(classes.iter().map(|c| {
         let mut refs = HashSet::new();
@@ -190,11 +193,13 @@ fn toposort_classes(classes: Vec<ClassRb<'_>>) -> Vec<ClassRb<'_>> {
 
 /// Break cycles in mutually recursive type aliases.
 ///
-/// `T.type_alias{ block }` stores its block lazily, but Sorbet eagerly coerces
-/// type arguments inside `T.any(...)`, `T::Array[...]`, etc. — so a cycle like
-/// `JsonValue → JsonObject → JsonValue` still causes infinite recursion at load
-/// time. Self-referential aliases are already handled by `is_defining_alias` in
-/// `type.rs`; this function extends that to cross-alias cycles.
+/// `T.type_alias { block }` defers its block, so *defining* a cycle of aliases
+/// is harmless on its own. The trap is the first use site: e.g. a struct
+/// `const :field, JsonValue` forces Sorbet to coerce the alias into a concrete
+/// type, which walks into `JsonObject`, which walks back into `JsonValue`, and
+/// recursion never terminates. Self-referential aliases are already handled at
+/// serialization time by the `is_defining_alias` check at `type.rs:227`
+/// (defined in `package.rs`); this function extends that to cross-alias cycles.
 fn break_alias_cycles(aliases: &mut [TypeAliasRb<'_>]) {
     let graph = build_dep_graph(aliases.iter().map(|a| {
         let mut refs = HashSet::new();
@@ -207,9 +212,11 @@ fn break_alias_cycles(aliases: &mut [TypeAliasRb<'_>]) {
         return;
     }
 
-    // Unlike classes (where only forward refs need replacing), all cross-references
-    // within an alias cycle cause infinite recursion because Sorbet resolves them
-    // eagerly inside type expressions like T.any(...).
+    // For classes, Ruby's eager `const` resolution means only forward refs are
+    // dangerous — back-refs already have the constant bound. For aliases, every
+    // block body is deferred until first use, so "defined earlier in the file"
+    // provides no safety: any peer in the cycle triggers the same unbounded walk.
+    // So we strip every peer reference, not just forward ones.
     for alias in aliases.iter_mut() {
         if let Some(scc) = analysis.cycle_members.get(&alias.name) {
             let peers: HashSet<String> = scc
