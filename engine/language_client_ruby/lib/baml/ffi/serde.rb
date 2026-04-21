@@ -132,7 +132,7 @@ module Baml
         when :string_literal then lit.string_literal.value
         when :int_literal then lit.int_literal.value
         when :bool_literal then lit.bool_literal.value
-        else lit
+        else raise ArgumentError, "unexpected literal variant: #{lit.literal}"
         end
       end
 
